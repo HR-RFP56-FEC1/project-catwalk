@@ -4,7 +4,8 @@
   "description": "team 1 packages for project catwalk",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "react-dev": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,13 @@
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "underscore": "^1.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.60.0",
+    "webpack-cli": "^4.9.1"
   }
 }
