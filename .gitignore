@@ -1,4 +1,5 @@
 package-lock.json
+client/dist/bundle.js
 
 # Logs
 logs
