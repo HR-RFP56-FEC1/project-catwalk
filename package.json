@@ -1,0 +1,28 @@
+{
+  "name": "project-catwalk",
+  "version": "1.0.0",
+  "description": "team 1 packages for project catwalk",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HR-RFP56-FEC1/project-catwalk.git"
+  },
+  "author": "Team Alliaceae",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HR-RFP56-FEC1/project-catwalk/issues"
+  },
+  "homepage": "https://github.com/HR-RFP56-FEC1/project-catwalk#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.1",
+    "jest": "^27.3.1",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "underscore": "^1.13.1"
+  }
+}
