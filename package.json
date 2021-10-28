@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "react-dev": "webpack -d --watch"
+    "build": "webpack",
+    "react-dev": "webpack -w"
   },
   "repository": {
     "type": "git",
