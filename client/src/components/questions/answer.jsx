@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const Answer = () => (
   <div id='answer1'>
     <div id='answer1body'>A QUESTION IS A QUESTION</div>

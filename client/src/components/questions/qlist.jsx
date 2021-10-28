@@ -31,15 +31,11 @@ const Qlist = () => (
         </div>
       </div>
     </div>
-
-
-
     <div id='bottombuttons'>
       <div id='moreQuestions'>MORE ANSWERED QUESTIONS</div>
       <div id='addQuestion'>ADD A QUESTION</div>
     </div>
-
   </div>
 );
 
-export default Qsearch
+export default Qlist
