@@ -18,5 +18,8 @@ module.exports = {
     filename: 'bundle.js',
     path: __dirname + '/client/dist'
   },
-  mode: 'development'
+  mode: 'development',
+  plugins: [
+    '@babel/plugin-syntax-jsx',
+  ],
 };
