@@ -8,7 +8,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+            plugins: [
+              '@babel/plugin-syntax-jsx'
+            ]
           }
         }
       }
@@ -19,7 +22,5 @@ module.exports = {
     path: __dirname + '/client/dist'
   },
   mode: 'development',
-  plugins: [
-    '@babel/plugin-syntax-jsx',
-  ],
+  
 };
