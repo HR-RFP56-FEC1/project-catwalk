@@ -23,4 +23,4 @@ const AnswerList = () => (
   </div>
 );
 
-export default AnswerList
+export default Questions
