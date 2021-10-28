@@ -1,0 +1,23 @@
+fixed export names
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch qna
+# Changes to be committed:
+#	modified:   client/src/components/overview/Overview.jsx
+#	modified:   client/src/components/overview/overview-styles.css
+#	modified:   client/src/components/questions/answerlist.jsx
+#	modified:   client/src/components/questions/qlist.jsx
+#	modified:   client/src/components/questions/question.jsx
+#	modified:   client/src/index.jsx
+#	modified:   jest.config.js
+#	modified:   jester/react-test-template
+#	modified:   jester/sum.js
+#	modified:   jester/sum.test.js
+#	modified:   package-lock.json
+#	modified:   package.json
+#	modified:   webpack.config.js
+#
+# Changes not staged for commit:
+#	modified:   .gitignore
+#
