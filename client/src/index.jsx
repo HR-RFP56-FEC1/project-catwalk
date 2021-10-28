@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App.jsx';
 
-ReactDOM.render(<div>Hello Shopping Alliaceae!</div>, document.getElementById('app'));
+ReactDOM.render(<div><App/></div>, document.getElementById('app'));
