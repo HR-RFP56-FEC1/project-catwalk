@@ -11,6 +11,9 @@ it('COMPONENTNAME renders', () => {
     <COMPONENTNAME />,
   );
   
-  expect(testee.toBeTruthy());
+  expect(testee).toBeTruthy();
 
 });
+
+
+// name of file should be COMPONENTNAME.test.js
