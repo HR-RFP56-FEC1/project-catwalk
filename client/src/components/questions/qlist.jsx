@@ -42,4 +42,4 @@ const Qlist = () => (
   </div>
 );
 
-export default Qsearch
+export default Qlist
