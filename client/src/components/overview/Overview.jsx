@@ -5,7 +5,8 @@ const Thumbs = () => {
   const [thumbs, setThumbs] = useState([1, 2, 3, 4])
   console.log('THUMBS: ', thumbs)
   return (
-    <div id='thumbs'>{thumbs.map((thumb, i) => <Thumb key={i} />)}</div>
+    <div> Overview Box</div>
+    // <div id='thumbs'>{thumbs.map(thumb => <div>thumb</div>)}</div>
   )
 }
 
