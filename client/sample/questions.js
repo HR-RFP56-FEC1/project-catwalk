@@ -1,6 +1,6 @@
 // sample questions data
 
-{
+var questions = {
     "product_id": "40353",
     "results": [
         {
