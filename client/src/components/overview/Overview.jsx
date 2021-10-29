@@ -15,7 +15,7 @@ const Thumb = (props) => (
 
 const Rating = () => (
   <div id='read-all-reviews'>
-    <div>* * * * *
+    <div><img src='img/stars.png'/>
       <a><u>Read all reviews</u></a>
     </div>
   </div>
@@ -29,7 +29,7 @@ const Styles = () => {
 }
 
 const Style = () => (
-  <div id='style'>Style</div>
+  <div id='style'></div>
 )
 
 const Size = () => (
@@ -50,7 +50,7 @@ const Quantity = () => (
   <div id='quantity'>
     <label for="select-quantity"></label>
 
-    <select name="quantity" id="quantity">
+    <select name="quantities" id="quantities">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -59,6 +59,18 @@ const Quantity = () => (
   </div>
 )
 
+const AddToBag = () => (
+  <div>
+    <button id='add-to-bag' type='submit'>
+      <div>ADD TO BAG</div>
+      <div>+</div>
+    </button>
+  </div>
+)
+
+const Watch = () => (
+  <div></div>
+)
 
 const Overview = () => (
   <div id='overview'>
@@ -88,14 +100,18 @@ const Overview = () => (
 
       <div id='right'>
         <Rating />
-        <div id='category'>CATEGORY</div>
+        <div id='category'><b>CATEGORY</b></div>
         <div id='expanded'>Expanded Product Name</div>
-        <div id='price'>$369</div>
+        <div id='price'><b>$369</b></div>
         <div id='style-selected'><b>STYLE ></b> SELECTED STYLE</div>
         <Styles />
         <div id='buttons-select'>
           <Size />
           <Quantity />
+        </div>
+        <div id='buttons-add'>
+          <AddToBag />
+          <Watch />
         </div>
         <div id='bullet points'></div>
       </div>
