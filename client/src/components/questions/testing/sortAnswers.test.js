@@ -7,4 +7,4 @@ test('sorts answers', () => {
   expect(sortAnswers(questions.results[1].answers)[3].helpfulness).toBe(2);
 });
 
-console.log(sortAnswers(questions.results[1].answers));
+// console.log(sortAnswers(questions.results[1].answers));

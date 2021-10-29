@@ -2,6 +2,9 @@ import React from 'react';
 import Answer from './Answer.jsx';
 import questions from '../../../sample/questions.js';
 
+// answers come in as object
+// properties of obj are answer objects
+// keys are answer ids
 // sort by helpfulness
 // if username === seller, put at top
 const sortAnswers = function(answersObj) {
@@ -42,5 +45,5 @@ const AnswerList = () => (
 
 export default AnswerList;
 
-console.log(sortAnswers(questions.results[1].answers));
+
 
