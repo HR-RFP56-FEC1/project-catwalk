@@ -17,3 +17,27 @@ body, html {
   flex-direction: column;
   align-items: center;
 }
+
+#qna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#qsearch {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+#questionList {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.answer {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
