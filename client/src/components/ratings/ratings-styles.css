@@ -4,20 +4,18 @@
   align-items: flex-start;
   width: 100%;
   flex-wrap: wrap;
-  background-color: #E1D8C7;
-  height: 300px;
+  height: 800px;
 }
 
 #rating-headline {
   height: 25px;
-  background-color: lightgreen;
+  background-color: #86E3CE;
   align-self: stretch;
 
 }
 .rating-box {
   display: flex;
   flex-direction: row;
-  background-color: #8BC7BD;
   align-self: stretch;
   flex: 1 1 auto;
 }
@@ -26,11 +24,49 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
-  background-color: #C1B295;
   flex-basis: 25%;
 }
 
 .review-list {
   display: flex;
   flex-direction: column;
+  align-self: stretch;
+  flex: 1 1 auto
 }
+
+.rating-summary {
+  flex-basis: 15%;
+  background-color: #F5CEC7
+}
+
+.rating-dist {
+  flex-basis: 35%;
+  background-color: #D0E6A5
+}
+
+.product-breakdown {
+  flex-basis: 25%;
+  background-color: #FFC98B
+}
+
+.sort-review {
+  flex-basis: 10%;
+  background-color: #FBC78D;
+}
+
+.review-body {
+  flex-basis: 70%;
+  background-color: #F9E2AE;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-entry {
+  flex: 3
+}
+
+.review-bottom-buttons {
+  flex-basis: 20%;
+  background-color: #A8DEE0
+}
+

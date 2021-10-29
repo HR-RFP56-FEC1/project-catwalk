@@ -6,7 +6,7 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 
 var OverallRating = (props) => (
   <div className="overall-rating">
-    <div>OverallRating Column</div>
+    {/* <div>OverallRating Column</div> */}
     <RatingSummary />
     <RatingDist />
     <ProductBreakdown />
