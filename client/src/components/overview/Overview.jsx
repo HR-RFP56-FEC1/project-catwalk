@@ -1,12 +1,27 @@
 import React from 'react'
+import { useState } from 'react'
+
+
+const Thumbs = () => {
+  const [thumbs, setThumbs] = useState([1, 2, 3, 4, 5, 6, 7])
+  console.log('THUMBS: ', thumbs)
+  return (
+    // <div id='thumbs'>{thumbs.map(thumb => <div>thumb</div>)}</div>
+  )
+}
+
+// const Thumb = () => (
+//   <div className='thumb'>Thumb</div>
+// )
+
 
 const Overview = () => (
   <div id='overview'>
     <div id='logo'>TESTING LOGO</div>
-    <div id='announcement'></div>
+    <div id='announcement'><i>SITE-WIDE ANNOUNCEMENT MESSAGE!</i> - SALE / DISCOUNT <b>OFFER</b> - <u>NEW PRODUCT HIGHLIGHT</u></div>
     <div id='body'>
       <div id='left'>
-        <div id='thumbs'></div>
+        <Thumbs />
         <div id='product'>
           <div id='photo'></div>
           <div id='description'></div>
