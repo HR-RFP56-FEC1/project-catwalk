@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 const Thumbs = () => {
   const [thumbs, setThumbs] = useState([1, 2, 3, 4])
-  console.log('THUMBS: ', thumbs)
   return (
     <div id='thumbs'>{thumbs.map((thumb, i) => <Thumb key={i} />)}</div>
   )
@@ -15,9 +14,8 @@ const Thumb = (props) => (
 
 const Rating = () => (
   <div id='read-all-reviews'>
-    <div><img src='img/stars.png'/>
-      <a><u>Read all reviews</u></a>
-    </div>
+    <div><img src='img/stars.png' id='stars'/></div>
+    <a><u>Read all reviews</u></a>
   </div>
 )
 
@@ -34,7 +32,8 @@ const Style = () => (
 
 const Size = () => (
   <div id='size'>
-    <label for="select-size"></label>
+
+    <label htmlFor="select-size"></label>
 
     <select name="sizes" id="sizes">
       <option value="SELECT SIZE">SELECT SIZE</option>
@@ -48,7 +47,8 @@ const Size = () => (
 
 const Quantity = () => (
   <div id='quantity'>
-    <label for="select-quantity"></label>
+
+    <label htmlFor="select-quantity"></label>
 
     <select name="quantities" id="quantities">
       <option value="1">1</option>
@@ -69,7 +69,22 @@ const AddToBag = () => (
 )
 
 const Watch = () => (
-  <div></div>
+  <div>
+    <input id='watch' type='button' value='☆'></input>
+  </div>
+)
+
+const Facts = () => {
+  const [facts, setFacts] = useState([1, 2, 3, 4])
+  return (
+    <div>
+      {facts.map((fact, i) => <Fact key={i} />)}
+    </div>
+  )
+}
+
+const Fact = () => (
+  <div className='fact'>✓ Some interesting fact</div>
 )
 
 const Overview = () => (
@@ -113,7 +128,9 @@ const Overview = () => (
           <AddToBag />
           <Watch />
         </div>
-        <div id='bullet points'></div>
+        <div id='bullet points'>
+          <Facts />
+        </div>
       </div>
     </div>
   </div>
