@@ -4,7 +4,8 @@
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
-  background-color: #E1D8C7
+  background-color: #E1D8C7;
+  height: 300px;
 }
 
 .rating-box {
@@ -12,6 +13,7 @@
   flex-direction: row;
   background-color: #8BC7BD
 }
+
 .overall-rating {
   display: flex;
   flex-direction: column;
