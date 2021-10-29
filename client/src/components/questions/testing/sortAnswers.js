@@ -1,9 +1,5 @@
-import React from 'react';
-import Answer from './Answer.jsx';
-import questions from '../../../sample/questions.js';
 
-// sort by helpfulness
-// if username === seller, put at top
+
 const sortAnswers = function(answersObj) {
   var sorted = [];
 
@@ -29,18 +25,4 @@ const sortAnswers = function(answersObj) {
   return sorted;
 };
 
-const AnswerList = () => (
-  <div className='answerList'>
-    <div className="aList">
-      {
-        sortAnswers(props.answers).map(answer => <Answer answer={answer}/>)
-      }
-    </div>
-    <div className='moreAnswersButton'>LOAD MORE ANSWERS</div>
-  </div>
-);
-
-export default AnswerList;
-
-console.log(sortAnswers(questions.results[1].answers));
-
+export default sortAnswers;
