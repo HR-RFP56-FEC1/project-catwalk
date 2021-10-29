@@ -6,7 +6,7 @@ import Question from './Question.jsx';
 const questionSorter = function(questionArray) {
   var sorted = [];
 
-  if (questionArray.length > 0) {
+  if (questionArray && questionArray.length > 0) {
     sorted.push(questionArray[0]);
 
     for (var i = 1; i < questionArray.length; i++) {
