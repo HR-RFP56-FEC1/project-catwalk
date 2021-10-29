@@ -6,7 +6,7 @@ import Ratings from './Ratings';
 // unmount and cleanup DOM after the test is finished.
 afterEach(cleanup);
 
-it('COMPONENTNAME renders', () => {
+it('Ratings renders', () => {
   const testee  = render(
     <Ratings />,
   );

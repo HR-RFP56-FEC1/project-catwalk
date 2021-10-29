@@ -1,8 +1,12 @@
 import React from 'react';
+import OverallRating from './OverallRating.jsx';
+import ReviewList from './ReviewList.jsx';
 
 var Ratings = (props) => (
-  <div>
-    Hello Shopping Ratings Alliaceae!
+  <div className="rating-widget">
+    Rating Component
+    <OverallRating/>
+    <ReviewList/>
   </div>
 );
 
