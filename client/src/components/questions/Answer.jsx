@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Answer = () => (
+const Answer = (props) => (
   <div className="answer" id='answerid'>
-    <div className='answerbody'>A QUESTION IS A QUESTION</div>
+    <div className='answerbody'>{props.answer.body}</div>
     <div className='answerbottombor'>
-      <div className='answerbyline'>by USERNAME, MONTH, 22, 2021</div>
-      <div className='answerhelpful'>HELPFUL? Yes(22)</div>
+      <div className='answerbyline'>by {props.answer.answerer_name}, {props.answer.date}</div>
+      <div className='answerhelpful'>HELPFUL? Yes({props.answer.helpfulness})</div>
       <div className='asnwerreport'>REPORT</div>
     </div>
   </div>
 );
 
-export default Answer
+export default Answer;
