@@ -1,17 +1,25 @@
 .rating-widget {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
   width: 100%;
   flex-wrap: wrap;
   background-color: #E1D8C7;
   height: 300px;
 }
 
+#rating-headline {
+  height: 25px;
+  background-color: lightgreen;
+  align-self: stretch;
+
+}
 .rating-box {
   display: flex;
   flex-direction: row;
-  background-color: #8BC7BD
+  background-color: #8BC7BD;
+  align-self: stretch;
+  flex: 1 1 auto;
 }
 
 .overall-rating {
@@ -19,5 +27,10 @@
   flex-direction: column;
   justify-content: left;
   background-color: #C1B295;
-  flex-basis: 30%;
+  flex-basis: 25%;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
 }

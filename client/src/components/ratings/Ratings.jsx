@@ -4,7 +4,7 @@ import ReviewList from './reviewList/ReviewList.jsx';
 
 var Ratings = (props) => (
   <div className="rating-widget">
-    <h2> Ratings Box </h2>
+    <div id="rating-headline">RATINGS &#38; REVIEWS </div>
     <div className="rating-box">
       <OverallRating/>
       <ReviewList/>
