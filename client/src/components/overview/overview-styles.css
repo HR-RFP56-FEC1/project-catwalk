@@ -1,3 +1,30 @@
-.logo {
-  color: greenyellow;
+#logo {
+  background-color: lightslategray;
+  height: 100px;
+  width: 1100px;
+}
+
+#overview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#announcement {
+  text-align: center;
+}
+
+#body {
+  display: flex;
+  flex-direction: row;
+  background-color: lightsteelblue;
+  height: 500px;
+}
+
+#thumbs {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 100%;
+  background-color: lightyellow;
 }
