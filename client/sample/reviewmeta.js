@@ -16,3 +16,5 @@ var reviewmeta = {
       }
   }
 }
+
+export default reviewmeta;

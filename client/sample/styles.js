@@ -1,4 +1,4 @@
-// sample/ test product style info
+// sample test product style info
 
 var styles = {
   "product_id": "40353",
