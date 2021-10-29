@@ -1,6 +1,20 @@
 /* font-family: 'Julius Sans One', sans-serif;
 font-family: 'Poiret One', cursive;
+font-family: 'Roboto', sans-serif;
 font-family: 'Thasadith', sans-serif; */
+
+:root {
+  --gray: #474747;
+}
+
+#logo, #announcement, #description, #read-all-reviews, #expanded, #category {
+  color: var(--gray);
+}
+
+#announcement, #category, #price, #style-selected {
+  font-family: 'Thasadith', sans-serif;
+}
+
 
 #logo {
   background-color: lightslategray;
@@ -16,11 +30,8 @@ font-family: 'Thasadith', sans-serif; */
 
 #announcement {
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   padding: 15px 0px 15px 0px;
-  font-family: 'Thasadith', sans-serif;
-  /* font-family: 'Julius Sans One', sans-serif; */
-  /* font-family: 'Poiret One', cursive; */
 }
 
 #body {
@@ -40,7 +51,7 @@ font-family: 'Thasadith', sans-serif; */
 }
 
 .thumb {
-  background-color: tan;
+  background-color: darkcyan;
   width: 80px;
   height: 80px;
   margin: 20px 0px 0px 0px;
@@ -55,7 +66,7 @@ font-family: 'Thasadith', sans-serif; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: thistle;
+  background-color: lightcyan;
   width: 800px;
   height: 600px;
 }
@@ -79,6 +90,7 @@ font-family: 'Thasadith', sans-serif; */
   background-color: lightyellow;
   width: 100%;
   height: 100%;
+  color: black;
   /* padding: 10px 10px 10px 10px; */
 }
 
@@ -101,4 +113,67 @@ font-family: 'Thasadith', sans-serif; */
   height: 480px;
   width: 50px;
   padding: 0px 10px 0px 0px;
+}
+
+#right {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: lightgrey;
+  padding-left: 30px;
+}
+
+#read-all-reviews {
+  padding: 30px 0px 20px 0px;
+}
+
+#details {
+  height: 100px;
+  width: 100px;
+  color: black;
+}
+
+#category {
+
+}
+
+#expanded {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  padding: 10px 0px 30px 0px;
+}
+
+#price {
+  padding: 0px 0px 30px 0px;
+}
+
+#styles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 370px;
+  height: auto;
+}
+
+#style-selected {
+  font-size: 20px;
+}
+
+#style {
+  border-radius: 65px;
+  height: 65px;
+  width: 65px;
+  border: 1px solid var(--gray);
+  background-color: lightsteelblue;
+  margin: 15px 25px 15px 0px;
+}
+
+#buttons-select{
+  display: inline;
+  white-space: nowrap;
+}
+
+#size, #quantity {
+  display: inline-block;
 }

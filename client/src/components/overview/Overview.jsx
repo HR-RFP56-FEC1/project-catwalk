@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
 
-
 const Thumbs = () => {
   const [thumbs, setThumbs] = useState([1, 2, 3, 4])
   console.log('THUMBS: ', thumbs)
@@ -14,10 +13,56 @@ const Thumb = (props) => (
   <div className='thumb'>{props.i}T</div>
 )
 
+const Rating = () => (
+  <div id='read-all-reviews'>
+    <div>* * * * *
+      <a><u>Read all reviews</u></a>
+    </div>
+  </div>
+)
+
+const Styles = () => {
+  const [styles, setStyles] = useState([1, 2, 3, 4, 5, 6, 7, 8])
+  return (
+    <div id='styles'>{styles.map((style, i) => <Style key={i}/>)}</div>
+  )
+}
+
+const Style = () => (
+  <div id='style'>Style</div>
+)
+
+const Size = () => (
+  <div id='size'>
+    <label for="select-size"></label>
+
+    <select name="sizes" id="sizes">
+      <option value="SELECT SIZE">SELECT SIZE</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </div>
+)
+
+const Quantity = () => (
+  <div id='quantity'>
+    <label for="select-quantity"></label>
+
+    <select name="quantity" id="quantity">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </div>
+)
+
 
 const Overview = () => (
   <div id='overview'>
-    <div id='logo'>TESTING LOGO</div>
+    <div id='logo'>LOGO</div>
     <div id='announcement'><i>SITE-WIDE ANNOUNCEMENT MESSAGE!</i> - SALE / DISCOUNT <b>OFFER</b> - <u>NEW PRODUCT HIGHLIGHT</u></div>
     <div id='body'>
 
@@ -35,14 +80,23 @@ const Overview = () => (
         </div>
         <div id='description-container'>
           <div id='description-spacer'></div>
-          <div id='description'></div>
+          <div id='description'>
+            <div>ITEM DESCRIPTION</div>
+          </div>
         </div>
       </div>
 
       <div id='right'>
-        <div id='details'></div>
-        <div id='styles'></div>
-        <div id='buttons'></div>
+        <Rating />
+        <div id='category'>CATEGORY</div>
+        <div id='expanded'>Expanded Product Name</div>
+        <div id='price'>$369</div>
+        <div id='style-selected'><b>STYLE ></b> SELECTED STYLE</div>
+        <Styles />
+        <div id='buttons-select'>
+          <Size />
+          <Quantity />
+        </div>
         <div id='bullet points'></div>
       </div>
     </div>

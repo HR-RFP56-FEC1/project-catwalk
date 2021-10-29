@@ -86,10 +86,6 @@
       -example - moving mouse right should pan image right
 
 
-
-
-
-
 ## Product Information
 
 -general info about product will be displayed at top of Overview
@@ -189,7 +185,3 @@
 
         -if both a valid size and valid qty are selected:
           -clicking this button will add the product to user cart
-
-
-
-
