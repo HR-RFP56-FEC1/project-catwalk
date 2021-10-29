@@ -3,15 +3,15 @@ font-family: 'Poiret One', cursive;
 font-family: 'Roboto', sans-serif;
 font-family: 'Thasadith', sans-serif; */
 
-#logo, #announcement, #description, #read-all-reviews, #expanded, #category, #style-selected, #sizes, #quantities, #price, #add-to-bag, .fact {
+#logo, #announcement, #slogan, #description, #read-all-reviews, #expanded, #category, #style-selected, #sizes, #quantities, #price, #add-to-bag, .fact {
   color: var(--gray);
 }
 
-#announcement, #category, #price, #style-selected, #sizes, #quantities, #add-to-bag {
+#announcement, #category, #price, #style-selected, #sizes, #quantities, #add-to-bag, .fact {
   font-family: 'Thasadith', sans-serif;
 }
 
-#read-all-reviews, #expanded, #description, #logo, .fact {
+#read-all-reviews, #expanded, #slogan, #description, #logo {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -37,6 +37,7 @@ font-family: 'Thasadith', sans-serif; */
   display: flex;
   flex-direction: row;
   height: 900px;
+  padding-bottom: 40px;
 }
 
 #thumbs {
@@ -65,29 +66,30 @@ font-family: 'Thasadith', sans-serif; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: lightcyan;
+  background-color: rgb(230, 230, 230);
   width: 800px;
   height: 600px;
 }
 
 #description-container {
   display: flex;
-  flex-direction: row;
-  background-color: silver;
+  flex-direction: column;
   width: 800px;
   height: 300px;
 }
 
-#description-spacer {
-  background-color: white;
-  width: 100px;
-  height: 100%;
+#slogan, #description {
+  padding: 0px 0px 0px 100px;
+}
+
+#slogan {
+  font-size: 19px;
+  padding-top: 100px;
+  padding-bottom: 30px;
 }
 
 #description {
-  background-color: lightyellow;
-  width: 100%;
-  height: 100%;
+  font-size: 15px;
 }
 
 #thumbs-left-arrow-container {
@@ -214,6 +216,10 @@ font-family: 'Thasadith', sans-serif; */
   width: 100px;
 }
 
+#facts {
+  border-left: 2px solid var(--gray);
+}
+
 .fact {
-  padding: 0px 0px 15px 0px;
+  padding: 0px 0px 20px 20px;
 }
