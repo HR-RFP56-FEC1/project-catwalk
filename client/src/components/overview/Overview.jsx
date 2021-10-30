@@ -1,36 +1,54 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import Logo from './overview-components/OverviewLogo.jsx'
 import Rating, {Style, Styles, Details} from './overview-components/ProductDetails.jsx'
 import Facts, {Fact, Slogan, Description} from './overview-components/ProductDescription.jsx'
 import Size, {Quantity, Watch, AddToBag} from './overview-components/OverviewButtons.jsx'
 import Carousel, {Thumbs, Thumb} from './overview-components/Carousel.jsx'
-import styles from '../../../sample/styles.js'
-import product from '../../../sample/product.js'
+import sampleStyles from '../../../sample/styles.js'
+import sampleProduct from '../../../sample/product.js'
+import GetProductInformation, {GetProductStyles} from './OverviewRequestAPI.jsx'
 
-const Logo = () => (
-  <div>
-    <div id='logo'>LOGO</div>
-    <div id='announcement'><i>SITE-WIDE ANNOUNCEMENT MESSAGE!</i> - SALE / DISCOUNT <b>OFFER</b> - <u>NEW PRODUCT HIGHLIGHT</u></div>
-  </div>
-)
+let id = 40344
 
 const Overview = () => {
-  const [styleList, setStyleList] = useState(styles)
-  const [productDetails, setProductDetails] = useState(product)
+  const [product, setProduct] = useState(sampleProduct)
+  const [styles, setStyles] = useState(sampleStyles)
+  const [productid, setProductid] = useState()
+
+  useEffect(() => {
+    axios(GetProductInformation(id))
+      .then(response => {
+        setProduct(response.data)
+      })
+      .catch(err => {
+        console.log('Error on GET: ' + err)
+      })
+
+    axios(GetProductStyles(id))
+      .then(response => {
+        setStyles(response.data)
+      })
+      .catch(err => {
+        console.log('Error on GET: ' + err)
+      })
+  }, [])
+
   return (
     <div id='overview'>
       <Logo />
       <div id='body'>
         <div id='left'>
-          <Carousel styleList={styleList}/>
+          <Carousel styles={styles}/>
           <div id='description-container'>
-            <Slogan productDetails={productDetails} />
-            <Description productDetails={productDetails} />
+            <Slogan product={product} />
+            <Description product={product} />
           </div>
         </div>
         <div id='right'>
           <Rating />
-          <Details productDetails={productDetails}/>
-          <Styles styleList={styleList}/>
+          <Details product={product}/>
+          <Styles styles={styles}/>
           <div id='buttons-select'>
             <Size />
             <Quantity />

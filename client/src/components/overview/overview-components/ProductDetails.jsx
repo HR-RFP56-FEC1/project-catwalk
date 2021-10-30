@@ -8,19 +8,18 @@ const Rating = () => (
   </div>
 )
 
-const Details = ({productDetails}) => (
+const Details = ({product}) => (
   <div>
-    <div id='category'><b>{productDetails.category.toUpperCase()}</b></div>
-    <div id='expanded'>{productDetails.name}</div>
-    <div id='price'><b>${productDetails.default_price}</b></div>
+    <div id='category'><b>{product.category.toUpperCase()}</b></div>
+    <div id='expanded'>{product.name}</div>
+    <div id='price'><b>${product.default_price}</b></div>
     <div id='style-selected'><b>STYLE ></b> SELECTED STYLE</div>
   </div>
 )
 
-const Styles = ({styleList}) => {
-  const [styles, setStyles] = useState(styleList.results)
+const Styles = ({styles}) => {
   return (
-    <div id='styles'>{styles.map((style, i) => <Style key={i} style={styleList.results[i]}/>)}</div>
+    <div id='styles'>{styles.results.map((style, i) => <Style key={i} style={styles.results[i]}/>)}</div>
   )
 }
 

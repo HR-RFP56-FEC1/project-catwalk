@@ -14,12 +14,12 @@ const Fact = () => (
   <div className='fact'>✓ <b>Some interesting fact</b></div>
 )
 
-const Slogan = ({productDetails}) => (
-  <div id='slogan'>{productDetails.slogan}</div>
+const Slogan = ({product}) => (
+  <div id='slogan'>{product.slogan}</div>
 )
 
-const Description = ({productDetails}) => (
-  <div id='description'>{productDetails.description}</div>
+const Description = ({product}) => (
+  <div id='description'>{product.description}</div>
 )
 
 export default Facts
