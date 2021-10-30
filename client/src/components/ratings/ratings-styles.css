@@ -1,3 +1,15 @@
+#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box {
+  font-family: 'Roboto', sans-serif;
+}
+
+#review-entry-username-date {
+  font-family: 'Roboto', sans-serif;
+}
+
+#review-entry-username-date {
+  color: var(--gray);
+}
+
 .rating-widget {
   display: flex;
   flex-direction: column;
@@ -54,7 +66,7 @@
   background-color: #FBC78D;
 }
 
-.review-body {
+.review-box {
   flex-basis: 70%;
   background-color: #F9E2AE;
   display: flex;
@@ -70,3 +82,12 @@
   background-color: #A8DEE0
 }
 
+.review-entry-top-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#review-entry-username-date {
+  font: 13px;
+}

@@ -1,14 +1,14 @@
 import React from 'react';
 
 import SortReview from './SortReview.jsx';
-import ReviewBody from './reviewBody/ReviewBody.jsx';
+import ReviewBox from './reviewBox/ReviewBox.jsx';
 import MoreReview from './bottomButtons/MoreReview.jsx';
 import AddReview from './bottomButtons/AddReview.jsx';
 
 var ReviewList = (props) => (
   <div className="review-list">
     <SortReview />
-    <ReviewBody />
+    <ReviewBox />
     <div className="review-bottom-buttons">
       <MoreReview />
       <AddReview />
