@@ -1,10 +1,12 @@
 import React from 'react'
 import {useState} from 'react'
+import styles from '../../../../sample/styles.js'
 
-const Carousel = () => (
-  <div id='main-image'>
+const Carousel = ({styleList}) => (
+  <div id='main-image-container'>
+    {/* {styleList.results[0].photos[0].url} */}
     <div id='thumbs-left-arrow-container'>
-      <Thumbs />
+      <Thumbs styleList={styleList}/>
       <div id='arrow-column-left'>
         <div id='arrow-left'></div>
       </div>
@@ -15,15 +17,14 @@ const Carousel = () => (
   </div>
 )
 
-const Thumbs = () => {
-  const [thumbs, setThumbs] = useState([1, 2, 3, 4])
+const Thumbs = ({styleList}) => {
   return (
-    <div id='thumbs'>{thumbs.map((thumb, i) => <Thumb key={i} />)}</div>
+    <div id='thumbs'>{styleList.results.map((style, i) => <Thumb key={i} thumb={style.photos[0].thumbnail_url}/>)}</div>
   )
 }
 
-const Thumb = (props) => (
-  <div className='thumb'>{props.i}T</div>
+const Thumb = ({thumb}) => (
+  <img src={thumb} className='thumb'/>
 )
 
 export default Carousel

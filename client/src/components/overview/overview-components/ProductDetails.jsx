@@ -8,24 +8,24 @@ const Rating = () => (
   </div>
 )
 
-const Details = () => (
+const Details = ({productDetails}) => (
   <div>
-    <div id='category'><b>CATEGORY</b></div>
-    <div id='expanded'>Expanded Product Name</div>
-    <div id='price'><b>$369</b></div>
+    <div id='category'><b>{productDetails.category.toUpperCase()}</b></div>
+    <div id='expanded'>{productDetails.name}</div>
+    <div id='price'><b>${productDetails.default_price}</b></div>
     <div id='style-selected'><b>STYLE ></b> SELECTED STYLE</div>
   </div>
 )
 
-const Styles = () => {
-  const [styles, setStyles] = useState([1, 2, 3, 4, 5, 6, 7, 8])
+const Styles = ({styleList}) => {
+  const [styles, setStyles] = useState(styleList.results)
   return (
-    <div id='styles'>{styles.map((style, i) => <Style key={i}/>)}</div>
+    <div id='styles'>{styles.map((style, i) => <Style key={i} style={styleList.results[i]}/>)}</div>
   )
 }
 
-const Style = () => (
-  <div id='style'></div>
+const Style = ({style}) => (
+  <img src={style.photos[0].thumbnail_url} id='style'/>
 )
 
 export default Rating

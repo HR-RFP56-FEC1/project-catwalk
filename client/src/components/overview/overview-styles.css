@@ -62,13 +62,27 @@ font-family: 'Thasadith', sans-serif; */
   flex-direction: column;
 }
 
-#main-image {
+#main-image-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: rgb(230, 230, 230);
   width: 800px;
   height: 600px;
+}
+
+/* #main-image {
+
+} */
+
+.thumb {
+
+}
+
+#thumbs-left-arrow-container {
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
 }
 
 #description-container {
@@ -90,11 +104,6 @@ font-family: 'Thasadith', sans-serif; */
 
 #description {
   font-size: 15px;
-}
-
-#thumbs-left-arrow-container {
-  display: flex;
-  flex-direction: row;
 }
 
 #arrow-left, #arrow-right {
