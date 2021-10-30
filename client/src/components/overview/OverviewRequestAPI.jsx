@@ -1,28 +1,22 @@
 import React from 'react'
 import axios from 'axios'
 
-let productid = 40344
 
-const SetProductId = (id) => (
-  productid = id
-)
-
-let productInformation = {
-  method: 'get',
-  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${productid}`,
-  headers: { Authorization : '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'}
-}
-
-let productStyles = {
-  method: 'get',
-  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${productid}/styles`,
-  headers: { Authorization : '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'}
-}
-
-const GetProductInformation = () => {
+const GetProductInformation = (id) => {
+  let productInformation = {
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`,
+    headers: { Authorization : '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'}
+  }
   return productInformation
 }
-const GetProductStyles = () => {
+
+const GetProductStyles = (id) => {
+    let productStyles = {
+      method: 'get',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`,
+      headers: { Authorization : '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'}
+    }
   return productStyles
 }
 

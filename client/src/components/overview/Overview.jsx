@@ -12,9 +12,10 @@ import GetProductInformation, {GetProductStyles} from './OverviewRequestAPI.jsx'
 let id = 40344
 
 const Overview = () => {
+  const [productid, setProductid] = useState()
   const [product, setProduct] = useState(sampleProduct)
   const [styles, setStyles] = useState(sampleStyles)
-  const [productid, setProductid] = useState()
+  const [currentStyle, setCurrentStyle] = useState(0)
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -27,6 +28,7 @@ const Overview = () => {
 
     axios(GetProductStyles(id))
       .then(response => {
+        console.log(response.data)
         setStyles(response.data)
       })
       .catch(err => {
@@ -39,7 +41,7 @@ const Overview = () => {
       <Logo />
       <div id='body'>
         <div id='left'>
-          <Carousel styles={styles}/>
+          <Carousel styles={styles} currentStyle={currentStyle}/>
           <div id='description-container'>
             <Slogan product={product} />
             <Description product={product} />
@@ -48,7 +50,7 @@ const Overview = () => {
         <div id='right'>
           <Rating />
           <Details product={product}/>
-          <Styles styles={styles}/>
+          <Styles styles={styles} setCurrentStyle={setCurrentStyle}/>
           <div id='buttons-select'>
             <Size />
             <Quantity />
