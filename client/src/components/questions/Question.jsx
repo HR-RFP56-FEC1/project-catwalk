@@ -9,9 +9,8 @@ const Question = (props) => (
       <div className='addAnswer'>ADD ANSWER BUTTON</div>
     </div>
     <div className='answerList'>
-      <AnswerList />
+      <AnswerList answers={props.question.answers}/>
     </div>
-    <div className='questionLoadMoreAnswersbutton'>LOAD MORE ANSWERS</div>
   </div>
 );
 
