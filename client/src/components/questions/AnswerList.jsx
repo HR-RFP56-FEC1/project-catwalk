@@ -32,7 +32,7 @@ const sortAnswers = function(answersObj) {
   return sorted;
 };
 
-const AnswerList = () => (
+const AnswerList = (props) => (
   <div className='answerList'>
     <div className="aList">
       {

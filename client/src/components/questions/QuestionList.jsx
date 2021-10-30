@@ -32,7 +32,7 @@ const QuestionList = (props) => (
   <div className='questionList'>
     <div className='qList'>
       {
-        questionSorter(props.answers).map(question => <Question question={question}/>)
+        questionSorter(props.questions.results).map(question => <Question question={question}/>)
       }
     </div>
     <div className='qListBottomBar'>
