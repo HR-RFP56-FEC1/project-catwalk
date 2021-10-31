@@ -2,8 +2,6 @@ import React from 'react'
 import {useState} from 'react'
 import styles from '../../../../sample/styles.js'
 
-//make a setState for photos[0] like photos[currentPhoto]
-//initialize it to 0
 const Carousel = ({styles, currentStyle}) => {
   const [image, setImage] = useState(0)
 
@@ -12,7 +10,6 @@ const Carousel = ({styles, currentStyle}) => {
   }
 
   const onClickArrow = (num) => {
-    //check num vs total available photos, set back to 1 if last photo
     let newIndex;
     if (num === 1 && image === styles.results.length - 1) {
       newIndex = 0

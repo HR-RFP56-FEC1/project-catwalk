@@ -53,7 +53,7 @@ const Overview = () => {
         </div>
         <div id='right'>
           <Rating />
-          <Details product={product}/>
+          <Details product={product} styles={styles} currentStyle={currentStyle}/>
           <Styles styles={styles} onClick={handleOnclick}/>
           <div id='buttons-select'>
             <Size />
