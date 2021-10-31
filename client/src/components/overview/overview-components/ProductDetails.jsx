@@ -54,7 +54,6 @@ const Styles = ({styles, currentStyle, onClick}) => (
 
 
 const Style = ({style, currentStyle, styleNumber, onClick}) => {
-  console.log(currentStyle)
   if (currentStyle === styleNumber) {
     return (
       <div id='style-container'>

@@ -11,10 +11,10 @@ const Carousel = ({styles, currentStyle}) => {
 
   const onClickArrow = (num) => {
     let newIndex;
-    if (num === 1 && image === styles.results.length - 1) {
+    if (num === 1 && image === styles.results[currentStyle].photos.length - 1) {
       newIndex = 0
     } else if (num === -1 && image === 0) {
-      newIndex = styles.results.length - 1
+      newIndex = styles.results[currentStyle].photos.length - 1
     } else {
       newIndex = image + num
     }
