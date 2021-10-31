@@ -17,13 +17,25 @@ const Details = ({product}) => (
   </div>
 )
 
-const Styles = ({styles, setCurrentStyle}) => (
-  <div id='styles'>{styles.results.map((style, i) => <Style key={i} styleNumber={i} style={styles.results[i]} setCurrentStyle={setCurrentStyle}/>)}</div>
+const Styles = ({styles, onClick}) => (
+  <div id='styles'>
+    {styles.results.map((style, i) =>
+      <Style
+        key={i}
+        styleNumber={i}
+        style={styles.results[i]}
+        onClick={onClick}
+      />)}
+  </div>
 )
 
 
-const Style = ({style, setCurrentStyle, styleNumber}) => (
-  <img onClick={()=>{setCurrentStyle(styleNumber)}}src={style.photos[0].thumbnail_url} id='style'/>
+const Style = ({style, styleNumber, onClick}) => (
+  <img
+    onClick={()=>{onClick(styleNumber)}}
+    src={style.photos[0].thumbnail_url}
+    id='style'
+  />
 )
 
 export default Rating

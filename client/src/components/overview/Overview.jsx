@@ -12,7 +12,7 @@ import GetProductInformation, {GetProductStyles} from './OverviewRequestAPI.jsx'
 let id = 40344
 
 const Overview = () => {
-  const [productid, setProductid] = useState()
+  // const [productid, setProductid] = useState()
   const [product, setProduct] = useState(sampleProduct)
   const [styles, setStyles] = useState(sampleStyles)
   const [currentStyle, setCurrentStyle] = useState(0)
@@ -36,6 +36,10 @@ const Overview = () => {
       })
   }, [])
 
+  const handleOnclick = (styleNum) => {
+    setCurrentStyle(styleNum)
+  }
+
   return (
     <div id='overview'>
       <Logo />
@@ -50,7 +54,7 @@ const Overview = () => {
         <div id='right'>
           <Rating />
           <Details product={product}/>
-          <Styles styles={styles} setCurrentStyle={setCurrentStyle}/>
+          <Styles styles={styles} onClick={handleOnclick}/>
           <div id='buttons-select'>
             <Size />
             <Quantity />
