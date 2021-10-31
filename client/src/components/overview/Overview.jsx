@@ -9,7 +9,7 @@ import sampleStyles from '../../../sample/styles.js'
 import sampleProduct from '../../../sample/product.js'
 import GetProductInformation, {GetProductStyles} from './OverviewRequestAPI.jsx'
 
-let id = 40348
+let id = 40344
 
 const Overview = () => {
   // const [productid, setProductid] = useState()

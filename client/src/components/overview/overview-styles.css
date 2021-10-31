@@ -118,14 +118,17 @@ font-family: 'Shadows Into Light', cursive;
   direction: rtl;
 }
 
-.thumb {
-  background-color: lightsteelblue;
+#thumb, #thumb-highlight {
   width: 70px;
   height: 70px;
   object-fit: cover;
   margin: 20px 0px 0px 0px;
   z-index: 1;
-  /* border: 1px solid white; */
+}
+
+#thumb-highlight {
+  border-left: 15px solid hotpink;
+  border-right: 15px solid transparent;
 }
 
 

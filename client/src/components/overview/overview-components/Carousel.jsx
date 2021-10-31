@@ -28,6 +28,7 @@ const Carousel = ({styles, currentStyle, image, setImage}) => {
         <Thumbs
           style={styles.results[currentStyle]}
           onClick={onClickThumb}
+          image={image}
         />
         <div id='arrow-container-left'>
           <div id='arrow-left-bg'>
@@ -44,7 +45,7 @@ const Carousel = ({styles, currentStyle, image, setImage}) => {
   )
 }
 
-const Thumbs = ({style, onClick}) => {
+const Thumbs = ({style, onClick, image}) => {
   return (
     <div id='thumbs'>
       {style.photos.map((photo, i) =>
@@ -53,18 +54,27 @@ const Thumbs = ({style, onClick}) => {
         thumb={photo.thumbnail_url}
         index={i}
         onClick={onClick}
+        image={image}
       />)}
     </div>
   )
 }
-
-const Thumb = ({thumb, index, onClick}) => (
-  <img
-    onClick={() => onClick(index)}
-    src={thumb}
-    className='thumb'
-  />
-)
+//if image === index, render the highlighted thumb
+const Thumb = ({thumb, index, onClick, image}) => {
+  let thumbid;
+  if (index === image) {
+    thumbid = 'thumb-highlight'
+  } else {
+    thumbid = 'thumb'
+  }
+  return (
+    <img
+      onClick={() => onClick(index)}
+      src={thumb}
+      id={thumbid}
+    />
+  )
+}
 
 export default Carousel
 export {Thumbs, Thumb}
