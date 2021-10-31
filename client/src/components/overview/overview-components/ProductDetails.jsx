@@ -39,7 +39,7 @@ const Price = ({ styles, currentStyle }) => {
 }
 
 
-const Styles = ({styles, onClick}) => (
+const Styles = ({styles, currentStyle, onClick}) => (
   <div id='styles'>
     {styles.results.map((style, i) =>
       <Style
@@ -47,18 +47,37 @@ const Styles = ({styles, onClick}) => (
         styleNumber={i}
         style={styles.results[i]}
         onClick={onClick}
+        currentStyle={currentStyle}
       />)}
   </div>
 )
 
 
-const Style = ({style, styleNumber, onClick}) => (
-  <img
-    onClick={()=>{onClick(styleNumber)}}
-    src={style.photos[0].thumbnail_url}
-    id='style'
-  />
-)
+const Style = ({style, currentStyle, styleNumber, onClick}) => {
+  console.log(currentStyle)
+  if (currentStyle === styleNumber) {
+    return (
+      <div id='style-container'>
+        <img
+          onClick={()=>{onClick(styleNumber)}}
+          src={style.photos[0].thumbnail_url}
+          id='style'
+        />
+        <div id='style-checkmark'>✓</div>
+      </div>
+    )
+  } else {
+    return (
+      <div id='style-container'>
+        <img
+          onClick={()=>{onClick(styleNumber)}}
+          src={style.photos[0].thumbnail_url}
+          id='style'
+        />
+      </div>
+    )
+  }
+}
 
 export default Rating
 export {Style, Styles, Details}

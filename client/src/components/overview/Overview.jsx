@@ -9,7 +9,8 @@ import sampleStyles from '../../../sample/styles.js'
 import sampleProduct from '../../../sample/product.js'
 import GetProductInformation, {GetProductStyles} from './OverviewRequestAPI.jsx'
 
-let id = 40344
+let id = 40349
+
 
 const Overview = () => {
   // const [productid, setProductid] = useState()
@@ -45,7 +46,10 @@ const Overview = () => {
       <Logo />
       <div id='body'>
         <div id='left'>
-          <Carousel styles={styles} currentStyle={currentStyle}/>
+          <Carousel
+            styles={styles}
+            currentStyle={currentStyle}
+          />
           <div id='description-container'>
             <Slogan product={product} />
             <Description product={product} />
@@ -53,8 +57,16 @@ const Overview = () => {
         </div>
         <div id='right'>
           <Rating />
-          <Details product={product} styles={styles} currentStyle={currentStyle}/>
-          <Styles styles={styles} onClick={handleOnclick}/>
+          <Details
+            product={product}
+            styles={styles}
+            currentStyle={currentStyle}
+          />
+          <Styles
+            styles={styles}
+            onClick={handleOnclick}
+            currentStyle={currentStyle}
+          />
           <div id='buttons-select'>
             <Size />
             <Quantity />

@@ -1,9 +1,9 @@
-/* font-family: 'Caveat', cursive;
-font-family: 'Julius Sans One', sans-serif;
-font-family: 'Poiret One', cursive;
-font-family: 'Roboto', sans-serif;
-font-family: 'Shadows Into Light', cursive;
-font-family: 'Thasadith', sans-serif; */
+/* font-family: 'Caveat', cursive; */
+/* font-family: 'Julius Sans One', sans-serif; */
+/* font-family: 'Poiret One', cursive; */
+/* font-family: 'Roboto', sans-serif; */
+/* font-family: 'Shadows Into Light', cursive; */
+/* font-family: 'Thasadith', sans-serif; */
 
 #logo, #announcement, #slogan, #description, #read-all-reviews, #expanded, #category, #style-selected, #sizes, #quantities, #price, #add-to-bag, .fact {
   color: var(--gray);
@@ -15,6 +15,10 @@ font-family: 'Thasadith', sans-serif; */
 
 #read-all-reviews, #expanded, #slogan, #description, #logo {
   font-family: 'Roboto', sans-serif;
+}
+
+#style-checkmark {
+font-family: 'Shadows Into Light', cursive;
 }
 
 #logo {
@@ -249,6 +253,10 @@ font-family: 'Thasadith', sans-serif; */
   font-size: 20px;
 }
 
+#style-container {
+  position: relative;
+}
+
 #style {
   border-radius: 60px;
   height: 60px;
@@ -257,6 +265,24 @@ font-family: 'Thasadith', sans-serif; */
   /* border: 2px solid var(--gray); */
   background-color: lightsteelblue;
   margin: 15px 25px 5px 0px;
+  position: relative;
+}
+
+#style-checkmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  border-radius: 15px;
+  border: 1px solid rgb(114, 93, 110, 0.5);
+  top: 15px;
+  left: 42px;
+  text-align: center;
+  color: var(--gray);
+  font-size: 12px;
 }
 
 #buttons-select, #buttons-add {
