@@ -68,11 +68,13 @@ const Thumb = ({thumb, index, onClick, image}) => {
     thumbid = 'thumb'
   }
   return (
-    <img
-      onClick={() => onClick(index)}
-      src={thumb}
-      id={thumbid}
-    />
+    <div id='thumb-container'>
+      <img
+        onClick={() => onClick(index)}
+        src={thumb}
+        id={thumbid}
+      />
+    </div>
   )
 }
 

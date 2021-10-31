@@ -81,12 +81,6 @@ font-family: 'Shadows Into Light', cursive;
   transition: 1s; */
 }
 
-#thumb, #style {
-
-}
-
-
-
 /* width */
 ::-webkit-scrollbar {
   width: 3px;
@@ -122,22 +116,29 @@ font-family: 'Shadows Into Light', cursive;
   width: 100px;
   background-color: rgba(255, 255, 255, 0.3);
   align-items: center;
-  overflow: auto;
+  /* overflow: auto; */
   direction: rtl;
   overflow-x: hidden;
+  padding-bottom: 20px;
+}
+
+#thumb-container {
+  width: 70px;
+  height: 70px;
+  padding: 20px 0px 0px 0px;
 }
 
 #thumb, #thumb-highlight {
+  object-fit: cover;
   width: 70px;
   height: 70px;
-  object-fit: cover;
-  margin: 20px 0px 0px 0px;
-  z-index: 1;
+  /* padding: 20px 0px 0px 0px; */
+  /* z-index: 1; */
 }
 
 #thumb-highlight {
   border-left: 15px solid hotpink;
-  border-right: 15px solid transparent;
+  /* border-right: 15px solid transparent; */
 }
 
 
