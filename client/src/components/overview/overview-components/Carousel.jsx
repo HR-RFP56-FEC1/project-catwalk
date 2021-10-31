@@ -32,13 +32,21 @@ const Carousel = ({styles, currentStyle, image, setImage}) => {
         />
         <div id='arrow-container-left'>
           <div id='arrow-left-bg'>
-            <div onClick={() => onClickArrow(-1)} id='arrow-left'>{'<'}</div>
+            <img
+              src='./img/left-arrow.png'
+              onClick={() => onClickArrow(-1)}
+              id='arrow-left'
+            />
           </div>
         </div>
       </div>
       <div id='arrow-container-right'>
         <div id='arrow-right-bg'>
-          <div onClick={() => onClickArrow(1)}  id='arrow-right'>{'>'}</div>
+          <img
+            src='./img/right-arrow.png'
+            onClick={() => onClickArrow(1)}
+            id='arrow-right'
+          />
         </div>
       </div>
     </div>
