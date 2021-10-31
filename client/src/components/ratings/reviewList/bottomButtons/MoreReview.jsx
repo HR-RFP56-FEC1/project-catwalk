@@ -2,7 +2,9 @@ import React from 'react';
 
 var MoreReview = (props) => (
   <div id="more-review">
-    More Reviews Button
+    <button id="more-review-btn" className="more-and-add-reviews-btn">
+      MORE REVIEWS
+    </button>
   </div>
 );
 

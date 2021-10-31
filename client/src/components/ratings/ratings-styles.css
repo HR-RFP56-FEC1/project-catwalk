@@ -48,7 +48,15 @@
 
 .rating-summary {
   flex-basis: 15%;
-  background-color: #F5CEC7
+  background-color: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#average-rating {
+  font-size: 40px;
+  margin-right: 20px;
 }
 
 .rating-dist {
@@ -62,24 +70,39 @@
 }
 
 .sort-review {
-  flex-basis: 10%;
-  background-color: #FBC78D;
+  flex-basis: 5%;
+  background-color: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
+
+#sort-review-by {
+  color: black;
+  cursor: pointer;
+  border: none;
+  background-color: none;
+  font-size: 99%;
+  text-decoration: underline;
+}
+
 
 .review-box {
   flex-basis: 70%;
-  background-color: #F9E2AE;
+  background-color: none;
   display: flex;
   flex-direction: column;
 }
 
 .review-entry {
-  flex: 3
+  flex: 3;
+  border-bottom: 2px solid var(--gray);
+  margin-top: 10px;
 }
 
 .review-bottom-buttons {
   flex-basis: 20%;
-  background-color: #A8DEE0
+  background-color: none;
 }
 
 .review-entry-top-row {
@@ -90,4 +113,27 @@
 
 #review-entry-username-date {
   font: 13px;
+}
+
+
+
+
+.review-bottom-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.more-and-add-reviews-btn {
+  border: 1px solid black;
+  color: black;
+  background-color: none;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 20px;
+  font-size: 18px;
+  cursor: pointer;
 }
