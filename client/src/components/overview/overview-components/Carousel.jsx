@@ -2,8 +2,8 @@ import React from 'react'
 import {useState} from 'react'
 import styles from '../../../../sample/styles.js'
 
-const Carousel = ({styles, currentStyle}) => {
-  const [image, setImage] = useState(0)
+const Carousel = ({styles, currentStyle, image, setImage}) => {
+  // const [image, setImage] = useState(0)
 
   const onClickThumb = (index) => {
     setImage(index)

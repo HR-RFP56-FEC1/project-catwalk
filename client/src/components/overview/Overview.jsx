@@ -9,13 +9,14 @@ import sampleStyles from '../../../sample/styles.js'
 import sampleProduct from '../../../sample/product.js'
 import GetProductInformation, {GetProductStyles} from './OverviewRequestAPI.jsx'
 
-let id = 40347
+let id = 40348
 
 const Overview = () => {
   // const [productid, setProductid] = useState()
   const [product, setProduct] = useState(sampleProduct)
   const [styles, setStyles] = useState(sampleStyles)
   const [currentStyle, setCurrentStyle] = useState(0)
+  const [image, setImage] = useState(0)
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -38,6 +39,7 @@ const Overview = () => {
 
   const handleOnclick = (styleNum) => {
     setCurrentStyle(styleNum)
+    setImage(0)
   }
 
   return (
@@ -48,6 +50,8 @@ const Overview = () => {
           <Carousel
             styles={styles}
             currentStyle={currentStyle}
+            image={image}
+            setImage={setImage}
           />
           <div id='description-container'>
             <Slogan product={product} />
