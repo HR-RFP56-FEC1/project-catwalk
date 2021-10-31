@@ -69,6 +69,7 @@ font-family: 'Shadows Into Light', cursive;
   width: 800px;
   height: 600px;
   position: relative;
+  overflow:hidden;
 }
 
 #main-image {
@@ -76,7 +77,15 @@ font-family: 'Shadows Into Light', cursive;
   height: 600px;
   position: absolute;
   object-fit: cover;
+  /* left: -800px;
+  transition: 1s; */
 }
+
+#thumb, #style {
+
+}
+
+
 
 /* width */
 ::-webkit-scrollbar {
@@ -104,18 +113,18 @@ font-family: 'Shadows Into Light', cursive;
   flex-direction: row;
   position: absolute;
   direction: ltr;
+  height: 100%;
 }
 
 #thumbs {
   display: flex;
   flex-direction: column;
   width: 100px;
-  /* height: 100%; */
-  height: 600px;
   background-color: rgba(255, 255, 255, 0.3);
   align-items: center;
   overflow: auto;
   direction: rtl;
+  overflow-x: hidden;
 }
 
 #thumb, #thumb-highlight {
