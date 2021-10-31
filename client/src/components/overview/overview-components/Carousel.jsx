@@ -11,6 +11,19 @@ const Carousel = ({styles, currentStyle}) => {
     setImage(index)
   }
 
+  const onClickArrow = (num) => {
+    //check num vs total available photos, set back to 1 if last photo
+    let newIndex;
+    if (num === 1 && image === styles.results.length - 1) {
+      newIndex = 0
+    } else if (num === -1 && image === 0) {
+      newIndex = styles.results.length - 1
+    } else {
+      newIndex = image + num
+    }
+    setImage(newIndex)
+  }
+
   return (
     <div id='main-image-container'>
       <img src={styles.results[currentStyle].photos[image].url}  id='main-image'/>
@@ -21,13 +34,13 @@ const Carousel = ({styles, currentStyle}) => {
         />
         <div id='arrow-container-left'>
           <div id='arrow-left-bg'>
-            <div id='arrow-left'>{'<'}</div>
+            <div onClick={() => onClickArrow(-1)} id='arrow-left'>{'<'}</div>
           </div>
         </div>
       </div>
       <div id='arrow-container-right'>
         <div id='arrow-right-bg'>
-          <div id='arrow-right'>{'>'}</div>
+          <div onClick={() => onClickArrow(1)}  id='arrow-right'>{'>'}</div>
         </div>
       </div>
     </div>
