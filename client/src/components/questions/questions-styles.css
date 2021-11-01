@@ -31,6 +31,8 @@
   display: flex;
   flex-direction: column;
   align-items: left;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
 
 .answerbottombor {
@@ -43,6 +45,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 .questionHelpful {
@@ -62,4 +65,26 @@
 .answerList {
   display: flex;
   flex-direction: row;
+}
+
+.question {
+  padding-bottom: 10px;
+}
+
+.qListBottomBar {
+  display: flex;
+  flex-direction: row;
+  align-self: end;
+}
+
+.moreQuestions {
+  border-style: solid;
+  border-color: black;
+  padding: 10px;
+  margin-right: 15px;
+}
+.addQuestion {
+  border-style: solid;
+  border-color: black;
+  padding: 10px;
 }
