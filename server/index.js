@@ -26,9 +26,13 @@ app.get('/api/*', (req, res) => {
     method: 'get',
     url: apiUrl + postfix,
     headers: {'Authorization': key},
+    data: req.body,
   }).then((results) => {
     console.log(results.data);
     res.send(JSON.stringify(results.data));
+  }).catch((error) => {
+    console.log(error);
+    res.send(error);
   });
   
 });
@@ -36,13 +40,19 @@ app.get('/api/*', (req, res) => {
 app.post('/api/*', (req, res) => {
   console.log('post api: ');
   console.log(req.path);
+  const postfix = req.path.replace('/api/', '');
+  console.log(postfix);
   axios({
     method: 'post',
     url: apiUrl + postfix,
     headers: {'Authorization': key},
+    data: req.body,
   }).then((results) => {
     console.log(results.data);
     res.send(JSON.stringify(results.data));
+  }).catch((error) => {
+    console.log(error);
+    res.send(error);
   });
 
 });
