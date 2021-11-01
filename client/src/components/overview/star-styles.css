@@ -1,0 +1,8 @@
+#star-rating {
+  display: flex;
+  flex-direction: column;
+  height: 25px;
+  width: 250px;
+  background-color: red;
+  color: black;
+}
