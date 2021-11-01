@@ -6,3 +6,5 @@
 let key = YOUR_KEY_HERE
 
 export default key
+// replace export default with module.exports for server use
+// module.exports = key;
