@@ -18,7 +18,7 @@
 }
 
 #style-checkmark {
-font-family: 'Shadows Into Light', cursive;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 #logo {
@@ -231,10 +231,6 @@ font-family: 'Shadows Into Light', cursive;
   color: black;
 }
 
-#category {
-
-}
-
 #expanded {
   font-size: 40px;
   padding: 10px 0px 30px 0px;
@@ -292,7 +288,7 @@ font-family: 'Shadows Into Light', cursive;
   position: absolute;
   height: 15px;
   width: 15px;
-  background-color: rgb(255, 218, 243);
+  background-color: rgb(255, 225, 245);
   border-radius: 15px;
   border: 1px solid rgb(114, 93, 110, 0.5);
   top: 15px;

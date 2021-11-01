@@ -7,9 +7,9 @@ import Size, {Quantity, Watch, AddToBag} from './overview-components/OverviewBut
 import Carousel, {Thumbs, Thumb} from './overview-components/Carousel.jsx'
 import sampleStyles from '../../../sample/styles.js'
 import sampleProduct from '../../../sample/product.js'
-import GetProductInformation, {GetProductStyles} from './OverviewRequestAPI.jsx'
+import GetProductInformation, {GetProductStyles} from './RequestAPI.jsx'
 
-let id = 40348
+let id = 40344
 
 const Overview = () => {
   // const [productid, setProductid] = useState()

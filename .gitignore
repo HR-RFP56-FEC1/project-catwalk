@@ -3,6 +3,9 @@ client/dist/bundle.js
 # Apple macOS custom attributes
 .DS_Store
 
+# Key
+auth.js
+
 # Logs
 logs
 *.log
