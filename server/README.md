@@ -17,5 +17,5 @@ Don't forget to put your token in 'quotes'
 
 
 ### How to use Server
-- [x] Run 'node server/index.js'
+- [x] Run 'node server/index.js' from root directory
 
