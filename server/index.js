@@ -26,7 +26,7 @@ app.get('/api/*', (req, res) => {
     headers: {'Authorization': key},
     data: req.body,
   }).then((results) => {
-    console.log(results.data);
+    // console.log(results.data);
     res.send(JSON.stringify(results.data));
   }).catch((error) => {
     console.log(error);
