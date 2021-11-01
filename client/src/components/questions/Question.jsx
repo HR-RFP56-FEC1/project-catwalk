@@ -3,10 +3,12 @@ import AnswerList from './AnswerList.jsx';
 
 const Question = (props) => (
   <div id='question1'>
-    <div id='topbar'>
-      <div className='questiontext'>{props.question.question_body}</div>
-      <div className='questionHelpful'>HELPFUL VOTE AND DISPLAY</div>
-      <div className='addAnswer'>ADD ANSWER BUTTON</div>
+    <div className='questiontopbar'>
+      <div className='questiontext'>Q: {props.question.question_body}</div>
+      <div className='questionHelpAdd'>
+        <div className='questionHelpful'>HELPFUL VOTE </div>
+        <div className='addAnswer'>ADD ANSWER</div>
+      </div>
     </div>
     <div className='answerList'>
       <AnswerList answers={props.question.answers}/>
