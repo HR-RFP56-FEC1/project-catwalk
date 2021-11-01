@@ -1,9 +1,11 @@
 import React from 'react'
 import {useState} from 'react'
+import Stars from '../../shared/Stars.jsx'
 
-const Rating = () => (
+
+const Rating = ({rating}) => (
   <div id='read-all-reviews'>
-    <div><img src='img/stars.png' id='stars'/></div>
+    <Stars rating={rating}/>
     <a><u>Read all reviews</u></a>
   </div>
 )

@@ -9,7 +9,7 @@ import sampleStyles from '../../../sample/styles.js'
 import sampleProduct from '../../../sample/product.js'
 import GetProductInformation, {GetProductStyles} from './RequestAPI.jsx'
 
-let id = 40344
+let rating = 4.3
 
 const Overview = ({ id }) => {
   const [product, setProduct] = useState(sampleProduct)
@@ -58,7 +58,7 @@ const Overview = ({ id }) => {
           </div>
         </div>
         <div id='right'>
-          <Rating />
+          <Rating rating={rating}/>
           <Details
             product={product}
             styles={styles}
