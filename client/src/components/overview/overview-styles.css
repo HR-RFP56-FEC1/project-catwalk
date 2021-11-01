@@ -21,22 +21,6 @@
   font-family: 'Shadows Into Light', cursive;
 }
 
-
-
-/* STAR-RATING STYLING */
-
-#star-rating {
-  display: flex;
-  flex-direction: row;
-  height: 25px;
-  width: auto;
-  padding-right: 10px;
-}
-
-/*----------------------*/
-
-
-
 #logo {
   display: flex;
   background-image: url('../../../dist/img/header.jpeg');
