@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Stars from '../../shared/Stars.jsx'
+
 var RatingSummary = (props) => {
 
   return (
@@ -8,7 +10,7 @@ var RatingSummary = (props) => {
         {props.avgRating.toFixed(1)}
       </div>
       <div className="rating-summary-star-rating">
-       <img src='img/stars.png' id='stars'/>
+        <Stars rating={props.avgRating}/>
       </div>
     </div>
   )
