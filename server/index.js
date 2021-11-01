@@ -15,8 +15,8 @@ app.use(express.static('./client/dist/'));
 // add token to requests
 app.get('/api/*', (req, res) => {
   console.log('get api: ');
-  console.log(req.path);
-  const postfix = req.path.replace('/api/', '');
+  console.log(req.originalUrl);
+  const postfix = req.originalUrl.replace('/api/', '');
   console.log(postfix);
 
   // if(req.body )
@@ -37,8 +37,8 @@ app.get('/api/*', (req, res) => {
 
 app.post('/api/*', (req, res) => {
   console.log('post api: ');
-  console.log(req.path);
-  const postfix = req.path.replace('/api/', '');
+  console.log(req.originalUrl);
+  const postfix = req.originalUrl.replace('/api/', '');
   console.log(postfix);
   axios({
     method: 'post',
