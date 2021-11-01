@@ -34,12 +34,13 @@ const sortAnswers = function(answersObj) {
 
 const AnswerList = (props) => (
   <div className='answerList'>
+    <div className='answerListBigA'>A:</div>
     <div className="aList">
       {
         sortAnswers(props.answers).map(answer => <Answer answer={answer}/>)
       }
+      <div className='moreAnswersButton'>LOAD MORE ANSWERS</div>
     </div>
-    <div className='moreAnswersButton'>LOAD MORE ANSWERS</div>
   </div>
 );
 
