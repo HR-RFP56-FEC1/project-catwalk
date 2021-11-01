@@ -26,11 +26,11 @@ app.get('/api/*', (req, res) => {
     headers: {'Authorization': key},
     data: req.body,
   }).then((results) => {
-    // console.log(results.data);
-    res.send(JSON.stringify(results.data));
+    //console.log(results.data);
+    res.json((results.data));
   }).catch((error) => {
     console.log(error);
-    res.send(error);
+    res.json(error);
   });
   
 });
@@ -47,10 +47,10 @@ app.post('/api/*', (req, res) => {
     data: req.body,
   }).then((results) => {
     console.log(results.data);
-    res.send(JSON.stringify(results.data));
+    res.json((results.data));
   }).catch((error) => {
     console.log(error);
-    res.send(error);
+    res.json(error);
   });
 
 });
