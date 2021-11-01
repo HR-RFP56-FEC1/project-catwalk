@@ -1,45 +1,89 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import Logo from './overview-components/OverviewLogo.jsx'
 import Rating, {Style, Styles, Details} from './overview-components/ProductDetails.jsx'
 import Facts, {Fact, Slogan, Description} from './overview-components/ProductDescription.jsx'
 import Size, {Quantity, Watch, AddToBag} from './overview-components/OverviewButtons.jsx'
 import Carousel, {Thumbs, Thumb} from './overview-components/Carousel.jsx'
+import sampleStyles from '../../../sample/styles.js'
+import sampleProduct from '../../../sample/product.js'
+import GetProductInformation, {GetProductStyles} from './RequestAPI.jsx'
 
-const Logo = () => (
-  <div>
-    <div id='logo'>LOGO</div>
-    <div id='announcement'><i>SITE-WIDE ANNOUNCEMENT MESSAGE!</i> - SALE / DISCOUNT <b>OFFER</b> - <u>NEW PRODUCT HIGHLIGHT</u></div>
-  </div>
-)
+let id = 40344
 
-const Overview = () => (
-  <div id='overview'>
-    <Logo />
-    <div id='body'>
-      <div id='left'>
-        <Carousel />
-        <div id='description-container'>
-          <Slogan />
-          <Description />
+const Overview = ({ id }) => {
+  const [product, setProduct] = useState(sampleProduct)
+  const [styles, setStyles] = useState(sampleStyles)
+  const [currentStyle, setCurrentStyle] = useState(0)
+  const [image, setImage] = useState(0)
+
+  useEffect(() => {
+    axios(GetProductInformation(id))
+      .then(response => {
+        setProduct(response.data)
+      })
+      .catch(err => {
+        console.log('Error on GET: ' + err)
+      })
+
+    axios(GetProductStyles(id))
+      .then(response => {
+        console.log(response.data)
+        setStyles(response.data)
+      })
+      .catch(err => {
+        console.log('Error on GET: ' + err)
+      })
+  }, [])
+
+  const handleOnclick = (styleNum) => {
+    setCurrentStyle(styleNum)
+    setImage(0)
+  }
+
+  return (
+    <div id='overview'>
+      <Logo />
+      <div id='body'>
+        <div id='left'>
+          <Carousel
+            styles={styles}
+            currentStyle={currentStyle}
+            image={image}
+            setImage={setImage}
+          />
+          <div id='description-container'>
+            <Slogan product={product} />
+            <Description product={product} />
+          </div>
         </div>
-      </div>
-      <div id='right'>
-        <Rating />
-        <Details />
-        <Styles />
-        <div id='buttons-select'>
-          <Size />
-          <Quantity />
-        </div>
-        <div id='buttons-add'>
-          <AddToBag />
-          <Watch />
-        </div>
-        <div id='bullet points'>
-          <Facts />
+        <div id='right'>
+          <Rating />
+          <Details
+            product={product}
+            styles={styles}
+            currentStyle={currentStyle}
+          />
+          <Styles
+            styles={styles}
+            onClick={handleOnclick}
+            currentStyle={currentStyle}
+          />
+          <div id='buttons-select'>
+            <Size />
+            <Quantity />
+          </div>
+          <div id='buttons-add'>
+            <AddToBag />
+            <Watch />
+          </div>
+          <div id='bullet points'>
+            <Facts />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Overview
