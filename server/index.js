@@ -10,9 +10,7 @@ const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 
 app.use(express.json());
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
+app.use(express.static('./client/dist/'));
 
 // add token to requests
 app.get('/api/*', (req, res) => {
@@ -60,5 +58,4 @@ app.post('/api/*', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });
-
 
