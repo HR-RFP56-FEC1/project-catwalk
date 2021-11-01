@@ -2,9 +2,8 @@ import React from 'react'
 import {useState} from 'react'
 import Stars from '../../shared/Stars.jsx'
 
-let rating = -12
 
-const Rating = () => (
+const Rating = ({rating}) => (
   <div id='read-all-reviews'>
     <Stars rating={rating}/>
     <a><u>Read all reviews</u></a>

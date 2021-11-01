@@ -1,12 +1,13 @@
 import React from 'react'
 
 const Stars = ({rating}) => {
-  let starSet = []
   let starEmpty = 'img/stars/star-empty.png'
   let starQuarter = 'img/stars/star-quarter.png'
   let starHalf = 'img/stars/star-half.png'
   let starThreeQuarters = 'img/stars/star-three-quarters.png'
   let starFull = 'img/stars/star-full.png'
+
+  let starSet = []
   let fullStars = rating - (rating % 1)
   let partialStar = rating % 1
 
