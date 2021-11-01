@@ -11,8 +11,7 @@ import GetProductInformation, {GetProductStyles} from './RequestAPI.jsx'
 
 let id = 40344
 
-const Overview = () => {
-  // const [productid, setProductid] = useState()
+const Overview = ({ id }) => {
   const [product, setProduct] = useState(sampleProduct)
   const [styles, setStyles] = useState(sampleStyles)
   const [currentStyle, setCurrentStyle] = useState(0)
