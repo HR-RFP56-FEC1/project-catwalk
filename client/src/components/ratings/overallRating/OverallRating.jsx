@@ -4,7 +4,7 @@ import reviewmeta from '../../../../sample/reviewmeta.js';
 
 import RatingSummary from './RatingSummary.jsx';
 import RatingDist from './ratingDist/RatingDist.jsx';
-import ProductBreakdown from './ProductBreakdown.jsx';
+import ProductBreakdown from './productBreakdown/ProductBreakdown.jsx';
 
 let allRating = reviewmeta.ratings;
   // console.log(allRating);
@@ -25,7 +25,8 @@ const recommendPerc = recommendCount/(recommendCount + notRecommendCount);
 var OverallRating = (props) => (
   <div className="overall-rating">
     <RatingSummary avgRating={avgRating}/>
-    <RatingDist ratingDist={reviewmeta.ratings} recommendPerc={recommendPerc}/>
+    <RatingDist ratingDist={reviewmeta.ratings} recommendPerc={recommendPerc}
+    totRatings={countRating}/>
     <ProductBreakdown rating={reviewmeta}/>
   </div>
 );

@@ -8,9 +8,11 @@ var RatingDist = (props) => {
       <div id="recommend-perc">
         {Math.round(props.recommendPerc * 100)}% of reviews recommend this product
       </div>
-      <div className="rating-bars">
-        < RatingBar rating='5' />
-      </div>
+      < RatingBar rating='5' totRatings={props.totRatings} ratingDist={props.ratingDist}/>
+      < RatingBar rating='4' totRatings={props.totRatings} ratingDist={props.ratingDist}/>
+      < RatingBar rating='3' totRatings={props.totRatings} ratingDist={props.ratingDist}/>
+      < RatingBar rating='2' totRatings={props.totRatings} ratingDist={props.ratingDist}/>
+      < RatingBar rating='1' totRatings={props.totRatings} ratingDist={props.ratingDist}/>
     </div>
   )
 };
