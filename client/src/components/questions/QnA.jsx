@@ -22,7 +22,6 @@ const QnA = (props) => {
   const handleResults = function(response) {
     setResults(response.data);
   }
-
   useEffect(() => {
     getQuestions(product_id).then((response) => {
       handleResults(response);
