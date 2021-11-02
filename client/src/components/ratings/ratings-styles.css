@@ -126,7 +126,6 @@
 #char-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  content: "&#9660";
   width: 5px;
   height: 20px;
   background: var(--gray);

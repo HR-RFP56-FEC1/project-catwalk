@@ -6,7 +6,8 @@ var CharacterRating = (props) => {
       <div className="character-rating">
         <span className="character-name">{props.character}</span>
         <div className="char-slider">
-          <input id="char-slider" type="range" min="1" max="5" value={props.rating} readOnly="readonly"/>
+          <input id="char-slider" type="range" min="1" max="5" value={props.rating}
+          readOnly="readonly" data-slider-handle="triangle"/>
         </div>
         <div className="char-slider-desc">
           <span>Too Small</span>
