@@ -127,6 +127,24 @@
   cursor: zoom-in;
 }
 
+#expand-icon, #collapse-icon {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(1px 1px 2px #303030);
+  position: absolute;
+}
+
+#expand-icon {
+  top: 10px;
+  left: 770px;
+  cursor: zoom-in;
+}
+
+#collapse-icon {
+  top: 10px;
+  left: 1170px;
+}
+
 #thumbs-outer-container {
   display: flex;
   flex-direction: row;

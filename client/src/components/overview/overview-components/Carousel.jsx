@@ -34,9 +34,18 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
       }
     >
       <img
-        src={styles.results[currentStyle].photos[image].url}
-        onClick={changeView}
         id='main-image'
+        src={styles.results[currentStyle].photos[image].url}
+        onClick={() => changeView('expanded')}
+      />
+      <img
+        id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
+        src={view === 'default' ? 'img/expand.png' : 'img/collapse.png'}
+        onClick={
+          view === 'default' ?
+          () => changeView('expanded') :
+          () => changeView('default')
+        }
       />
       <div id='thumbs-outer-container'>
         <Thumbs
@@ -91,7 +100,7 @@ const Thumbs = ({style, onClick, image, view}) => {
     </div>
   )
 }
-//if image === index, render the highlighted thumb
+
 const Thumb = ({thumb, index, onClick, image}) => {
   let thumbid;
   if (index === image) {
@@ -102,12 +111,10 @@ const Thumb = ({thumb, index, onClick, image}) => {
   return (
     <div id='thumb-container'>
       <img
-        // onClick={scrollToThumb}
         onClick={() => onClick(index)}
         src={thumb}
         id={thumbid}
       />
-      {/* //add empty box here the size of a thumb and give it border */}
     </div>
   )
 }

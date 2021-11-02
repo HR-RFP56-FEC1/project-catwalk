@@ -102,8 +102,8 @@ const Overview = ({ id }) => {
     /*setImage(0)*/
   }
 
-  const changeView = () => {
-    setView('expanded')
+  const changeView = (viewType) => {
+    setView(viewType)
   }
 
   const calculateRating = (reviewData) => {
