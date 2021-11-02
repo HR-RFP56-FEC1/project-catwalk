@@ -10,7 +10,29 @@ import sampleProduct from '../../../sample/product.js'
 import sampleReviewMeta from '../../../sample/reviewmeta.js'
 import GetProductInformation, {GetProductStyles, GetProductReviews} from './RequestAPI.jsx'
 
-let rating = 5.5
+const TopRight = ({rating, product, styles, currentStyle, onClick}) => (
+  <div id='top-right'>
+    <Rating rating={rating}/>
+    <Details
+      product={product}
+      styles={styles}
+      currentStyle={currentStyle}
+    />
+    <Styles
+      styles={styles}
+      onClick={onClick}
+      currentStyle={currentStyle}
+    />
+    <div id='buttons-select'>
+      <Size />
+      <Quantity />
+    </div>
+    <div id='buttons-add'>
+      <AddToBag />
+      <Watch />
+    </div>
+  </div>
+)
 
 const Overview = ({ id }) => {
   const [product, setProduct] = useState(sampleProduct)
@@ -47,7 +69,7 @@ const Overview = ({ id }) => {
       })
   }, [])
 
-  const handleOnclick = (styleNum) => {
+  const handleOnClick = (styleNum) => {
     setCurrentStyle(styleNum)
     //the line below will set the current image to the first image in the set
     //when a style is changed. this seems intuitive to me, but the business
@@ -79,29 +101,15 @@ const Overview = ({ id }) => {
               currentStyle={currentStyle}
               image={image}
               setImage={setImage}
-            />
+              />
           </div>
-          <div id='top-right'>
-            <Rating rating={calculateRating(reviews)}/>
-            <Details
-              product={product}
-              styles={styles}
-              currentStyle={currentStyle}
-            />
-            <Styles
-              styles={styles}
-              onClick={handleOnclick}
-              currentStyle={currentStyle}
-            />
-            <div id='buttons-select'>
-              <Size />
-              <Quantity />
-            </div>
-            <div id='buttons-add'>
-              <AddToBag />
-              <Watch />
-            </div>
-          </div>
+          <TopRight
+            styles={styles}
+            onClick={handleOnClick}
+            currentStyle={currentStyle}
+            product={product}
+            rating={calculateRating(reviews)}
+          />
         </div>
         <div id='bottom-half'>
           <div id='bottom-left'>
