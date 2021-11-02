@@ -1,0 +1,90 @@
+
+#qna {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: aquamarine;
+}
+
+#qsearch {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+#qsearchtextinput {
+  flex-grow: 10;
+}
+
+#qMag {
+  align-self: end;
+}
+
+
+#questionList {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.answer {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.answerbottombor {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+.questiontopbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.questionHelpful {
+  align-self: end;
+}
+
+.addAnswer {
+  align-self: end;
+}
+
+.questionHelpAdd {
+  display: flex;
+  flex-direction: row;
+  align-self: end;
+}
+
+.answerList {
+  display: flex;
+  flex-direction: row;
+}
+
+.question {
+  padding-bottom: 10px;
+}
+
+.qListBottomBar {
+  display: flex;
+  flex-direction: row;
+  align-self: end;
+}
+
+.moreQuestions {
+  border-style: solid;
+  border-color: black;
+  padding: 10px;
+  margin-right: 15px;
+}
+.addQuestion {
+  border-style: solid;
+  border-color: black;
+  padding: 10px;
+}

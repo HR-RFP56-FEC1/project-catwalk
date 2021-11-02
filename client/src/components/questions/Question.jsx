@@ -2,17 +2,18 @@ import React from 'react';
 import AnswerList from './AnswerList.jsx';
 
 const Question = (props) => (
-  <div id='question1'>
-    <div id='topbar'>
-      <div className='questiontext'>{props.question.question_body}</div>
-      <div className='questionHelpful'>HELPFUL VOTE AND DISPLAY</div>
-      <div className='addAnswer'>ADD ANSWER BUTTON</div>
+  <div className='question'>
+    <div className='questiontopbar'>
+      <div className='questiontext'>Q:   {props.question.question_body}</div>
+      <div className='questionHelpAdd'>
+        <div className='questionHelpful'>HELPFUL VOTE  |{'\u00A0'} </div>
+        <div className='addAnswer'>ADD ANSWER</div>
+      </div>
     </div>
     <div className='answerList'>
-      <AnswerList />
+      <AnswerList answers={props.question.answers}/>
     </div>
-    <div className='questionLoadMoreAnswersbutton'>LOAD MORE ANSWERS</div>
   </div>
 );
 
-export default Question
+export default Question;

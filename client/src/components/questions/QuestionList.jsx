@@ -29,10 +29,15 @@ const questionSorter = function(questionArray) {
 
 
 const QuestionList = (props) => (
+  
   <div className='questionList'>
+    <div id='qsearch'>
+    <div id='qsearchtextinput'>PLACEHOLDER TEXT</div>
+    <div id='qMag'>MAGNIFYING GLASS ICON</div>
+  </div>
     <div className='qList'>
       {
-        questionSorter(props.answers).map(question => <Question question={question}/>)
+        questionSorter(props.questions.results).map(question => <Question question={question}/>)
       }
     </div>
     <div className='qListBottomBar'>
