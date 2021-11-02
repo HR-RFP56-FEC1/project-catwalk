@@ -23,7 +23,7 @@ var ReviewEntry = (props) => {
         {sampleReview.body}
       </div>
       <div className="review-entry-bottom-row">
-        Helpful? Yes({sampleReview.helpfulness}) | Report
+        Helpful? <u>Yes</u> ({sampleReview.helpfulness}) &nbsp;&nbsp;|&nbsp;&nbsp; <u>Report</u>
       </div>
     </div>
   )
