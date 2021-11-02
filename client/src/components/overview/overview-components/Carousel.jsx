@@ -1,9 +1,12 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import styles from '../../../../sample/styles.js'
 
-const Carousel = ({styles, currentStyle, image, setImage}) => {
-  // const [image, setImage] = useState(0)
+const Carousel = ({styles, currentStyle, image, setImage, changeView}) => {
+  useEffect(() => {
+    let focusThumb = document.getElementById('thumb-highlight')
+    focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
+  }, [image])
 
   const onClickThumb = (index) => {
     setImage(index)
@@ -22,32 +25,43 @@ const Carousel = ({styles, currentStyle, image, setImage}) => {
   }
 
   return (
-    <div id='main-image-container'>
-      <img src={styles.results[currentStyle].photos[image].url}  id='main-image'/>
-      <div id='thumbs-left-arrow-container'>
+    <div
+      id='main-image-container'
+      // width='800'
+      // height='600'
+      // display='flex'
+      // flex-direction='row'
+      // justify-content='space-between'
+      // position='relative'
+      // // overflow='hidden'
+    >
+      <img
+        src={styles.results[currentStyle].photos[image].url}
+        onClick={changeView}
+        id='main-image'
+        width='800'
+        height='600'
+      />
+      <div id='thumbs-outer-container'>
         <Thumbs
           style={styles.results[currentStyle]}
           onClick={onClickThumb}
           image={image}
         />
-        <div id='arrow-container-left'>
-          <div id='arrow-left-bg'>
-            <img
-              src='./img/left-arrow.png'
-              onClick={() => onClickArrow(-1)}
-              id='arrow-left'
-            />
-          </div>
-        </div>
       </div>
-      <div id='arrow-container-right'>
-        <div id='arrow-right-bg'>
-          <img
-            src='./img/right-arrow.png'
-            onClick={() => onClickArrow(1)}
-            id='arrow-right'
-          />
-        </div>
+      <div id='arrow-left-bg'>
+        <img
+          src='./img/left-arrow.png'
+          onClick={() => onClickArrow(-1)}
+          id='arrow-left'
+        />
+      </div>
+      <div id='arrow-right-bg'>
+        <img
+          src='./img/right-arrow.png'
+          onClick={() => onClickArrow(1)}
+          id='arrow-right'
+        />
       </div>
     </div>
   )
@@ -78,6 +92,7 @@ const Thumb = ({thumb, index, onClick, image}) => {
   return (
     <div id='thumb-container'>
       <img
+        // onClick={scrollToThumb}
         onClick={() => onClick(index)}
         src={thumb}
         id={thumbid}

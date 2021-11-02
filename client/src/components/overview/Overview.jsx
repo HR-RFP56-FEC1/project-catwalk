@@ -7,15 +7,64 @@ import Size, {Quantity, Watch, AddToBag} from './overview-components/OverviewBut
 import Carousel, {Thumbs, Thumb} from './overview-components/Carousel.jsx'
 import sampleStyles from '../../../sample/styles.js'
 import sampleProduct from '../../../sample/product.js'
-import GetProductInformation, {GetProductStyles} from './RequestAPI.jsx'
+import sampleReviewMeta from '../../../sample/reviewmeta.js'
+import GetProductInformation, {GetProductStyles, GetProductReviews} from './RequestAPI.jsx'
 
-let rating = 1.2
+const TopRight = ({rating, product, styles, currentStyle, onClick}) => (
+  <div id='top-right'>
+    <Rating rating={rating}/>
+    <Details
+      product={product}
+      styles={styles}
+      currentStyle={currentStyle}
+    />
+    <Styles
+      styles={styles}
+      onClick={onClick}
+      currentStyle={currentStyle}
+    />
+    <div id='buttons-select'>
+      <Size />
+      <Quantity />
+    </div>
+    <div id='buttons-add'>
+      <AddToBag />
+      <Watch />
+    </div>
+  </div>
+)
+
+const TopLeft = ({styles, currentStyle, image, setImage, changeView}) => (
+  <div id='top-left'>
+  <Carousel
+    styles={styles}
+    currentStyle={currentStyle}
+    image={image}
+    setImage={setImage}
+    changeView={changeView}
+  />
+</div>
+)
+
+const BottomHalf = ({product}) => (
+  <div id='bottom-half'>
+    <div id='bottom-left'>
+      <Slogan product={product} />
+      <Description product={product} />
+    </div>
+    <div id='bottom-right'>
+      <Facts />
+    </div>
+  </div>
+)
 
 const Overview = ({ id }) => {
   const [product, setProduct] = useState(sampleProduct)
   const [styles, setStyles] = useState(sampleStyles)
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
+  const [reviews, setReviews] = useState(sampleReviewMeta)
+  const [view, setView] = useState('default')
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -28,59 +77,67 @@ const Overview = ({ id }) => {
 
     axios(GetProductStyles(id))
       .then(response => {
-        console.log(response.data)
         setStyles(response.data)
+      })
+      .catch(err => {
+        console.log('Error on GET: ' + err)
+      })
+
+      axios(GetProductReviews(id))
+      .then(response => {
+        console.log(response.data)
+        setReviews(response.data)
       })
       .catch(err => {
         console.log('Error on GET: ' + err)
       })
   }, [])
 
-  const handleOnclick = (styleNum) => {
+  const handleOnClick = (styleNum) => {
     setCurrentStyle(styleNum)
-    setImage(0)
+    //to reset image to first image on style change:
+    /*setImage(0)*/
+  }
+
+  const changeView = () => {
+    setView('expanded')
+  }
+
+  const calculateRating = (reviewData) => {
+    let points = 0
+    let reviews = 0
+    let ratings = reviewData.ratings
+
+    for (let key in ratings) {
+      reviews += parseInt(ratings[key])
+      points += parseInt(key) * ratings[key]
+    }
+    return points / reviews
   }
 
   return (
     <div id='overview'>
       <Logo />
       <div id='body'>
-        <div id='left'>
-          <Carousel
+        <div id='top-half'>
+          <TopLeft
             styles={styles}
             currentStyle={currentStyle}
             image={image}
             setImage={setImage}
+            changeView={changeView}
           />
-          <div id='description-container'>
-            <Slogan product={product} />
-            <Description product={product} />
-          </div>
-        </div>
-        <div id='right'>
-          <Rating rating={rating}/>
-          <Details
+          <TopRight
+            styles={styles}
+            onClick={handleOnClick}
+            currentStyle={currentStyle}
             product={product}
-            styles={styles}
-            currentStyle={currentStyle}
+            rating={calculateRating(reviews)}
           />
-          <Styles
-            styles={styles}
-            onClick={handleOnclick}
-            currentStyle={currentStyle}
-          />
-          <div id='buttons-select'>
-            <Size />
-            <Quantity />
-          </div>
-          <div id='buttons-add'>
-            <AddToBag />
-            <Watch />
-          </div>
-          <div id='bullet points'>
-            <Facts />
-          </div>
         </div>
+        <BottomHalf
+          product={product}
+        />
       </div>
     </div>
   )
