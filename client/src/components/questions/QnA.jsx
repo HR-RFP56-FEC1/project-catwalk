@@ -33,7 +33,7 @@ const QnA = (props) => {
   return (
   <div id="qna" className='qna'>
     <div id='qtitlebar'>QUESTIONS AND ANSWERS</div>
-    <div ><Qsearch/></div>
+
     <div id='qList'>{
       results ? <QuestionList questions={results}/> : <div>Loading....</div>
       }
