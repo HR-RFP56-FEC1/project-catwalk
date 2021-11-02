@@ -4,9 +4,9 @@ import CharacterRating from './CharacterRating.jsx';
 
 var ProductBreakdown = (props) => {
   let breakdown = props.breakdown;
-  console.log('breakdown', breakdown['Quality'].value);
+  // console.log('breakdown', breakdown['Quality'].value);
   let characters = Object.keys(breakdown);
-  console.log('characters:', characters);
+  // console.log('characters:', characters);
   return (
     <div className="product-breakdown">
       {characters.map(char => (

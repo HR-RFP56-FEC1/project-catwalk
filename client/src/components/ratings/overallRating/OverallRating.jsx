@@ -9,7 +9,7 @@ import ProductBreakdown from './productBreakdown/ProductBreakdown.jsx';
 
 let id = '43044';
 let allRating = reviewmeta.ratings;
-console.log(allRating);
+// console.log(allRating);
 let sumRating = 0;
 let countRating = 0;
 for (const key in allRating) {
