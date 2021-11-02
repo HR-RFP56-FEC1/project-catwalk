@@ -1,4 +1,5 @@
-create api request to
-  -retrieve reviews based on id
-  -calucate average review
-  -send to Ratings, which sends to Stars
+-on clicking main image
+  -state view changes to 'expanded'
+  -Top Right does not get rendered
+  -id 'top-half' expands
+  -main image expands to fill top-half container

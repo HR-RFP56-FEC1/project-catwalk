@@ -10,7 +10,53 @@ import sampleProduct from '../../../sample/product.js'
 import sampleReviewMeta from '../../../sample/reviewmeta.js'
 import GetProductInformation, {GetProductStyles, GetProductReviews} from './RequestAPI.jsx'
 
-let rating = 5.5
+const TopRight = ({rating, product, styles, currentStyle, onClick}) => (
+  <div id='top-right'>
+    <Rating rating={rating}/>
+    <Details
+      product={product}
+      styles={styles}
+      currentStyle={currentStyle}
+    />
+    <Styles
+      styles={styles}
+      onClick={onClick}
+      currentStyle={currentStyle}
+    />
+    <div id='buttons-select'>
+      <Size />
+      <Quantity />
+    </div>
+    <div id='buttons-add'>
+      <AddToBag />
+      <Watch />
+    </div>
+  </div>
+)
+
+const TopLeft = ({styles, currentStyle, image, setImage, changeView}) => (
+  <div id='top-left'>
+  <Carousel
+    styles={styles}
+    currentStyle={currentStyle}
+    image={image}
+    setImage={setImage}
+    changeView={changeView}
+  />
+</div>
+)
+
+const BottomHalf = ({product}) => (
+  <div id='bottom-half'>
+    <div id='bottom-left'>
+      <Slogan product={product} />
+      <Description product={product} />
+    </div>
+    <div id='bottom-right'>
+      <Facts />
+    </div>
+  </div>
+)
 
 const Overview = ({ id }) => {
   const [product, setProduct] = useState(sampleProduct)
@@ -18,6 +64,7 @@ const Overview = ({ id }) => {
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
   const [reviews, setReviews] = useState(sampleReviewMeta)
+  const [view, setView] = useState('default')
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -46,9 +93,14 @@ const Overview = ({ id }) => {
       })
   }, [])
 
-  const handleOnclick = (styleNum) => {
+  const handleOnClick = (styleNum) => {
     setCurrentStyle(styleNum)
-    setImage(0)
+    //to reset image to first image on style change:
+    /*setImage(0)*/
+  }
+
+  const changeView = () => {
+    setView('expanded')
   }
 
   const calculateRating = (reviewData) => {
@@ -68,45 +120,24 @@ const Overview = ({ id }) => {
       <Logo />
       <div id='body'>
         <div id='top-half'>
-          <div id='top-left'>
-            <Carousel
-              styles={styles}
-              currentStyle={currentStyle}
-              image={image}
-              setImage={setImage}
-            />
-          </div>
-          <div id='top-right'>
-            <Rating rating={calculateRating(reviews)}/>
-            <Details
-              product={product}
-              styles={styles}
-              currentStyle={currentStyle}
-            />
-            <Styles
-              styles={styles}
-              onClick={handleOnclick}
-              currentStyle={currentStyle}
-            />
-            <div id='buttons-select'>
-              <Size />
-              <Quantity />
-            </div>
-            <div id='buttons-add'>
-              <AddToBag />
-              <Watch />
-            </div>
-          </div>
+          <TopLeft
+            styles={styles}
+            currentStyle={currentStyle}
+            image={image}
+            setImage={setImage}
+            changeView={changeView}
+          />
+          <TopRight
+            styles={styles}
+            onClick={handleOnClick}
+            currentStyle={currentStyle}
+            product={product}
+            rating={calculateRating(reviews)}
+          />
         </div>
-        <div id='bottom-half'>
-          <div id='bottom-left'>
-            <Slogan product={product} />
-            <Description product={product} />
-          </div>
-          <div id='bottom-right'>
-            <Facts />
-          </div>
-        </div>
+        <BottomHalf
+          product={product}
+        />
       </div>
     </div>
   )
