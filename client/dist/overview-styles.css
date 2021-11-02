@@ -154,16 +154,6 @@
   border-left: 15px solid hotpink;
 }
 
-/* #arrow-container-right {
-  position: absolute;
-  left: 700px;
-}
-
-#arrow-container-left {
-  position: absolute;
-  left: 120px;
-} */
-
 #description-container {
   display: flex;
   flex-direction: column;

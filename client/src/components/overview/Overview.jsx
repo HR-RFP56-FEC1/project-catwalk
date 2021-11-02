@@ -34,6 +34,30 @@ const TopRight = ({rating, product, styles, currentStyle, onClick}) => (
   </div>
 )
 
+const TopLeft = ({styles, currentStyle, image, setImage, changeView}) => (
+  <div id='top-left'>
+  <Carousel
+    styles={styles}
+    currentStyle={currentStyle}
+    image={image}
+    setImage={setImage}
+    changeView={changeView}
+  />
+</div>
+)
+
+const BottomHalf = ({product}) => (
+  <div id='bottom-half'>
+    <div id='bottom-left'>
+      <Slogan product={product} />
+      <Description product={product} />
+    </div>
+    <div id='bottom-right'>
+      <Facts />
+    </div>
+  </div>
+)
+
 const Overview = ({ id }) => {
   const [product, setProduct] = useState(sampleProduct)
   const [styles, setStyles] = useState(sampleStyles)
@@ -71,11 +95,12 @@ const Overview = ({ id }) => {
 
   const handleOnClick = (styleNum) => {
     setCurrentStyle(styleNum)
-    //the line below will set the current image to the first image in the set
-    //when a style is changed. this seems intuitive to me, but the business
-    //documents request that the image index be maintained when switching styles.
-
+    //to reset image to first image on style change:
     /*setImage(0)*/
+  }
+
+  const changeView = () => {
+    setView('expanded')
   }
 
   const calculateRating = (reviewData) => {
@@ -95,14 +120,13 @@ const Overview = ({ id }) => {
       <Logo />
       <div id='body'>
         <div id='top-half'>
-          <div id='top-left'>
-            <Carousel
-              styles={styles}
-              currentStyle={currentStyle}
-              image={image}
-              setImage={setImage}
-              />
-          </div>
+          <TopLeft
+            styles={styles}
+            currentStyle={currentStyle}
+            image={image}
+            setImage={setImage}
+            changeView={changeView}
+          />
           <TopRight
             styles={styles}
             onClick={handleOnClick}
@@ -111,15 +135,9 @@ const Overview = ({ id }) => {
             rating={calculateRating(reviews)}
           />
         </div>
-        <div id='bottom-half'>
-          <div id='bottom-left'>
-            <Slogan product={product} />
-            <Description product={product} />
-          </div>
-          <div id='bottom-right'>
-            <Facts />
-          </div>
-        </div>
+        <BottomHalf
+          product={product}
+        />
       </div>
     </div>
   )
