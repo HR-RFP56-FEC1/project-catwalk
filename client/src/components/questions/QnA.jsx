@@ -6,8 +6,6 @@ import questions from '../../../sample/questions.js';
 
 const getQuestions = function(id) {
   var urlString = '/api/qa/questions' + '?product_id=' + id + '&count=100';
-  console.log('urlstring:');
-  console.log(urlString);
   return axios({
     method: 'get',
     url: urlString,
@@ -18,10 +16,10 @@ const getQuestions = function(id) {
 
 const QnA = (props) => {
   const [results, setResults] = useState([]);
-  const [product_id, setId] = useState(props.id);
+  const [product_id, setId] = useState(40353);
+  // hard coded for now to get product with questions
+  // const [product_id, setId] = useState(props.id);
   const handleResults = function(response) {
-    console.log(response);
-    // var results = JSON.parse(response).results;
     setResults(response.data);
   }
 
