@@ -66,7 +66,7 @@ const Overview = ({ id }) => {
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
   const [reviews, setReviews] = useState(sampleReviewMeta)
-  const [view, setView] = useState('default')
+  const [view, setView] = useState('expanded')
 
   useEffect(() => {
     axios(GetProductInformation(id))

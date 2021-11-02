@@ -25,16 +25,7 @@ const Carousel = ({styles, currentStyle, image, setImage, changeView}) => {
   }
 
   return (
-    <div
-      id='main-image-container'
-      // width='800'
-      // height='600'
-      // display='flex'
-      // flex-direction='row'
-      // justify-content='space-between'
-      // position='relative'
-      // // overflow='hidden'
-    >
+    <div id='main-image-container'>
       <img
         src={styles.results[currentStyle].photos[image].url}
         onClick={changeView}
@@ -97,6 +88,7 @@ const Thumb = ({thumb, index, onClick, image}) => {
         src={thumb}
         id={thumbid}
       />
+      {/* //add empty box here the size of a thumb and give it border */}
     </div>
   )
 }
