@@ -51,14 +51,28 @@
 
 #body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 900px;
+  width: 1200px;
   padding-bottom: 40px;
 }
 
-#left {
+#top-half {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1200px;
+  padding-bottom: 60px;
+}
+
+#top-right {
   display: flex;
   flex-direction: column;
+  width: 400px;
+}
+
+#top-right, #bottom-right {
+  padding-left: 50px;
 }
 
 #main-image-container {
@@ -93,7 +107,8 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  /* background: #888; */
+  background: hotpink;
 }
 
 /* Handle on hover */
@@ -137,7 +152,6 @@
   border-left: 15px solid hotpink;
 }
 
-
 #arrow-container-right {
   position: absolute;
   left: 700px;
@@ -161,7 +175,6 @@
 
 #slogan {
   font-size: 19px;
-  padding-top: 100px;
   padding-bottom: 30px;
 }
 
@@ -203,13 +216,24 @@
   padding: 0px 10px 0px 0px;
 }
 
-#right {
+#bottom-half {
+  display: flex;
+  flex-direction: row;
+  width: 1200px;
+  /* height: 100%; */
+  /* padding-left: 30px; */
+}
+
+#bottom-left {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 100%;
-  padding-left: 30px;
+  width: 800px;
 }
+
+#bottom-right {
+
+}
+
 
 #read-all-reviews {
   display: flex;
@@ -300,7 +324,7 @@
 }
 
 #buttons-add {
-  padding: 0px 0px 100px 0px;
+
 }
 
 #sizes, #quantities, #add-to-bag, #watch {
@@ -312,11 +336,12 @@
 }
 
 #sizes {
-  width: 230px;
+  width: 220px;
+  margin-right: 20px;
 }
 
 #quantities {
-  width: 150px;
+  width: 140px;
 }
 
 #add-to-bag {
@@ -324,7 +349,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
+  width: 280px;
+  margin-right: 20px;
   text-align: left;
 }
 

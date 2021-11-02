@@ -11,8 +11,9 @@ const Stars = ({rating}) => {
   let fullStars = rating - (rating % 1)
   let partialStar = rating % 1
 
-  if (fullStars > 5) {
+  if (fullStars >= 5) {
     fullStars = 5
+    partialStar = 0
   }
 
   for (let i = 0; i < fullStars; i++) {
