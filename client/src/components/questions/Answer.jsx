@@ -61,7 +61,7 @@ const Answer = (props) => {
       <div className='answerBottomBar'>
         <div className='answerByLine'>by {props.answer.answerer_name}, {moment(props.answer.date).format('MMMM, D, YYYY')}  |{'\u00A0'}</div>
         <div className='answerHelpful'>Helpful? <a className='answerHelpfulVote' href="clickstuff" onClick={handleHelpful}>Yes</a> ({props.answer.helpfulness})  |{'\u00A0'}</div>  
-        <div className='answerReport'><a className='answerReportLink' href="clickstuff" onClick={handleReport}>Yes</a></div>
+        <a className='answerReport' href="clickstuff" onClick={handleReport}>Report</a>
       </div>
     </div>
   );
