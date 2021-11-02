@@ -48,7 +48,7 @@ const QuestionList = (props) => {
         <div id='qMag'>MAGNIFYING GLASS ICON</div>
       </div>
       <div className='qList'>
-        {displayList ? displayList.map(question => <Question question={question}/>) : <div>Loading....</div>}
+        {displayList ? displayList.map(question => <Question key={"question" + question.question_id} question={question}/>) : <div>Loading....</div>}
       </div>
       <div className='qListBottomBar'>
         <div className='moreQuestions'>MORE ANSWERED QUESTIONS</div>

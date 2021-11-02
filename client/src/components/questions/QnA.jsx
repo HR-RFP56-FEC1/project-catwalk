@@ -13,7 +13,6 @@ const getQuestions = function(id) {
   });
 };
 
-
 const QnA = (props) => {
   const [results, setResults] = useState([]);
   const [product_id, setId] = useState(40353);

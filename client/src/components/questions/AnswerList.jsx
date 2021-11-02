@@ -37,7 +37,7 @@ const AnswerList = (props) => (
     <div className='answerListBigA'>A:</div>
     <div className="aList">
       {
-        sortAnswers(props.answers).map(answer => <Answer answer={answer}/>)
+        sortAnswers(props.answers).map(answer => <Answer key={"answer" + answer.id} answer={answer}/>)
       }
       <div className='moreAnswersButton'>LOAD MORE ANSWERS</div>
     </div>
