@@ -3,7 +3,6 @@ import {useState} from 'react'
 import styles from '../../../../sample/styles.js'
 
 const Carousel = ({styles, currentStyle, image, setImage}) => {
-  // const [image, setImage] = useState(0)
 
   const onClickThumb = (index) => {
     setImage(index)
@@ -22,8 +21,17 @@ const Carousel = ({styles, currentStyle, image, setImage}) => {
   }
 
   return (
-    <div id='main-image-container'>
-      <img src={styles.results[currentStyle].photos[image].url}  id='main-image'/>
+    <div
+      id='main-image-container'
+      width='800'
+      height='600'
+    >
+      <img
+        src={styles.results[currentStyle].photos[image].url}
+        id='main-image'
+        width='800'
+        height='600'
+      />
       <div id='thumbs-left-arrow-container'>
         <Thumbs
           style={styles.results[currentStyle]}

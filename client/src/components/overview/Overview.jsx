@@ -18,6 +18,7 @@ const Overview = ({ id }) => {
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
   const [reviews, setReviews] = useState(sampleReviewMeta)
+  const [view, setView] = useState('default')
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -48,7 +49,11 @@ const Overview = ({ id }) => {
 
   const handleOnclick = (styleNum) => {
     setCurrentStyle(styleNum)
-    setImage(0)
+    //the line below will set the current image to the first image in the set
+    //when a style is changed. this seems intuitive to me, but the business
+    //documents request that the image index be maintained when switching styles.
+
+    /*setImage(0)*/
   }
 
   const calculateRating = (reviewData) => {
