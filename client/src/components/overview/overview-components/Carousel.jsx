@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import styles from '../../../../sample/styles.js'
 
-const Carousel = ({styles, currentStyle, image, setImage, changeView}) => {
+const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
   useEffect(() => {
     let focusThumb = document.getElementById('thumb-highlight')
     focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
@@ -25,13 +25,16 @@ const Carousel = ({styles, currentStyle, image, setImage, changeView}) => {
   }
 
   return (
-    <div id='main-image-container'>
+    <span id=
+      {view === 'default' ?
+      'gallery-container-default-view' :
+      'gallery-container-expanded-view'
+      }
+    >
       <img
         src={styles.results[currentStyle].photos[image].url}
         onClick={changeView}
         id='main-image'
-        // width='1200'
-        // height='600'
       />
       <div id='thumbs-outer-container'>
         <Thumbs
@@ -54,7 +57,7 @@ const Carousel = ({styles, currentStyle, image, setImage, changeView}) => {
           id='arrow-right'
         />
       </div>
-    </div>
+    </span>
   )
 }
 

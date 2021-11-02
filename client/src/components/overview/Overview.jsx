@@ -36,13 +36,14 @@ const TopRight = ({rating, product, styles, currentStyle, onClick}) => (
   </div>
 )
 
-const TopLeft = ({styles, currentStyle, image, setImage, changeView}) => (
+const TopLeft = ({styles, currentStyle, image, setImage, changeView, view}) => (
   <div id='top-left'>
     <Carousel
       styles={styles}
       currentStyle={currentStyle}
       image={image}
       setImage={setImage}
+      view={view}
       changeView={changeView}
     />
   </div>
@@ -66,7 +67,7 @@ const Overview = ({ id }) => {
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
   const [reviews, setReviews] = useState(sampleReviewMeta)
-  const [view, setView] = useState('expanded')
+  const [view, setView] = useState('default')
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -127,6 +128,7 @@ const Overview = ({ id }) => {
             currentStyle={currentStyle}
             image={image}
             setImage={setImage}
+            view={view}
             changeView={changeView}
           />
           {view === 'default' &&
