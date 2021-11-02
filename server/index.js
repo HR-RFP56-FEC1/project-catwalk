@@ -17,9 +17,6 @@ app.get('/api/*', (req, res) => {
   console.log('get api: ');
   console.log(req.originalUrl);
   const postfix = req.originalUrl.replace('/api/', '');
-  console.log(postfix);
-
-  // if(req.body )
   axios({
     method: 'get',
     url: apiUrl + postfix,
@@ -29,30 +26,47 @@ app.get('/api/*', (req, res) => {
     //console.log(results.data);
     res.json((results.data));
   }).catch((error) => {
-    console.log(error);
+    // console.log(error);
     res.json(error);
   });
-  
 });
 
 app.post('/api/*', (req, res) => {
   console.log('post api: ');
   console.log(req.originalUrl);
   const postfix = req.originalUrl.replace('/api/', '');
-  console.log(postfix);
   axios({
     method: 'post',
     url: apiUrl + postfix,
     headers: {'Authorization': key},
     data: req.body,
   }).then((results) => {
-    console.log(results.data);
+    // console.log(results.data);
+    res.status(201);
     res.json((results.data));
   }).catch((error) => {
-    console.log(error);
+    // console.log(error);
     res.json(error);
   });
+});
 
+app.put('/api/*', (req, res) => {
+  console.log('put api: ');
+  console.log(req.originalUrl);
+  const postfix = req.originalUrl.replace('/api/', '');
+  axios({
+    method: 'put',
+    url: apiUrl + postfix,
+    headers: {'Authorization': key},
+    data: req.body,
+  }).then((results) => {
+    // console.log(results.data);
+    res.status(204);
+    res.json((results.data));
+  }).catch((error) => {
+    // console.log(error);
+    res.json(error);
+  });
 });
 
 app.listen(port, () => {
