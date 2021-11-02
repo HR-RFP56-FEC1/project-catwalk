@@ -1,8 +1,12 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import styles from '../../../../sample/styles.js'
 
 const Carousel = ({styles, currentStyle, image, setImage}) => {
+  useEffect(() => {
+    let focusThumb = document.getElementById('thumb-highlight')
+    focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
+  }, [image])
 
   const onClickThumb = (index) => {
     setImage(index)
@@ -87,6 +91,7 @@ const Thumb = ({thumb, index, onClick, image}) => {
   return (
     <div id='thumb-container'>
       <img
+        // onClick={scrollToThumb}
         onClick={() => onClick(index)}
         src={thumb}
         id={thumbid}
