@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
+import Stars from '../../../shared/Stars.jsx';
+
 var ReviewEntry = (props) => {
   let sampleReview = props.review;
 
@@ -8,7 +10,7 @@ var ReviewEntry = (props) => {
     <div className="review-entry">
       <div className="review-entry-top-row">
         <div id="review-entry-star-rating">
-        <img src='img/stars.png' id='stars'/>
+          <Stars rating={sampleReview.rating}/>
         </div>
         <div id="review-entry-username-date">
           {sampleReview.reviewer_name}, {moment(sampleReview.date).format("MMMM D, YYYY")}
@@ -21,7 +23,7 @@ var ReviewEntry = (props) => {
         {sampleReview.body}
       </div>
       <div className="review-entry-bottom-row">
-        Helpful? Yes({sampleReview.helpfulness}) | Report
+        Helpful? <u>Yes</u> ({sampleReview.helpfulness}) &nbsp;&nbsp;|&nbsp;&nbsp; <u>Report</u>
       </div>
     </div>
   )
