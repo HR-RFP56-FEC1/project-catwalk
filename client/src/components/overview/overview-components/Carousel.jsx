@@ -4,8 +4,10 @@ import styles from '../../../../sample/styles.js'
 
 const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
   useEffect(() => {
-    let focusThumb = document.getElementById('thumb-highlight')
-    focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
+    if (view === 'default') {
+      let focusThumb = document.getElementById('thumb-highlight')
+      focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
+    }
   }, [image])
 
   const onClickThumb = (index) => {
@@ -27,8 +29,8 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
   return (
     <span id=
       {view === 'default' ?
-      'gallery-container-default-view' :
-      'gallery-container-expanded-view'
+        'gallery-container-default-view' :
+        'gallery-container-expanded-view'
       }
     >
       <img
@@ -41,16 +43,26 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
           style={styles.results[currentStyle]}
           onClick={onClickThumb}
           image={image}
+          view={view}
         />
       </div>
-      <div id='arrow-left-bg'>
+      <div id=
+        {view === 'default' ?
+        'arrow-left-bg' :
+        'arrow-left-bg-expanded'
+        }
+      >
         <img
           src='./img/left-arrow.png'
           onClick={() => onClickArrow(-1)}
           id='arrow-left'
         />
       </div>
-      <div id='arrow-right-bg'>
+      <div id=
+        {view === 'default' ?
+        'arrow-right-bg' :
+        'arrow-right-bg-expanded'
+        }>
         <img
           src='./img/right-arrow.png'
           onClick={() => onClickArrow(1)}
@@ -61,17 +73,21 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
   )
 }
 
-const Thumbs = ({style, onClick, image}) => {
+const Thumbs = ({style, onClick, image, view}) => {
   return (
-    <div id='thumbs'>
-      {style.photos.map((photo, i) =>
-      <Thumb
-        key={i}
-        thumb={photo.thumbnail_url}
-        index={i}
-        onClick={onClick}
-        image={image}
-      />)}
+    <div>
+      {view === 'default' &&
+        <div id='thumbs'>
+          {style.photos.map((photo, i) =>
+          <Thumb
+            key={i}
+            thumb={photo.thumbnail_url}
+            index={i}
+            onClick={onClick}
+            image={image}
+          />)}
+        </div>
+      }
     </div>
   )
 }

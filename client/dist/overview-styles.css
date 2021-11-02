@@ -183,7 +183,7 @@
   font-size: 15px;
 }
 
-#arrow-left-bg, #arrow-right-bg {
+#arrow-left-bg, #arrow-right-bg, #arrow-left-bg-expanded, #arrow-right-bg-expanded {
   background-color: rgb(255, 255, 255, 0.2);
   width: 70px;
   height: 70px;
@@ -194,14 +194,24 @@
   position: absolute;
 }
 
+#arrow-left-bg, #arrow-right-bg, #arrow-left-bg-expanded, #arrow-right-bg-expanded {
+  top: 250px;
+}
+
 #arrow-left-bg {
   left: 130px;
-  top: 250px;
 }
 
 #arrow-right-bg {
   left: 700px;
-  top: 250px;
+}
+
+#arrow-left-bg-expanded {
+  left: 25px;
+}
+
+#arrow-right-bg-expanded {
+  left: 1100px;
 }
 
 #arrow-left, #arrow-right {
@@ -216,16 +226,6 @@
 
 #arrow-right {
   padding-left: 15px;
-}
-
-#arrow-container-left, #arrow-container-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: transparent;
-  height: 600px;
-  width: 50px;
-  padding: 0px 10px 0px 0px;
 }
 
 #bottom-half {
