@@ -39,8 +39,8 @@ const Carousel = ({styles, currentStyle, image, setImage, changeView}) => {
         src={styles.results[currentStyle].photos[image].url}
         onClick={changeView}
         id='main-image'
-        width='800'
-        height='600'
+        // width='1200'
+        // height='600'
       />
       <div id='thumbs-outer-container'>
         <Thumbs

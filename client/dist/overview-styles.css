@@ -21,6 +21,10 @@
   font-family: 'Shadows Into Light', cursive;
 }
 
+#overview {
+  width: 1200px;
+}
+
 #logo {
   display: flex;
   background-image: url('img/header.jpeg');
@@ -32,7 +36,7 @@
   font-family: 'Caveat', cursive;
   font-size: 70px;
   color: white;
-  padding-left: 40px;
+  /* padding-left: 40px; */
   align-items: center;
   justify-content: center;
 }
@@ -65,10 +69,15 @@
   padding-bottom: 60px;
 }
 
+/* #top-left {
+  width: 1200px;
+  height: 600px;
+} */
+
 #top-right {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 350px;
 }
 
 #top-right, #bottom-right {
@@ -109,8 +118,9 @@
 }
 
 #main-image {
-  position: absolute;
   object-fit: cover;
+  width: 100%;
+  /* position: absolute; */
   /* left: -800px;
   transition: 1s; */
   /* cursor: -moz-zoom-in;
@@ -319,11 +329,19 @@
   font-size: 12px;
 }
 
+#buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 #buttons-select, #buttons-add {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 0px 20px 0px;
+  /* align-items: stretch;
+  justify-content: stretch; */
 }
 
 #buttons-add {
@@ -339,12 +357,11 @@
 }
 
 #sizes {
-  width: 220px;
-  margin-right: 20px;
+  width: 230px;
 }
 
 #quantities {
-  width: 140px;
+  width: 100px;
 }
 
 #add-to-bag {
@@ -352,13 +369,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 280px;
-  margin-right: 20px;
+  width: 265px;
   text-align: left;
 }
 
 #watch {
-  width: 80px;
+  width: 65px;
 }
 
 #facts {
