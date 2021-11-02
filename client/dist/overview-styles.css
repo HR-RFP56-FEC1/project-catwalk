@@ -23,7 +23,7 @@
 
 #logo {
   display: flex;
-  background-image: url('../../../dist/img/header.jpeg');
+  background-image: url('img/header.jpeg');
   background-color: lightslategray;
   background-position-y: 663px;
   background-size: cover;
