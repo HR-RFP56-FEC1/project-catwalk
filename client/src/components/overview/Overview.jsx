@@ -7,7 +7,8 @@ import Size, {Quantity, Watch, AddToBag} from './overview-components/OverviewBut
 import Carousel, {Thumbs, Thumb} from './overview-components/Carousel.jsx'
 import sampleStyles from '../../../sample/styles.js'
 import sampleProduct from '../../../sample/product.js'
-import GetProductInformation, {GetProductStyles} from './RequestAPI.jsx'
+import sampleReviewMeta from '../../../sample/reviewmeta.js'
+import GetProductInformation, {GetProductStyles, GetProductReviews} from './RequestAPI.jsx'
 
 let rating = 5.5
 
@@ -16,6 +17,7 @@ const Overview = ({ id }) => {
   const [styles, setStyles] = useState(sampleStyles)
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
+  const [reviews, setReviews] = useState(sampleReviewMeta)
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -28,8 +30,16 @@ const Overview = ({ id }) => {
 
     axios(GetProductStyles(id))
       .then(response => {
-        console.log(response.data)
         setStyles(response.data)
+      })
+      .catch(err => {
+        console.log('Error on GET: ' + err)
+      })
+
+      axios(GetProductReviews(id))
+      .then(response => {
+        console.log(response.data)
+        setReviews(response.data)
       })
       .catch(err => {
         console.log('Error on GET: ' + err)
@@ -41,43 +51,59 @@ const Overview = ({ id }) => {
     setImage(0)
   }
 
+  const calculateRating = (reviewData) => {
+    let points = 0
+    let reviews = 0
+    let ratings = reviewData.ratings
+
+    for (let key in ratings) {
+      reviews += parseInt(ratings[key])
+      points += parseInt(key) * ratings[key]
+    }
+    return points / reviews
+  }
+
   return (
     <div id='overview'>
       <Logo />
       <div id='body'>
-        <div id='left'>
-          <Carousel
-            styles={styles}
-            currentStyle={currentStyle}
-            image={image}
-            setImage={setImage}
-          />
-          <div id='description-container'>
+        <div id='top-half'>
+          <div id='top-left'>
+            <Carousel
+              styles={styles}
+              currentStyle={currentStyle}
+              image={image}
+              setImage={setImage}
+            />
+          </div>
+          <div id='top-right'>
+            <Rating rating={calculateRating(reviews)}/>
+            <Details
+              product={product}
+              styles={styles}
+              currentStyle={currentStyle}
+            />
+            <Styles
+              styles={styles}
+              onClick={handleOnclick}
+              currentStyle={currentStyle}
+            />
+            <div id='buttons-select'>
+              <Size />
+              <Quantity />
+            </div>
+            <div id='buttons-add'>
+              <AddToBag />
+              <Watch />
+            </div>
+          </div>
+        </div>
+        <div id='bottom-half'>
+          <div id='bottom-left'>
             <Slogan product={product} />
             <Description product={product} />
           </div>
-        </div>
-        <div id='right'>
-          <Rating rating={rating}/>
-          <Details
-            product={product}
-            styles={styles}
-            currentStyle={currentStyle}
-          />
-          <Styles
-            styles={styles}
-            onClick={handleOnclick}
-            currentStyle={currentStyle}
-          />
-          <div id='buttons-select'>
-            <Size />
-            <Quantity />
-          </div>
-          <div id='buttons-add'>
-            <AddToBag />
-            <Watch />
-          </div>
-          <div id='bullet points'>
+          <div id='bottom-right'>
             <Facts />
           </div>
         </div>
