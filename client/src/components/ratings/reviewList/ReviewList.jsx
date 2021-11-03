@@ -70,6 +70,9 @@ var ReviewList = (props) => {
         setReviews(reviewsData);
         setDisplay(_.sortBy(reviewsData, sortBy));
       })
+      .catch(err => {
+        console.log(`Error retrieving reviews data for product id ${props.id}`, err);
+      })
   }, [])
 
   useEffect(() => {
