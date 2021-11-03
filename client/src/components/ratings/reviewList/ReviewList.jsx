@@ -9,7 +9,6 @@ import SortReview from './SortReview.jsx';
 import ReviewBox from './reviewBox/ReviewBox.jsx';
 import AddReview from './bottomButtons/AddReview.jsx';
 
-let id = '40355';
 
 const getReviews = function(id) {
   var urlString = `/api/reviews/?product_id=${id}&count=100`;
@@ -26,7 +25,7 @@ var ReviewList = (props) => {
   const [sortBy, setSort] = useState('date');
 
   useEffect(() => {
-    getReviews(id)
+    getReviews(props.id)
       .then(res => {
         // console.log('reviews data:', res.data);
         let reviewsData = res.data.results;

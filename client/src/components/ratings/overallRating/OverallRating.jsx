@@ -7,7 +7,6 @@ import RatingSummary from './RatingSummary.jsx';
 import RatingDist from './ratingDist/RatingDist.jsx';
 import ProductBreakdown from './productBreakdown/ProductBreakdown.jsx';
 
-let id = '40346';
 
 const getRatings = function (id) {
   var urlString = `/api/reviews/meta?product_id=${id}&count=100`;
@@ -22,7 +21,7 @@ var OverallRating = (props) => {
   const [overallRating, setRating] = useState(null);
 
   useEffect(() => {
-    getRatings(id)
+    getRatings(props.id)
       .then(res => {
         // console.log('ratings data:', res.data);
         setRating(res.data);
