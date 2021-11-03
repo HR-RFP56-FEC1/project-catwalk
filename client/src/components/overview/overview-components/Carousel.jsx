@@ -2,10 +2,12 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import styles from '../../../../sample/styles.js'
 
-const Carousel = ({styles, currentStyle, image, setImage, changeView}) => {
+const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
   useEffect(() => {
-    let focusThumb = document.getElementById('thumb-highlight')
-    focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
+    if (view === 'default') {
+      let focusThumb = document.getElementById('thumb-highlight')
+      focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
+    }
   }, [image])
 
   const onClickThumb = (index) => {
@@ -25,63 +27,80 @@ const Carousel = ({styles, currentStyle, image, setImage, changeView}) => {
   }
 
   return (
-    <div
-      id='main-image-container'
-      // width='800'
-      // height='600'
-      // display='flex'
-      // flex-direction='row'
-      // justify-content='space-between'
-      // position='relative'
-      // // overflow='hidden'
+    <span id=
+      {view === 'default' ?
+        'gallery-container-default-view' :
+        'gallery-container-expanded-view'
+      }
     >
       <img
-        src={styles.results[currentStyle].photos[image].url}
-        onClick={changeView}
         id='main-image'
-        width='800'
-        height='600'
+        src={styles.results[currentStyle].photos[image].url}
+        onClick={() => changeView('expanded')}
+      />
+      <img
+        id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
+        src={view === 'default' ? 'img/expand.png' : 'img/collapse.png'}
+        onClick={
+          view === 'default' ?
+          () => changeView('expanded') :
+          () => changeView('default')
+        }
       />
       <div id='thumbs-outer-container'>
         <Thumbs
           style={styles.results[currentStyle]}
           onClick={onClickThumb}
           image={image}
+          view={view}
         />
       </div>
-      <div id='arrow-left-bg'>
+      <div id=
+        {view === 'default' ?
+        'arrow-left-bg' :
+        'arrow-left-bg-expanded'
+        }
+      >
         <img
           src='./img/left-arrow.png'
           onClick={() => onClickArrow(-1)}
           id='arrow-left'
         />
       </div>
-      <div id='arrow-right-bg'>
+      <div id=
+        {view === 'default' ?
+        'arrow-right-bg' :
+        'arrow-right-bg-expanded'
+        }>
         <img
           src='./img/right-arrow.png'
           onClick={() => onClickArrow(1)}
           id='arrow-right'
         />
       </div>
+    </span>
+  )
+}
+
+const Thumbs = ({style, onClick, image, view}) => {
+  return (
+    <div>
+      {view === 'default' &&
+        <div id='thumbs'>
+          {style.photos.map((photo, i) =>
+          <Thumb
+            key={i}
+            thumb={photo.thumbnail_url}
+            index={i}
+            onClick={onClick}
+            image={image}
+          />)}
+        </div>
+      }
     </div>
   )
 }
 
-const Thumbs = ({style, onClick, image}) => {
-  return (
-    <div id='thumbs'>
-      {style.photos.map((photo, i) =>
-      <Thumb
-        key={i}
-        thumb={photo.thumbnail_url}
-        index={i}
-        onClick={onClick}
-        image={image}
-      />)}
-    </div>
-  )
-}
-//if image === index, render the highlighted thumb
 const Thumb = ({thumb, index, onClick, image}) => {
   let thumbid;
   if (index === image) {
@@ -92,7 +111,6 @@ const Thumb = ({thumb, index, onClick, image}) => {
   return (
     <div id='thumb-container'>
       <img
-        // onClick={scrollToThumb}
         onClick={() => onClick(index)}
         src={thumb}
         id={thumbid}

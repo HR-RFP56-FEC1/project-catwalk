@@ -23,27 +23,30 @@ const TopRight = ({rating, product, styles, currentStyle, onClick}) => (
       onClick={onClick}
       currentStyle={currentStyle}
     />
-    <div id='buttons-select'>
-      <Size />
-      <Quantity />
-    </div>
-    <div id='buttons-add'>
-      <AddToBag />
-      <Watch />
+    <div id='buttons-container'>
+      <div id='buttons-select'>
+        <Size />
+        <Quantity />
+      </div>
+      <div id='buttons-add'>
+        <AddToBag />
+        <Watch />
+      </div>
     </div>
   </div>
 )
 
-const TopLeft = ({styles, currentStyle, image, setImage, changeView}) => (
+const TopLeft = ({styles, currentStyle, image, setImage, changeView, view}) => (
   <div id='top-left'>
-  <Carousel
-    styles={styles}
-    currentStyle={currentStyle}
-    image={image}
-    setImage={setImage}
-    changeView={changeView}
-  />
-</div>
+    <Carousel
+      styles={styles}
+      currentStyle={currentStyle}
+      image={image}
+      setImage={setImage}
+      view={view}
+      changeView={changeView}
+    />
+  </div>
 )
 
 const BottomHalf = ({product}) => (
@@ -99,8 +102,8 @@ const Overview = ({ id }) => {
     /*setImage(0)*/
   }
 
-  const changeView = () => {
-    setView('expanded')
+  const changeView = (viewType) => {
+    setView(viewType)
   }
 
   const calculateRating = (reviewData) => {
@@ -125,15 +128,18 @@ const Overview = ({ id }) => {
             currentStyle={currentStyle}
             image={image}
             setImage={setImage}
+            view={view}
             changeView={changeView}
           />
-          <TopRight
-            styles={styles}
-            onClick={handleOnClick}
-            currentStyle={currentStyle}
-            product={product}
-            rating={calculateRating(reviews)}
-          />
+          {view === 'default' &&
+            <TopRight
+              styles={styles}
+              onClick={handleOnClick}
+              currentStyle={currentStyle}
+              product={product}
+              rating={calculateRating(reviews)}
+            />
+          }
         </div>
         <BottomHalf
           product={product}

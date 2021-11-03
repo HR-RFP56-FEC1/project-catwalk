@@ -21,6 +21,10 @@
   font-family: 'Shadows Into Light', cursive;
 }
 
+#overview {
+  width: 1200px;
+}
+
 #logo {
   display: flex;
   background-image: url('img/header.jpeg');
@@ -32,7 +36,7 @@
   font-family: 'Caveat', cursive;
   font-size: 70px;
   color: white;
-  padding-left: 40px;
+  /* padding-left: 40px; */
   align-items: center;
   justify-content: center;
 }
@@ -62,13 +66,18 @@
   flex-direction: row;
   justify-content: space-between;
   width: 1200px;
+  /* height: 600px; */
   padding-bottom: 60px;
+}
+
+#top-left {
+  height: 600px;
 }
 
 #top-right {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 350px;
 }
 
 #top-right, #bottom-right {
@@ -77,7 +86,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 
 /* Track */
@@ -96,26 +105,43 @@
   background: #555;
 }
 
-#main-image-container {
+#gallery-container-default-view, #gallery-container-expanded-view {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: rgb(230, 230, 230);
-  width: 800px;
   height: 600px;
   position: relative;
   overflow: hidden;
-  /* overflow: hidden; */
+}
+
+#gallery-container-default-view {
+  width: 800px;
+}
+
+#gallery-container-expanded-view {
+  width: 1200px;
 }
 
 #main-image {
-  position: absolute;
   object-fit: cover;
-  /* left: -800px;
-  transition: 1s; */
-  /* cursor: -moz-zoom-in;
-  cursor: -webkit-zoom-in; */
+  width: 100%;
+  /* height: 600px; */
   cursor: zoom-in;
+}
+
+#expand-icon, #collapse-icon {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(1px 1px 2px #303030);
+  position: absolute;
+}
+
+#expand-icon {
+  top: 10px;
+  left: 770px;
+}
+
+#collapse-icon {
+  top: 10px;
+  left: 1170px;
 }
 
 #thumbs-outer-container {
@@ -123,7 +149,6 @@
   flex-direction: row;
   position: absolute;
   direction: ltr;
-  height: 100%;
 }
 
 #thumbs {
@@ -135,23 +160,24 @@
   align-items: center;
   direction: rtl;
   overflow-x: hidden;
-  padding-bottom: 15px;
+  padding: 7.5px 0px 7.5px 0px;
 }
 
 #thumb-container {
-  width: 70px;
-  height: 70px;
-  padding: 15px 0px 0px 0px;
+  padding: 7.5px 0px 7.5px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 #thumb, #thumb-highlight {
   object-fit: cover;
   width: 70px;
   height: 70px;
+  vertical-align: bottom;
 }
 
 #thumb-highlight {
   border-left: 15px solid hotpink;
+  border-right: 15px solid transparent;
 }
 
 #description-container {
@@ -174,7 +200,7 @@
   font-size: 15px;
 }
 
-#arrow-left-bg, #arrow-right-bg {
+#arrow-left-bg, #arrow-right-bg, #arrow-left-bg-expanded, #arrow-right-bg-expanded {
   background-color: rgb(255, 255, 255, 0.2);
   width: 70px;
   height: 70px;
@@ -185,14 +211,24 @@
   position: absolute;
 }
 
+#arrow-left-bg, #arrow-right-bg, #arrow-left-bg-expanded, #arrow-right-bg-expanded {
+  top: 250px;
+}
+
 #arrow-left-bg {
   left: 130px;
-  top: 250px;
 }
 
 #arrow-right-bg {
   left: 700px;
-  top: 250px;
+}
+
+#arrow-left-bg-expanded {
+  left: 25px;
+}
+
+#arrow-right-bg-expanded {
+  left: 1100px;
 }
 
 #arrow-left, #arrow-right {
@@ -207,16 +243,6 @@
 
 #arrow-right {
   padding-left: 15px;
-}
-
-#arrow-container-left, #arrow-container-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: transparent;
-  height: 600px;
-  width: 50px;
-  padding: 0px 10px 0px 0px;
 }
 
 #bottom-half {
@@ -319,11 +345,19 @@
   font-size: 12px;
 }
 
+#buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 #buttons-select, #buttons-add {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 0px 20px 0px;
+  /* align-items: stretch;
+  justify-content: stretch; */
 }
 
 #buttons-add {
@@ -339,12 +373,11 @@
 }
 
 #sizes {
-  width: 220px;
-  margin-right: 20px;
+  width: 230px;
 }
 
 #quantities {
-  width: 140px;
+  width: 100px;
 }
 
 #add-to-bag {
@@ -352,13 +385,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 280px;
-  margin-right: 20px;
+  width: 265px;
   text-align: left;
 }
 
 #watch {
-  width: 80px;
+  width: 65px;
 }
 
 #facts {
