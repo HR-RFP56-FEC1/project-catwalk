@@ -64,7 +64,12 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
           () => changeView('default')
         }
       />
-      <div id='thumbs-outer-container'>
+      <div id=
+        {view === 'default' ?
+        'thumbs-outer-container' :
+        'thumbs-outer-container-expanded'
+        }
+      >
         <Thumbs
           style={styles.results[currentStyle]}
           onClick={onClickThumb}
@@ -102,37 +107,31 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
 const Thumbs = ({style, onClick, image, view}) => {
   return (
     <div>
-      {view === 'default' &&
-        <div id='thumbs'
-          // id={
-          //   style.photos.length > 7 ?
-          //   'thumbs-fadeout' :
-          //   'thumbs'
-          // }
-        >
-          {/* <div id='thumb-buffer-top'></div> */}
-          {style.photos.map((photo, i) =>
-          <Thumb
-            key={i}
-            thumb={photo.thumbnail_url}
-            index={i}
-            onClick={onClick}
-            image={image}
-          />)}
-          {style.photos.length > 7 && <div id='thumb-buffer-bottom'></div>}
-        </div>
-      }
+      <div id={view ==='default' ? 'thumbs' : 'thumbs-horizontal'}>
+        {style.photos.map((photo, i) =>
+        <Thumb
+          key={i}
+          thumb={photo.thumbnail_url}
+          index={i}
+          onClick={onClick}
+          image={image}
+          view={view}
+        />)}
+        {style.photos.length > 7 && <div id='thumb-buffer-bottom'></div>}
+      </div>
     </div>
   )
 }
 
-const Thumb = ({thumb, index, onClick, image}) => {
+const Thumb = ({thumb, index, onClick, image, view}) => {
   let thumbid;
-  if (index === image) {
-    thumbid = 'thumb-highlight'
-  } else {
-    thumbid = 'thumb'
+  if (view === 'default') {
+    index === image ? thumbid = 'thumb-highlight' : thumbid = 'thumb'
   }
+  if (view === 'expanded') {
+    index === image ? thumbid = 'thumb-highlight-expanded' : thumbid = 'thumb-expanded'
+  }
+
   return (
     <div id='thumb-container'>
       <img
