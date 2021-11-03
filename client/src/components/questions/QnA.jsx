@@ -15,7 +15,10 @@ const getQuestions = function(id) {
 
 const QnA = (props) => {
   const [results, setResults] = useState([]);
-  const [product_id, setId] = useState(40353);
+  // const [product_id, setId] = useState(40353);
+  // 40344 for many questions testing
+  const [product_id, setId] = useState(40344);
+
   // hard coded for now to get product with questions
   // const [product_id, setId] = useState(props.id);
   const handleResults = function(response) {
