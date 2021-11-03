@@ -7,7 +7,7 @@ import SortReview from './SortReview.jsx';
 import ReviewBox from './reviewBox/ReviewBox.jsx';
 import AddReview from './bottomButtons/AddReview.jsx';
 
-let id = '40355';
+let id = '40352';
 
 const getReviews = function(id) {
   var urlString = `/api/reviews/?product_id=${id}&count=100`;
@@ -44,13 +44,15 @@ var ReviewList = (props) => {
         <SortReview reviews={allReviews}/>
         <ReviewBox display={display} reviews={allReviews}/>
         <div className="review-bottom-buttons">
-
-          <div id="more-review">
-            <button id="more-review-btn" className="more-and-add-reviews-btn"
-              onClick={clickMoreReviews}>
-              MORE REVIEWS
-            </button>
-          </div>
+          {
+            allReviews.results.length > 2 &&
+            <div id="more-review">
+              <button id="more-review-btn" className="more-and-add-reviews-btn"
+                onClick={clickMoreReviews}>
+                MORE REVIEWS
+              </button>
+            </div>
+          }
 
           <AddReview />
         </div>
