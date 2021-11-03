@@ -5,13 +5,17 @@ import Question from './Question.jsx';
 const QuestionList = (props) => {
   const [search, setSearch] = useState('');
   const [sortedList, setDisplayList] = useState(props.questions.results);
-  const [displayAll, setDisplayAll] = useState(false);
+  const [displayCount, setDisplayCount] = useState(2);
+
   const handleSearch = function(text) {
     setSearch(text);
   };
-  const handleDisplayAll = function(e) {
+  const handleDisplayCount = function(e) {
     e.preventDefault();
-    setDisplayAll(true);
+    setDisplayCount(displayCount + 2);
+  };
+  const handleAddQuestion = function(e) {
+    e.preventDefault();
   };
 
   // sort questions by helpfulness
@@ -45,21 +49,14 @@ const QuestionList = (props) => {
   // function to render 4 or all questions
   const displayListFunc = function() {
     if (sortedList) {
-      if (displayAll) {
-        return (sortedList.map(question => <Question key={"question" + question.question_id} question={question}/>));
-      } else {
-        
-        const temp = [];
-        for (let i = 0; (i < sortedList.length && i < 4); i++) {
-          temp.push(sortedList[i]);
-        }
-        return (temp.map(question => <Question key={"question" + question.question_id} question={question}/>));
+      const temp = [];
+      for (let i = 0; (i < sortedList.length && i < displayCount); i++) {
+        temp.push(sortedList[i]);
       }
-      
+      return (temp.map(question => <Question key={"question" + question.question_id} question={question}/>));
     }
   };
   
-
   useEffect(() => {
     questionSorter();
   }, [props, search])
@@ -75,10 +72,9 @@ const QuestionList = (props) => {
       </div>
       <div className='qListBottomBar'>
         {
-          (sortedList && sortedList.length > 4) && <input className='moreQuestionsButton' type="button" value="More Answered Questions" onClick={handleDisplayAll}/>
+          (sortedList && sortedList.length > displayCount) && <input className='moreQuestionsButton' type="button" value="More Answered Questions" onClick={handleDisplayCount}/>
         }
-        <div className='moreQuestions'>MORE ANSWERED QUESTIONS</div>
-        <div className='addQuestion'>ADD A QUESTION</div>
+        <input className='addQuestionButton' type="button" value="Add a Question" onClick={handleAddQuestion}/>
       </div>
     </div>
   );

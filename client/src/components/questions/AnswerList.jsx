@@ -8,7 +8,6 @@ import questions from '../../../sample/questions.js';
 // sort by helpfulness
 // if username === seller, put at top
 
-
 const AnswerList = (props) => {
   const [displayCount, setDisplayCount] = useState(2);
   const [displayList, setDisplayList] = useState(null);
@@ -72,7 +71,6 @@ const AnswerList = (props) => {
           (Object.keys(props.answers).length > 2) ? ((displayCount < Object.keys(props.answers).length) ? <input className='moreAnswersButton' type="button" value="See more answers" onClick={moreAnswersEvent}/>:
             <input className='collapseAnswersButton' type="button" value="Collapse Answers" onClick={collapseAnswersEvent}/>):
             <div/>
-          
         }
       </div>
     </div>
