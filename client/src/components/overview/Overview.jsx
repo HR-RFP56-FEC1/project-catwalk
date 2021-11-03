@@ -101,7 +101,7 @@ const Overview = ({ id }) => {
     /*setImage(0)*/
   }
 
-  const changeView = (viewType) => {
+  const changeView = (viewType, direction) => {
     if (viewType === 'expanded') {
       setView('magnify')
     } else {

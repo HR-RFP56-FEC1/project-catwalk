@@ -119,6 +119,8 @@
 #gallery-container-expanded-view {
   width: 1200px;
   flex-direction: column;
+
+  /* overflow: hidden; */
 }
 
 #main-image {
@@ -129,6 +131,9 @@
 }
 
 #main-image-zoomed {
+  object-fit: cover;
+  width: 1200px;
+  height: 600px;
   transform: scale(2.5);
 }
 
