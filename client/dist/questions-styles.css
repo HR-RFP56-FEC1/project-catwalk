@@ -35,7 +35,13 @@
   padding-left: 10px;
 }
 
-.answerbottombor {
+.answerBottomBar {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+.answerReport{
   display: flex;
   flex-direction: row;
   align-items: left;
@@ -69,6 +75,7 @@
 
 .question {
   padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .qListBottomBar {
