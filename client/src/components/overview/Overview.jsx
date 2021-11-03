@@ -102,7 +102,11 @@ const Overview = ({ id }) => {
   }
 
   const changeView = (viewType) => {
-    setView(viewType)
+    if (viewType === 'expanded') {
+      setView('magnify')
+    } else {
+      setView('expanded')
+    }
   }
 
   const calculateRating = (reviewData) => {

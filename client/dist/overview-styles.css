@@ -128,8 +128,8 @@
   cursor: zoom-in;
 }
 
-#main-imagem:hover {
-  transform: scale(1.5);
+#main-image-zoomed {
+  transform: scale(2.5);
 }
 
 #expand-icon, #collapse-icon {

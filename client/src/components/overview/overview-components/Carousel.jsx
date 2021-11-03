@@ -5,12 +5,9 @@ import styles from '../../../../sample/styles.js'
 const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
   useEffect(() => {
     let thumbWindow = document.getElementById('thumbs')
-
     // if (styles.results[currentStyle].photos.length > 7) {
-
     //   thumbWindow = document.getElementById('thumbs-fadeout')
     // } else {
-
     //   thumbWindow = document.getElementById('thumbs')
     // }
     // window.scrollTo(0,document.body.scrollHeight);
@@ -43,31 +40,31 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
     setImage(newIndex)
   }
 
+  // onClickMagnify = () => {
+
+  // }
+
   return (
     <span id=
-      {view === 'default' ?
-        'gallery-container-default-view' :
-        'gallery-container-expanded-view'
+      {view === 'expanded' || view === 'magnify' ?
+        'gallery-container-expanded-view' :
+        'gallery-container-default-view'
       }
     >
       <img
         id='main-image'
         src={styles.results[currentStyle].photos[image].url}
-        onClick={() => changeView('expanded')}
+        onClick={() => changeView(view)}
       />
       <img
         id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
         src={view === 'default' ? 'img/expand.png' : 'img/collapse.png'}
-        onClick={
-          view === 'default' ?
-          () => changeView('expanded') :
-          () => changeView('default')
-        }
+        onClick={() => changeView(view)}
       />
       <div id=
-        {view === 'default' ?
-        'thumbs-outer-container' :
-        'thumbs-outer-container-expanded'
+        {view === 'expanded' || view === 'magnify' ?
+        'thumbs-outer-container-expanded' :
+        'thumbs-outer-container'
         }
       >
         <Thumbs
@@ -107,7 +104,7 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
 const Thumbs = ({style, onClick, image, view}) => {
   return (
     <div>
-      <div id={view ==='default' ? 'thumbs' : 'thumbs-horizontal'}>
+      <div id={(view ==='expanded' || view === 'magnify') ? 'thumbs-horizontal' : 'thumbs'}>
         {style.photos.map((photo, i) =>
         <Thumb
           key={i}
@@ -128,7 +125,7 @@ const Thumb = ({thumb, index, onClick, image, view}) => {
   if (view === 'default') {
     index === image ? thumbid = 'thumb-highlight' : thumbid = 'thumb'
   }
-  if (view === 'expanded') {
+  else {
     index === image ? thumbid = 'thumb-highlight-expanded' : thumbid = 'thumb-expanded'
   }
 
