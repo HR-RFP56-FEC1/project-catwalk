@@ -52,14 +52,21 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
         'gallery-container-default-view'
       }
     >
+      {view !== 'magnify' &&
       <img
-        id={
-          view === 'default' || view === 'expanded' ?
-          'main-image' :
-          'main-image-zoomed'}
+        id='main-image'
         src={styles.results[currentStyle].photos[image].url}
         onClick={() => changeView(view, 'image')}
-      />
+      />}
+      {view === 'magnify' &&
+        <div id='magnify-container'>
+          <img
+            id='main-image-zoomed'
+            src={styles.results[currentStyle].photos[image].url}
+            onClick={() => changeView(view, 'image')}
+          />
+        </div>
+      }
       {view !== 'magnify' &&
         <img
           id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
@@ -73,12 +80,14 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
         'thumbs-outer-container'
         }
       >
+      {view !== 'magnify' &&
         <Thumbs
           style={styles.results[currentStyle]}
           onClick={onClickThumb}
           image={image}
           view={view}
         />
+      }
       </div>
       {view !== 'magnify' &&
       <Arrows onClickArrow={onClickArrow} view={view} />}
