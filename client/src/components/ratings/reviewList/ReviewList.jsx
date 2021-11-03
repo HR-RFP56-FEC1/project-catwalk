@@ -22,7 +22,7 @@ const getReviews = function(id) {
 var ReviewList = (props) => {
   const [allReviews, setReviews] = useState(null);
   const [display, setDisplay] = useState(2);
-  const [sortBy, setSort] = useState('date');
+  const [sortBy, setSort] = useState('relevance');
 
   useEffect(() => {
     getReviews(props.id)
@@ -30,13 +30,41 @@ var ReviewList = (props) => {
         // console.log('reviews data:', res.data);
         let reviewsData = res.data.results;
         let current = moment().startOf('day');
+
+        let minDateDiff = 100000;
+        let maxDateDiff = 0;
+        let minHelpful = 100000;
+        let maxHelpful = 0;
+
         for (var i = 0; i < reviewsData.length; i++) {
           let dateOfReview = moment(reviewsData[i].date, "YYYY-MM-DD");
           let dateDiff = current.diff(dateOfReview, 'days');
           reviewsData[i].dateDiff = dateDiff;
           reviewsData[i].helpful = reviewsData[i].helpfulness * -1;
+
+          if (reviewsData[i].dateDiff <= minDateDiff) {
+            minDateDiff = reviewsData[i].dateDiff;
+          }
+          if (reviewsData[i].dateDiff > maxDateDiff) {
+            maxDateDiff = reviewsData[i].dateDiff;
+          }
+
+          if (reviewsData[i].helpfulness <= minHelpful) {
+            minHelpful = reviewsData[i].helpfulness;
+          }
+          if (reviewsData[i].helpfulness > maxHelpful) {
+            maxHelpful = reviewsData[i].helpfulness;
+          }
         }
 
+        let dateDiffRange = maxDateDiff - minDateDiff;
+        let helpfulRange = maxHelpful - minHelpful;
+        // console.log('dateDiff', minDateDiff, maxDateDiff);
+        // console.log('helpfulness:', minHelpful, maxHelpful);
+
+        for (var i = 0; i < reviewsData.length; i++) {
+          reviewsData[i].relevance = (reviewsData[i].dateDiff - minDateDiff)/dateDiffRange - (reviewsData[i].helpfulness - minHelpful)/helpfulRange;
+        }
         setReviews(_.sortBy(reviewsData, sortBy));
       })
   }, [])
