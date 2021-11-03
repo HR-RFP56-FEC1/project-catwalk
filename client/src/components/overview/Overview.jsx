@@ -88,7 +88,6 @@ const Overview = ({ id }) => {
 
       axios(GetProductReviews(id))
       .then(response => {
-        console.log(response.data)
         setReviews(response.data)
       })
       .catch(err => {

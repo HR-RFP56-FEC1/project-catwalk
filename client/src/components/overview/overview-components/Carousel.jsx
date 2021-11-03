@@ -4,11 +4,20 @@ import styles from '../../../../sample/styles.js'
 
 const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
   useEffect(() => {
+    let thumbWindow = document.getElementById('thumbs')
+    // window.scrollTo(0,document.body.scrollHeight);
     if (view === 'default') {
       let focusThumb = document.getElementById('thumb-highlight')
-      focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
+      if (image === styles.results[currentStyle].photos.length - 1) {
+        thumbWindow.scrollTo(0, thumbs.scrollHeight)
+      } else if (image === 0) {
+        thumbWindow.scrollTo(0, 0)
+      }
+      else {
+        focusThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start'})
+      }
     }
-  }, [image])
+  }, [image, view])
 
   const onClickThumb = (index) => {
     setImage(index)
@@ -87,6 +96,7 @@ const Thumbs = ({style, onClick, image, view}) => {
     <div>
       {view === 'default' &&
         <div id='thumbs'>
+          {/* <div id='thumb-buffer-top'></div> */}
           {style.photos.map((photo, i) =>
           <Thumb
             key={i}
@@ -95,6 +105,7 @@ const Thumbs = ({style, onClick, image, view}) => {
             onClick={onClick}
             image={image}
           />)}
+          <div id='thumb-buffer-bottom'></div>
         </div>
       }
     </div>

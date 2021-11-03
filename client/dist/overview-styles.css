@@ -161,6 +161,14 @@
   direction: rtl;
   overflow-x: hidden;
   padding: 7.5px 0px 7.5px 0px;
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 97);
+}
+
+#thumb-buffer-top, #thumb-buffer-bottom {
+  min-width: 70px;
+  min-height: 100px;
+  vertical-align: bottom;
 }
 
 #thumb-container {
