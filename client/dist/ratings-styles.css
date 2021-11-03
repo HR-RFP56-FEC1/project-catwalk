@@ -32,24 +32,14 @@
 .overall-rating {
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 10px 0px;
   width: 400px;
 }
 
 .rating-dist {
+  background-color: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.rating-bar {
-  display: flex;
-  flex-direction: row;
-  padding: 10px 10px 10px 0px;
-}
-
-.rating-bar-text {
-  flex-basis: 30%;
 }
 
 .review-list {
@@ -73,14 +63,12 @@
   margin-right: 20px;
 }
 
-.rating-dist {
-  flex-basis: 35%;
-  background-color: none;
-  margin-bottom: 10%;
-}
-
-.rating-bar-text {
-  flex-basis: 30%;
+.rating-bar {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0px 10px 0px;
+  justify-content: space-between;
+  margin-right: 60px;
 }
 
 .rating-perc-diagram {
@@ -96,6 +84,10 @@
 
 .rating-perc-diagram::-webkit-progress-value {
   background: var(--gray);
+}
+
+.rating-bar-text, .rating-bar-diagram, .rating-bar-count {
+  cursor:pointer;
 }
 
 .product-breakdown {

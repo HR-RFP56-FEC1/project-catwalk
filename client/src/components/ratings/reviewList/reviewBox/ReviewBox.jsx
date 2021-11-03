@@ -3,7 +3,7 @@ import ReviewEntry from './ReviewEntry.jsx';
 
 var ReviewBox = (props) => {
   // console.log('what was passed in?', props.reviews);
-  let toDisplay = [...Array(props.display).keys()];
+  let toDisplay = [...Array(props.count).keys()];
   // console.log('number of reviews to show:', props.display, toDisplay);
 
   return (

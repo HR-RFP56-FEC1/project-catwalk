@@ -8,6 +8,8 @@ var SortReview = (props) => {
       props.changeSort('dateDiff');
     } else if (e.target.value === 'helpful') {
       props.changeSort('helpful')
+    } else if (e.target.value === 'relevance') {
+      props.changeSort('relevance');
     }
   }
 
