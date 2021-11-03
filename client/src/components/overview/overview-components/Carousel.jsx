@@ -3,7 +3,62 @@ import {useState, useEffect} from 'react'
 import styles from '../../../../sample/styles.js'
 import Arrows from './NavigationArrows.jsx'
 
+
+const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
+  const [imageX, setImageX] = useState()
+  const [imageY, setImageY] = useState()
+
+  // useEffect(()=> {
+    // setImageX(e.currentTarget.offsetWidth)
+    // setImageY(e.currentTarget.offsetHeight)
+  // }, [imageX, imageY])
+
+
+  const logCoords = (e) => {
+    setImageX(e.currentTarget.offsetWidth)
+    setImageY(e.currentTarget.offsetHeight)
+    // console.log(e.screenX)
+    // console.log(e.screenY)
+    //transform: translate
+    // console.log(e.currentTarget.offsetWidth)
+    // console.log(e.currentTarget.offsetHeight)
+    e.currentTarget.style.transform = 'scale(2.5)'
+  }
+
+  return (
+    <div>
+      {view === 'magnify' &&
+        <div
+          id='magnify-container'
+          >
+          <img
+            id='main-image-zoomed'
+            // onMouseMove={logCoords}
+            onMouseOver={logCoords}
+            src={styles.results[currentStyle].photos[image].url}
+            onClick={() => changeView(view, 'image')}
+            // width={(imageX * 2.5).toString()}
+            // height={(imageY * 2.5).toString()}
+          />
+        </div>
+      }
+    </div>
+  )
+}
+
+
+
+
 const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
+
+  const [mouseX, setMouseX] = useState()
+  const [mouseY, setMouseY] = useState()
+
+  useEffect(()=> {
+
+  }, [mouseX, mouseY])
+
+
   useEffect(() => {
     let thumbWindow = document.getElementById('thumbs')
     // if (styles.results[currentStyle].photos.length > 7) {
@@ -58,15 +113,13 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
         src={styles.results[currentStyle].photos[image].url}
         onClick={() => changeView(view, 'image')}
       />}
-      {view === 'magnify' &&
-        <div id='magnify-container'>
-          <img
-            id='main-image-zoomed'
-            src={styles.results[currentStyle].photos[image].url}
-            onClick={() => changeView(view, 'image')}
-          />
-        </div>
-      }
+      <Zoomed
+        styles={styles}
+        currentStyle={currentStyle}
+        image={image}
+        changeView={changeView}
+        view={view}
+      />
       {view !== 'magnify' &&
         <img
           id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
