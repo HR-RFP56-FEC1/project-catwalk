@@ -1,16 +1,14 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import styles from '../../../../sample/styles.js'
+import Arrows from './NavigationArrows.jsx'
 
 const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
   useEffect(() => {
     let thumbWindow = document.getElementById('thumbs')
-
     // if (styles.results[currentStyle].photos.length > 7) {
-
     //   thumbWindow = document.getElementById('thumbs-fadeout')
     // } else {
-
     //   thumbWindow = document.getElementById('thumbs')
     // }
     // window.scrollTo(0,document.body.scrollHeight);
@@ -43,31 +41,36 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
     setImage(newIndex)
   }
 
+  // onClickMagnify = () => {
+
+  // }
+
   return (
     <span id=
-      {view === 'default' ?
-        'gallery-container-default-view' :
-        'gallery-container-expanded-view'
+      {view === 'expanded' || view === 'magnify' ?
+        'gallery-container-expanded-view' :
+        'gallery-container-default-view'
       }
     >
       <img
-        id='main-image'
+        id={
+          view === 'default' || view === 'expanded' ?
+          'main-image' :
+          'main-image-zoomed'}
         src={styles.results[currentStyle].photos[image].url}
-        onClick={() => changeView('expanded')}
+        onClick={() => changeView(view, 'image')}
       />
-      <img
-        id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
-        src={view === 'default' ? 'img/expand.png' : 'img/collapse.png'}
-        onClick={
-          view === 'default' ?
-          () => changeView('expanded') :
-          () => changeView('default')
-        }
-      />
+      {view !== 'magnify' &&
+        <img
+          id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
+          src={view === 'default' ? 'img/expand.png' : 'img/collapse.png'}
+          onClick={() => changeView(view, 'sizer')}
+        />
+      }
       <div id=
-        {view === 'default' ?
-        'thumbs-outer-container' :
-        'thumbs-outer-container-expanded'
+        {view === 'expanded' || view === 'magnify' ?
+        'thumbs-outer-container-expanded' :
+        'thumbs-outer-container'
         }
       >
         <Thumbs
@@ -77,29 +80,8 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
           view={view}
         />
       </div>
-      <div id=
-        {view === 'default' ?
-        'arrow-left-bg' :
-        'arrow-left-bg-expanded'
-        }
-      >
-        <img
-          src='./img/left-arrow.png'
-          onClick={() => onClickArrow(-1)}
-          id='arrow-left'
-        />
-      </div>
-      <div id=
-        {view === 'default' ?
-        'arrow-right-bg' :
-        'arrow-right-bg-expanded'
-        }>
-        <img
-          src='./img/right-arrow.png'
-          onClick={() => onClickArrow(1)}
-          id='arrow-right'
-        />
-      </div>
+      {view !== 'magnify' &&
+      <Arrows onClickArrow={onClickArrow} view={view} />}
     </span>
   )
 }
@@ -107,7 +89,7 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
 const Thumbs = ({style, onClick, image, view}) => {
   return (
     <div>
-      <div id={view ==='default' ? 'thumbs' : 'thumbs-horizontal'}>
+      <div id={(view ==='expanded' || view === 'magnify') ? 'thumbs-horizontal' : 'thumbs'}>
         {style.photos.map((photo, i) =>
         <Thumb
           key={i}
@@ -128,7 +110,7 @@ const Thumb = ({thumb, index, onClick, image, view}) => {
   if (view === 'default') {
     index === image ? thumbid = 'thumb-highlight' : thumbid = 'thumb'
   }
-  if (view === 'expanded') {
+  else {
     index === image ? thumbid = 'thumb-highlight-expanded' : thumbid = 'thumb-expanded'
   }
 
@@ -145,3 +127,50 @@ const Thumb = ({thumb, index, onClick, image, view}) => {
 
 export default Carousel
 export {Thumbs, Thumb}
+
+
+// / Extract the URL
+// zoomBoxes.forEach(function(image) {
+//   var imageCss = window.getComputedStyle(image, false),
+//     imageUrl = imageCss.backgroundImage
+//                        .slice(4, -1).replace(/['"]/g, '');
+
+//   // Get the original source image
+//   var imageSrc = new Image();
+//   imageSrc.onload = function() {
+//     var imageWidth = imageSrc.naturalWidth,
+//         imageHeight = imageSrc.naturalHeight,
+//         ratio = imageHeight / imageWidth;
+
+//     // Adjust the box to fit the image and to adapt responsively
+//     var percentage = ratio * 100 + '%';
+//     image.style.paddingBottom = percentage;
+
+//     // Zoom and scan on mousemove
+//     image.onmousemove = function(e) {
+//       // Get the width of the thumbnail
+//       var boxWidth = image.clientWidth,
+//           // Get the cursor position, minus element offset
+//           x = e.pageX - this.offsetLeft,
+//           y = e.pageY - this.offsetTop,
+//           // Convert coordinates to % of elem. width & height
+//           xPercent = x / (boxWidth / 100) + '%',
+//           yPercent = y / (boxWidth * ratio / 100) + '%';
+
+//       // Update styles w/actual size
+//       Object.assign(image.style, {
+//         backgroundPosition: xPercent + ' ' + yPercent,
+//         backgroundSize: imageWidth + 'px'
+//       });
+//     };
+
+//     // Reset when mouse leaves
+//     image.onmouseleave = function(e) {
+//       Object.assign(image.style, {
+//         backgroundPosition: 'center',
+//         backgroundSize: 'cover'
+//       });
+//     };
+//   }
+//   imageSrc.src = imageUrl;
+// });

@@ -119,6 +119,7 @@
 #gallery-container-expanded-view {
   width: 1200px;
   flex-direction: column;
+  object-fit: cover;
 }
 
 #main-image {
@@ -128,8 +129,12 @@
   cursor: zoom-in;
 }
 
-#main-imagem:hover {
-  transform: scale(1.5);
+#main-image-zoomed {
+  object-fit: cover;
+  width: 1200px;
+  height: 600px;
+  overflow: hidden;
+  transform: scale(2.5);
 }
 
 #expand-icon, #collapse-icon {

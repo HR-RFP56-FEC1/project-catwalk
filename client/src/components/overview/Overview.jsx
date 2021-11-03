@@ -101,8 +101,23 @@ const Overview = ({ id }) => {
     /*setImage(0)*/
   }
 
-  const changeView = (viewType) => {
-    setView(viewType)
+  const changeView = (viewType, from) => {
+    if (from === 'sizer') {
+      if (viewType === 'expanded') {
+        setView('default')
+      } else {
+        setView('expanded')
+      }
+    }
+    if (from === 'image') {
+      if (viewType === 'default') {
+        setView('expanded')
+      } else if (viewType === 'expanded') {
+        setView('magnify')
+      } else {
+        setView('expanded')
+      }
+    }
   }
 
   const calculateRating = (reviewData) => {
