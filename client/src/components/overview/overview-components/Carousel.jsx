@@ -58,13 +58,13 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
           'main-image' :
           'main-image-zoomed'}
         src={styles.results[currentStyle].photos[image].url}
-        onClick={() => changeView(view)}
+        onClick={() => changeView(view, 'image')}
       />
       {view !== 'magnify' &&
         <img
           id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
           src={view === 'default' ? 'img/expand.png' : 'img/collapse.png'}
-          onClick={() => changeView(view)}
+          onClick={() => changeView(view, 'sizer')}
         />
       }
       <div id=
