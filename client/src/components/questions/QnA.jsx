@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Qsearch from './Qsearch.jsx';
 import QuestionList from './QuestionList.jsx';
 import axios from 'axios';
 import questions from '../../../sample/questions.js';

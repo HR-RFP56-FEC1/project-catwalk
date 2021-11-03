@@ -2,9 +2,9 @@ import React, { useState, useEffect }  from 'react';
 import Question from './Question.jsx';
 
 
-const QuestionList = (props) => {
+const QuestionList = ({questions}) => {
   const [search, setSearch] = useState('');
-  const [sortedList, setDisplayList] = useState(props.questions.results);
+  const [sortedList, setDisplayList] = useState(questions.results);
   const [displayCount, setDisplayCount] = useState(2);
 
   const handleSearch = function(text) {
@@ -22,23 +22,23 @@ const QuestionList = (props) => {
   // also filter by search criteria if length of search >= 3
   const questionSorter = function() {
     var sorted = [];
-    if (props.questions.results && props.questions.results.length > 0) {
-      for (var i = 0; i < props.questions.results.length; i++) {
-        if (search.length < 3 || (props.questions.results[i].question_body.toLowerCase().indexOf(search.toLowerCase()) >= 0)) {
+    if (questions.results && questions.results.length > 0) {
+      for (var i = 0; i < questions.results.length; i++) {
+        if (search.length < 3 || (questions.results[i].question_body.toLowerCase().indexOf(search.toLowerCase()) >= 0)) {
           if (sorted.length > 0) {
             var inserted = false;
             for (var j = 0; j < sorted.length; j++) {
-              if (props.questions.results[i].helpfulness > sorted[j].helpfulness) {
-                sorted.splice(j, 0, props.questions.results[i]);
+              if (questions.results[i].helpfulness > sorted[j].helpfulness) {
+                sorted.splice(j, 0, questions.results[i]);
                 inserted = true;
                 break;
               }
             }
             if (!inserted) {
-              sorted.push(props.questions.results[i]);
+              sorted.push(questions.results[i]);
             }
           } else {
-              sorted.push(props.questions.results[i]);
+              sorted.push(questions.results[i]);
           }
         }
       }
@@ -59,7 +59,7 @@ const QuestionList = (props) => {
   
   useEffect(() => {
     questionSorter();
-  }, [props, search])
+  }, [questions, search])
 
   return (
     <div className='questionList'>

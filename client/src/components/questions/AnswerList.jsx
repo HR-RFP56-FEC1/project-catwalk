@@ -8,7 +8,7 @@ import questions from '../../../sample/questions.js';
 // sort by helpfulness
 // if username === seller, put at top
 
-const AnswerList = (props) => {
+const AnswerList = ({answers}) => {
   const [displayCount, setDisplayCount] = useState(2);
   const [displayList, setDisplayList] = useState(null);
   const [sortedList, setSortedList] = useState(null);
@@ -16,21 +16,21 @@ const AnswerList = (props) => {
   const sortAnswers = function() {
     var sorted = [];
   
-    var ids = Object.keys(props.answers);
+    var ids = Object.keys(answers);
   
     if (ids.length > 0) {
-      sorted.push(props.answers[ids[0]]);
+      sorted.push(answers[ids[0]]);
       for (var i = 1; i < ids.length; i++) {
         var inserted = false;
         for (var j = 0; j < sorted.length; j++) {
-          if (props.answers[ids[i]].helpfulness > sorted[j].helpfulness || props.answers[ids[i]].answerer_name === "Seller") {
-            sorted.splice(j, 0, props.answers[ids[i]]);
+          if (answers[ids[i]].helpfulness > sorted[j].helpfulness || answers[ids[i]].answerer_name === "Seller") {
+            sorted.splice(j, 0, answers[ids[i]]);
             inserted = true;
             break;
           }
         }
         if (!inserted) {
-          sorted.push(props.answers[ids[i]]);
+          sorted.push(answers[ids[i]]);
         }
       }
     }
@@ -58,7 +58,7 @@ const AnswerList = (props) => {
   }
 
   useEffect(() => {updateDisplay()}, [displayCount, sortedList]);
-  useEffect(() => {sortAnswers()}, [props]);
+  useEffect(() => {sortAnswers()}, [answers]);
 
   return (
     <div className='answerList'>
@@ -68,7 +68,7 @@ const AnswerList = (props) => {
           displayList ? displayList: <div>loading answers...</div>
         }
         {
-          (Object.keys(props.answers).length > 2) ? ((displayCount < Object.keys(props.answers).length) ? <input className='moreAnswersButton' type="button" value="See more answers" onClick={moreAnswersEvent}/>:
+          (Object.keys(answers).length > 2) ? ((displayCount < Object.keys(answers).length) ? <input className='moreAnswersButton' type="button" value="See more answers" onClick={moreAnswersEvent}/>:
             <input className='collapseAnswersButton' type="button" value="Collapse Answers" onClick={collapseAnswersEvent}/>):
             <div/>
         }
