@@ -5,6 +5,14 @@ import styles from '../../../../sample/styles.js'
 const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
   useEffect(() => {
     let thumbWindow = document.getElementById('thumbs')
+
+    // if (styles.results[currentStyle].photos.length > 7) {
+
+    //   thumbWindow = document.getElementById('thumbs-fadeout')
+    // } else {
+
+    //   thumbWindow = document.getElementById('thumbs')
+    // }
     // window.scrollTo(0,document.body.scrollHeight);
     if (view === 'default') {
       let focusThumb = document.getElementById('thumb-highlight')
@@ -95,7 +103,13 @@ const Thumbs = ({style, onClick, image, view}) => {
   return (
     <div>
       {view === 'default' &&
-        <div id='thumbs'>
+        <div id='thumbs'
+          // id={
+          //   style.photos.length > 7 ?
+          //   'thumbs-fadeout' :
+          //   'thumbs'
+          // }
+        >
           {/* <div id='thumb-buffer-top'></div> */}
           {style.photos.map((photo, i) =>
           <Thumb
@@ -105,7 +119,7 @@ const Thumbs = ({style, onClick, image, view}) => {
             onClick={onClick}
             image={image}
           />)}
-          <div id='thumb-buffer-bottom'></div>
+          {style.photos.length > 7 && <div id='thumb-buffer-bottom'></div>}
         </div>
       }
     </div>

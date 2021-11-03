@@ -127,6 +127,10 @@
   cursor: zoom-in;
 }
 
+#main-imagem:hover {
+  transform: scale(1.5);
+}
+
 #expand-icon, #collapse-icon {
   width: 20px;
   height: 20px;
@@ -151,7 +155,7 @@
   direction: ltr;
 }
 
-#thumbs {
+#thumbs, #thumbs-fadeout {
   display: flex;
   flex-direction: column;
   width: 100px;
@@ -164,6 +168,11 @@
   -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
   mask-image: linear-gradient(to bottom, black 70%, transparent 97);
 }
+
+/* #thumbs-fadeout {
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 97);
+} */
 
 #thumb-buffer-top, #thumb-buffer-bottom {
   min-width: 70px;
