@@ -16,28 +16,25 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
-  flex-wrap: wrap;
+  width: 1200px;
   height: 800px;
 }
 
 #rating-headline {
   height: 25px;
   background-color: none;
-  align-self: stretch;
-
+  margin-bottom: 10px;
 }
 .rating-box {
   display: flex;
   flex-direction: row;
-  align-self: stretch;
-  flex: 1 1 auto;
 }
 
 .overall-rating {
   display: flex;
   flex-direction: column;
-  flex-basis: 25%;
+  padding: 10px 10px 10px 0px;
+  width: 600px;
 }
 
 .rating-dist {
@@ -49,6 +46,7 @@
 .rating-bar {
   display: flex;
   flex-direction: row;
+  padding: 10px 10px 10px 0px;
 }
 
 .rating-bar-text {
