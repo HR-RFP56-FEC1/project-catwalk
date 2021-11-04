@@ -5,8 +5,8 @@ import Arrows from './NavigationArrows.jsx'
 
 
 const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
-  const [imageX, setImageX] = useState(0)
-  const [imageY, setImageY] = useState(0)
+  const [mouseX, setMouseX] = useState(0)
+  const [mouseY, setMouseY] = useState(0)
 
   // useEffect(()=> {
     // setImageX(e.currentTarget.offsetWidth)
@@ -15,18 +15,31 @@ const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
 
 
   const magnifyScale = (e) => {
-    setImageX(e.currentTarget.offsetWidth)
-    setImageY(e.currentTarget.offsetHeight)
+    // console.log('width: ', e.currentTarget.offsetWidth)
+    // console.log('height: ', e.currentTarget.offsetHeight)
+    //1650x x 1100y
+
+    //left, right
+    //100-1300
+
+    //top, bottom
+    //130-730
+
     e.currentTarget.style.transform = 'scale(2.5)'
   }
 
   const getMouseCoords = (e) => {
     // console.log(e.screenX)
     // console.log(e.screenY)
-    // console.log(e.clientX)
-    // console.log(e.clientY)
-    setImageX(e.clientX)
-    setImageY(e.clientY)
+    console.log('X ', e.clientX)
+    console.log('Y ', e.clientY)
+
+    //1.5x ratio
+
+    setMouseX((e.clientX))
+    setMouseY((e.clientY))
+
+    // image height / 600
   }
 
   return (
@@ -41,7 +54,7 @@ const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
             onMouseOver={magnifyScale}
             src={styles.results[currentStyle].photos[image].url}
             onClick={() => changeView(view, 'image')}
-            style={{position: 'relative', left: -imageX, top: -imageY}}
+            style={{position: 'relative', left: -mouseX, top: -mouseY}}
           />
         </div>
       }
@@ -49,18 +62,7 @@ const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
   )
 }
 
-
-
-
 const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => {
-
-  const [mouseX, setMouseX] = useState()
-  const [mouseY, setMouseY] = useState()
-
-  useEffect(()=> {
-
-  }, [mouseX, mouseY])
-
 
   useEffect(() => {
     let thumbWindow = document.getElementById('thumbs')
@@ -98,10 +100,6 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
     }
     setImage(newIndex)
   }
-
-  // onClickMagnify = () => {
-
-  // }
 
   return (
     <span id=
@@ -192,3 +190,4 @@ const Thumb = ({thumb, index, onClick, image, view}) => {
 
 export default Carousel
 export {Thumbs, Thumb}
+
