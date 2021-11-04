@@ -1,10 +1,10 @@
 #rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   color: var(--gray);
 }
 
 #review-entry-username-date {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   color: var(--gray);
 }
 
@@ -131,7 +131,8 @@
 }
 
 .sort-review {
-  font-size: 30px;
+  font-size: larger;
+  font-weight: bold;
   flex-basis: 5%;
   background-color: none;
   display: flex;
@@ -140,7 +141,8 @@
 }
 
 #sort-review-by {
-  font-size: 30px;
+  font-size: larger;
+  font-weight: bold;
   cursor: pointer;
   border: none;
   background-color: none;
@@ -169,8 +171,14 @@
   margin-bottom: 20px;
 }
 
+#show-more-review-body-btn, #show-less-review-body-btn {
+  cursor: pointer;
+  color: rgb(180, 180, 180);
+}
+
 #review-summary {
-  font-size: 30px;
+  font-size: larger;
+  font-weight: bold;
 }
 
 .review-entry-top-row {

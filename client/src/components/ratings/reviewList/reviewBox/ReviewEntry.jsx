@@ -8,8 +8,13 @@ var ReviewEntry = (props) => {
   const [helpful, setHelpful] = useState(false);
   const [helpfulCount, setHelpfulCount] = useState(props.review.helpfulness);
   const [reported, setReported] = useState(false);
+  const [fullReview, setFullReview] = useState(false);
 
   let review = props.review;
+
+  const toggleReview = () => {
+    setFullReview(!fullReview);
+  }
 
   const voteHelpful = function() {
     var urlString = '/api/reviews/' + review.review_id + '/helpful';
@@ -70,13 +75,28 @@ var ReviewEntry = (props) => {
         {review.summary}
       </div>
       <div id="review-body">
-        {review.body}
+        {!fullReview && review.body.length > 250 ? review.body.substring(0, 250) + '...' : review.body}
+
+        {
+          !fullReview && review.body.length > 250 &&
+          <div onClick={toggleReview}>
+            <span id="show-more-review-body-btn">&#8595; Show more</span>
+          </div>
+        }
+
+        {
+          fullReview &&
+          <div onClick={toggleReview}>
+            <span id="show-less-review-body-btn">&#8593; Show less</span>
+          </div>
+        }
+
       </div>
 
       {
         review.recommend &&
         <div id="recommend-this-product">
-          &#10003; I recommend this product
+          <span>&#10003; I recommend this product</span>
         </div>
       }
 
