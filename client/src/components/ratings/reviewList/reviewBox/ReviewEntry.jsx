@@ -93,7 +93,7 @@ var ReviewEntry = (props) => {
       }
 
       <div className="review-entry-bottom-row">
-        Helpful? <u id="review-helpful-vote" style={{cursor:'pointer'}} onClick={clickVoteHelpful}>Yes</u> ({helpfulCount}) &nbsp;&nbsp;|&nbsp;&nbsp; <u id="review-report" style={{cursor:'pointer'}} onClick={clickReportReview}>Report</u>
+        Helpful? <u id="review-helpful-vote" style={{cursor:'pointer'}} onClick={clickVoteHelpful}>Yes</u> ({helpfulCount}) &nbsp;&nbsp;|&nbsp;&nbsp; <u id="review-report" style={{cursor:'pointer'}} onClick={clickReportReview}>{reported ? 'Reported' : 'Report'}</u>
       </div>
     </div>
   )
