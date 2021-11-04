@@ -16,7 +16,7 @@ var SortReview = (props) => {
   return (
     <div className="sort-review">
       <div>
-       {props.reviews.length} reviews, sorted by
+       {props.reviews.length} reviews, sorted by&nbsp;
       </div>
       <div>
         <label htmlFor="sort-review"></label>
