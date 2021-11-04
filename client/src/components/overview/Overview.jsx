@@ -67,7 +67,7 @@ const Overview = ({ id }) => {
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
   const [reviews, setReviews] = useState(sampleReviewMeta)
-  const [view, setView] = useState('default')
+  const [view, setView] = useState('magnify')
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -80,6 +80,7 @@ const Overview = ({ id }) => {
 
     axios(GetProductStyles(id))
       .then(response => {
+        console.log(response.data)
         setStyles(response.data)
       })
       .catch(err => {
