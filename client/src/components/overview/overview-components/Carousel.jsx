@@ -5,59 +5,34 @@ import Arrows from './NavigationArrows.jsx'
 
 
 const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
-  const [mouseX, setMouseX] = useState(0)
-  const [mouseY, setMouseY] = useState(0)
 
-  // useEffect(()=> {
-    // setImageX(e.currentTarget.offsetWidth)
-    // setImageY(e.currentTarget.offsetHeight)
-  // }, [imageX, imageY])
+  const imageURL = styles.results[currentStyle].photos[image].url
+  const [bgState, setbgState] = useState({backgroundImage: `url(${imageURL})`, backgroundPosition: '0%, 0%'})
 
+  const zoomEffect = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect()
 
-  const magnifyScale = (e) => {
-    // console.log('width: ', e.currentTarget.offsetWidth)
-    // console.log('height: ', e.currentTarget.offsetHeight)
-    //1650x x 1100y
+    const scaledLeft = left
+    const scaledTop = top
+    const scaledWidth = width
+    const scaledHeight = height
 
-    //left, right
-    //100-1300
-
-    //top, bottom
-    //130-730
-
-    e.currentTarget.style.transform = 'scale(2.5)'
-  }
-
-  const getMouseCoords = (e) => {
-    // console.log(e.screenX)
-    // console.log(e.screenY)
-    console.log('X ', e.clientX)
-    console.log('Y ', e.clientY)
-
-    //1.5x ratio
-
-    setMouseX((e.clientX))
-    setMouseY((e.clientY))
-
-    // image height / 600
+    const x = (e.pageX - left) / width * 100
+    const y = (e.pageY - top) / height * 100
+    setbgState({backgroundImage: `url(${imageURL})`, backgroundPosition: `${x}% ${y}%`})
   }
 
   return (
-    <div>
-      {view === 'magnify' &&
-        <div
-          id='magnify-container'
-          >
-          <img
-            id='main-image-zoomed'
-            onMouseMove={getMouseCoords}
-            onMouseOver={magnifyScale}
-            src={styles.results[currentStyle].photos[image].url}
-            onClick={() => changeView(view, 'image')}
-            style={{position: 'relative', left: -mouseX, top: -mouseY}}
-          />
-        </div>
-      }
+    <div
+      id='magnify-container'
+      onMouseMove={zoomEffect}
+      style={bgState}
+      onClick={() => changeView(view, 'image')}
+      >
+      <img
+        id='main-image-zoomed'
+        src={imageURL}
+      />
     </div>
   )
 }
@@ -114,13 +89,14 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
         src={styles.results[currentStyle].photos[image].url}
         onClick={() => changeView(view, 'image')}
       />}
+      {view === 'magnify' &&
       <Zoomed
         styles={styles}
         currentStyle={currentStyle}
         image={image}
         changeView={changeView}
         view={view}
-      />
+      />}
       {view !== 'magnify' &&
         <img
           id={view === 'default' ? 'expand-icon' : 'collapse-icon'}
