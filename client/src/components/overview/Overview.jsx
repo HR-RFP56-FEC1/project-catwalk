@@ -67,7 +67,7 @@ const Overview = ({ id }) => {
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
   const [reviews, setReviews] = useState(sampleReviewMeta)
-  const [view, setView] = useState('magnify')
+  const [view, setView] = useState('default')
 
   useEffect(() => {
     axios(GetProductInformation(id))
@@ -102,7 +102,7 @@ const Overview = ({ id }) => {
     /*setImage(0)*/
   }
 
-  const changeView = (viewType, from) => {
+  const changeView = (viewType, from, e) => {
     if (from === 'sizer') {
       if (viewType === 'expanded') {
         setView('default')

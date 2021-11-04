@@ -114,19 +114,20 @@
 #gallery-container-default-view {
   width: 800px;
   overflow: hidden;
+  cursor: zoom-in;
 }
 
 #gallery-container-expanded-view {
   width: 1200px;
   flex-direction: column;
   object-fit: cover;
+  cursor: crosshair;
 }
 
 #main-image {
   object-fit: cover;
   width: 100%;
   height: 600px;
-  cursor: zoom-in;
 }
 
 #magnify-container {
@@ -136,6 +137,8 @@
   overflow: hidden;
   border-radius: 25px;
   background-size: 250%;
+  /* this is temporary - its supposed to be a minus sign */
+  cursor: grab;
 }
 
 #magnify-container:hover #main-image-zoomed{
@@ -145,8 +148,8 @@
 #main-image-zoomed {
   display: block;
   width: 100%;
-  /* height: 100%; */
   pointer-events: none;
+
 }
 
 #expand-icon, #collapse-icon {
@@ -176,7 +179,6 @@
 #thumbs-outer-container-expanded {
   display: flex;
   flex-direction: row;
-  /* direction: ltr; */
   justify-content: center;
 }
 
@@ -192,8 +194,8 @@
   direction: rtl;
   overflow-x: hidden;
   padding: 7.5px 0px 7.5px 0px;
-  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
-  mask-image: linear-gradient(to bottom, black 70%, transparent 97);
+  /* -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 97); */
 }
 
 #thumbs-horizontal {
@@ -317,8 +319,6 @@
   display: flex;
   flex-direction: row;
   width: 1200px;
-  /* height: 100%; */
-  /* padding-left: 30px; */
 }
 
 #bottom-left {
@@ -390,7 +390,6 @@
   height: 60px;
   width: 60px;
   object-fit: cover;
-  /* border: 2px solid var(--gray); */
   background-color: lightsteelblue;
   margin: 15px 25px 5px 0px;
   position: relative;
@@ -424,8 +423,6 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 0px 20px 0px;
-  /* align-items: stretch;
-  justify-content: stretch; */
 }
 
 #buttons-add {
