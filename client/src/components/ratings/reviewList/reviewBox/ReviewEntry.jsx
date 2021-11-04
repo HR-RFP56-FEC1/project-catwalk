@@ -72,6 +72,26 @@ var ReviewEntry = (props) => {
       <div id="review-body">
         {review.body}
       </div>
+
+      {
+        review.recommend &&
+        <div id="recommend-this-product">
+          &#10003; I recommend this product
+        </div>
+      }
+
+      {
+        review.response &&
+        <div id="seller-response-to-review">
+          <p style={{fontWeight: 'bold'}}>
+            Response:
+          </p>
+          <p>
+            {review.response}
+          </p>
+        </div>
+      }
+
       <div className="review-entry-bottom-row">
         Helpful? <u id="review-helpful-vote" style={{cursor:'pointer'}} onClick={clickVoteHelpful}>Yes</u> ({helpfulCount}) &nbsp;&nbsp;|&nbsp;&nbsp; <u id="review-report" style={{cursor:'pointer'}} onClick={clickReportReview}>Report</u>
       </div>
