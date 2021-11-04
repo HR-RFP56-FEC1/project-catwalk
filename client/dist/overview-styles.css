@@ -132,14 +132,15 @@
 #magnify-container {
   width: 1200px;
   height: 600px;
-  position: absolute;
   overflow: hidden;
   border-radius: 25px;
+  position: absolute;
 }
 
 #main-image-zoomed {
-  /* object-fit: cover; */
-  /* transform: scale(2.5); */
+  /* position: relative;
+  top: 0px;
+  left: 0px; */
 }
 
 #expand-icon, #collapse-icon {

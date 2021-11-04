@@ -5,8 +5,8 @@ import Arrows from './NavigationArrows.jsx'
 
 
 const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
-  const [imageX, setImageX] = useState()
-  const [imageY, setImageY] = useState()
+  const [imageX, setImageX] = useState(0)
+  const [imageY, setImageY] = useState(0)
 
   // useEffect(()=> {
     // setImageX(e.currentTarget.offsetWidth)
@@ -14,15 +14,19 @@ const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
   // }, [imageX, imageY])
 
 
-  const logCoords = (e) => {
+  const magnifyScale = (e) => {
     setImageX(e.currentTarget.offsetWidth)
     setImageY(e.currentTarget.offsetHeight)
+    e.currentTarget.style.transform = 'scale(2.5)'
+  }
+
+  const getMouseCoords = (e) => {
     // console.log(e.screenX)
     // console.log(e.screenY)
-    //transform: translate
-    // console.log(e.currentTarget.offsetWidth)
-    // console.log(e.currentTarget.offsetHeight)
-    e.currentTarget.style.transform = 'scale(2.5)'
+    // console.log(e.clientX)
+    // console.log(e.clientY)
+    setImageX(e.clientX)
+    setImageY(e.clientY)
   }
 
   return (
@@ -33,12 +37,11 @@ const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
           >
           <img
             id='main-image-zoomed'
-            // onMouseMove={logCoords}
-            onMouseOver={logCoords}
+            onMouseMove={getMouseCoords}
+            onMouseOver={magnifyScale}
             src={styles.results[currentStyle].photos[image].url}
             onClick={() => changeView(view, 'image')}
-            // width={(imageX * 2.5).toString()}
-            // height={(imageY * 2.5).toString()}
+            style={{position: 'relative', left: -imageX, top: -imageY}}
           />
         </div>
       }
@@ -189,50 +192,3 @@ const Thumb = ({thumb, index, onClick, image, view}) => {
 
 export default Carousel
 export {Thumbs, Thumb}
-
-
-// / Extract the URL
-// zoomBoxes.forEach(function(image) {
-//   var imageCss = window.getComputedStyle(image, false),
-//     imageUrl = imageCss.backgroundImage
-//                        .slice(4, -1).replace(/['"]/g, '');
-
-//   // Get the original source image
-//   var imageSrc = new Image();
-//   imageSrc.onload = function() {
-//     var imageWidth = imageSrc.naturalWidth,
-//         imageHeight = imageSrc.naturalHeight,
-//         ratio = imageHeight / imageWidth;
-
-//     // Adjust the box to fit the image and to adapt responsively
-//     var percentage = ratio * 100 + '%';
-//     image.style.paddingBottom = percentage;
-
-//     // Zoom and scan on mousemove
-//     image.onmousemove = function(e) {
-//       // Get the width of the thumbnail
-//       var boxWidth = image.clientWidth,
-//           // Get the cursor position, minus element offset
-//           x = e.pageX - this.offsetLeft,
-//           y = e.pageY - this.offsetTop,
-//           // Convert coordinates to % of elem. width & height
-//           xPercent = x / (boxWidth / 100) + '%',
-//           yPercent = y / (boxWidth * ratio / 100) + '%';
-
-//       // Update styles w/actual size
-//       Object.assign(image.style, {
-//         backgroundPosition: xPercent + ' ' + yPercent,
-//         backgroundSize: imageWidth + 'px'
-//       });
-//     };
-
-//     // Reset when mouse leaves
-//     image.onmouseleave = function(e) {
-//       Object.assign(image.style, {
-//         backgroundPosition: 'center',
-//         backgroundSize: 'cover'
-//       });
-//     };
-//   }
-//   imageSrc.src = imageUrl;
-// });
