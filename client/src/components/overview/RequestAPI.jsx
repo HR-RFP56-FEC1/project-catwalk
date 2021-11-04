@@ -6,7 +6,7 @@ import key from '../../../../auth.js'
 const GetProductInformation = (id) => {
   let productInformation = {
     method: 'get',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`,
+    url: `api/products/${id}`,
     headers: { Authorization : key }
   }
   return productInformation
@@ -15,7 +15,7 @@ const GetProductInformation = (id) => {
 const GetProductStyles = (id) => {
     let productStyles = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`,
+      url: `api/products/${id}/styles`,
       headers: { Authorization : key }
     }
   return productStyles
@@ -24,7 +24,7 @@ const GetProductStyles = (id) => {
 const GetProductReviews = (id) => {
   let productReviews = {
     method: 'get',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${id}`,
+    url: `api/reviews/meta/?product_id=${id}`,
     headers: { Authorization : key }
   }
 return productReviews
