@@ -131,6 +131,7 @@
 }
 
 .sort-review {
+  font-size: 30px;
   flex-basis: 5%;
   background-color: none;
   display: flex;
@@ -139,6 +140,7 @@
 }
 
 #sort-review-by {
+  font-size: 30px;
   cursor: pointer;
   border: none;
   background-color: none;
@@ -148,6 +150,7 @@
 
 
 .review-box {
+  margin-top: 20px;
   flex-basis: 70%;
   background-color: none;
   display: flex;
@@ -165,7 +168,6 @@
 
 #review-summary {
   font-size: 30px;
-  font-weight: bold;
   text-decoration: bold;
 }
 
