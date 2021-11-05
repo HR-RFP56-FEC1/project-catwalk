@@ -1,34 +1,58 @@
 import React from 'react'
 import {useState} from 'react'
 
-const Size = () => (
-  <div id='size'>
+const Sizes = ({skuList, sizeSelected}) => {
 
-    <label htmlFor="select-size"></label>
+  const stock = []
 
-    <select name="sizes" id="sizes">
-      <option value="SELECT SIZE">SELECT SIZE</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-  </div>
+  for (let sku in skuList) {
+    let stockDetails = [
+      sku,
+      skuList[sku].quantity,
+      skuList[sku].size
+    ]
+    stock.push(stockDetails)
+  }
+
+  return (
+    <div id='size'>
+
+      <label htmlFor="select-size"></label>
+
+      <select  onChange={sizeSelected} name="sizes" id="sizes">
+        <option value="SELECT SIZE">SELECT SIZE</option>
+        {stock.map(sku => <Size key={sku[0]} sku={sku}/>)}
+
+      </select>
+    </div>
+  )
+}
+
+const Size = ({sku}) => (
+  <option value={sku}>{sku[2]}</option>
 )
 
-const Quantity = () => (
-  <div id='quantity'>
+const Quantity = ({quantity}) => {
 
-    <label htmlFor="select-quantity"></label>
+  let quantityCount = []
+  for (let i = 0; i < quantity && i < 15; i++) {
+    quantityCount.push(i)
+  }
 
-    <select name="quantities" id="quantities">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-  </div>
-)
+  return (
+    <div id='quantity'>
+
+      <label htmlFor="select-quantity"></label>
+
+      <select name="quantities" id="quantities">
+        {!quantity ?
+          <option value="1">1</option> :
+          quantityCount.map((count, i) => <option value={count} key={i}>{count}</option>)
+        }
+      </select>
+    </div>
+  )
+}
 
 const AddToBag = () => (
   <div>
@@ -45,5 +69,5 @@ const Watch = () => (
   </div>
 )
 
-export default Size
+export default Sizes
 export {Quantity, Watch, AddToBag}
