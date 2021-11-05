@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import key from '../../../../auth.js'
 
-//use /api instead of url to hit server
 const GetProductInformation = (id) => {
   let productInformation = {
     method: 'get',
@@ -29,7 +28,6 @@ const GetProductReviews = (id) => {
   }
 return productReviews
 }
-
 
 export default GetProductInformation
 export { GetProductStyles, GetProductReviews }

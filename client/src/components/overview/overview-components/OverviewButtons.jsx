@@ -1,41 +1,65 @@
-import React from 'react'
-import {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
-const Size = () => (
-  <div id='size'>
+const Sizes = ({stock, sizeSelected, handleClickSize}) => {
 
-    <label htmlFor="select-size"></label>
+  return (
+    <div id='size'>
 
-    <select name="sizes" id="sizes">
-      <option value="SELECT SIZE">SELECT SIZE</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-  </div>
+      <label htmlFor="select-size"></label>
+
+      <select onChange={handleClickSize} name="sizes" id="sizes">
+        <option value={stock.length > 0 ? 'SELECT SIZE' : 'OUT OF STOCK'}>
+          {stock.length > 0 ? 'SELECT SIZE' : 'OUT OF STOCK'}
+        </option>
+        {stock.map(sku => <Size key={sku[0]} sku={sku}/>)}
+
+      </select>
+    </div>
+  )
+}
+
+const Size = ({sku}) => (
+  <option value={sku}>{sku[2]}</option>
 )
 
-const Quantity = () => (
-  <div id='quantity'>
+const Quantity = ({quantity, handleClickQuantity, selectedSize}) => {
 
-    <label htmlFor="select-quantity"></label>
+  let quantityCount = []
+  for (let i = 1; i <= quantity && i <= 15; i++) {
+    quantityCount.push(i)
+  }
 
-    <select name="quantities" id="quantities">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-  </div>
-)
+  useEffect(()=> {
+    let e = document.getElementById('quantities')
+    if (e !== null) {
+      e.value = '1'
+    }
+  }, [selectedSize])
 
-const AddToBag = () => (
+  return (
+    <div id='quantity'>
+
+      <label htmlFor="select-quantity"></label>
+
+      {quantity ?
+        <select onChange={handleClickQuantity} name="quantities" id="quantities">
+          {quantityCount.map((count, i) => <option value={count} key={i}>{count}</option>)}
+        </select> :
+        <select name="quantities" id="quantities-disabled" disabled>-
+          <option>-</option>
+        </select>
+       }
+    </div>
+  )
+}
+
+const AddToBag = ({stock, handleAddToCart}) => (
   <div>
-    <button id='add-to-bag' type='submit'>
+    {stock.length > 0 &&
+    <button onClick={handleAddToCart} id='add-to-bag' type='submit'>
       <div>ADD TO BAG</div>
       <div>+</div>
-    </button>
+    </button>}
   </div>
 )
 
@@ -45,5 +69,5 @@ const Watch = () => (
   </div>
 )
 
-export default Size
+export default Sizes
 export {Quantity, Watch, AddToBag}

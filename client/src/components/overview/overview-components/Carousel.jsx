@@ -11,12 +11,6 @@ const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
 
   const zoomEffect = (e) => {
     const { left, top, width, height } = e.target.getBoundingClientRect()
-
-    const scaledLeft = left
-    const scaledTop = top
-    const scaledWidth = width
-    const scaledHeight = height
-
     const x = (e.pageX - left) / width * 100
     const y = (e.pageY - top) / height * 100
     setbgState({backgroundImage: `url(${imageURL})`, backgroundPosition: `${x}% ${y}%`})
@@ -166,4 +160,3 @@ const Thumb = ({thumb, index, onClick, image, view}) => {
 
 export default Carousel
 export {Thumbs, Thumb}
-

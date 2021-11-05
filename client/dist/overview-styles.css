@@ -21,6 +21,10 @@
   font-family: 'Shadows Into Light', cursive;
 }
 
+#arrow-left-bg, #arrow-right-bg, #arrow-left-bg-expanded, #arrow-right-bg-expanded, #expand-icon, #collapse-icon, #thumb, #thumb-highlight, #thumb-expanded, #thumb-highlight-expanded, #thumbs-outer-container-expanded  {
+  cursor: default;
+}
+
 #overview {
   width: 1200px;
 }
@@ -28,7 +32,6 @@
 #logo {
   display: flex;
   background-image: url('img/header.jpeg');
-  background-color: lightslategray;
   background-position-y: 663px;
   background-size: cover;
   height: 80px;
@@ -36,7 +39,6 @@
   font-family: 'Caveat', cursive;
   font-size: 70px;
   color: white;
-  /* padding-left: 40px; */
   align-items: center;
   justify-content: center;
 }
@@ -66,7 +68,6 @@
   flex-direction: row;
   justify-content: space-between;
   width: 1200px;
-  /* height: 600px; */
   padding-bottom: 60px;
 }
 
@@ -114,19 +115,23 @@
 #gallery-container-default-view {
   width: 800px;
   overflow: hidden;
+  cursor: zoom-in;
+  transition: 1s ease-in
 }
 
 #gallery-container-expanded-view {
   width: 1200px;
   flex-direction: column;
   object-fit: cover;
+  cursor: crosshair;
+  transition: 1s ease-in-out
 }
 
 #main-image {
   object-fit: cover;
   width: 100%;
   height: 600px;
-  cursor: zoom-in;
+  transition: 1s ease-in-out
 }
 
 #magnify-container {
@@ -136,6 +141,8 @@
   overflow: hidden;
   border-radius: 25px;
   background-size: 250%;
+  /* this is temporary - its supposed to be a minus sign */
+  cursor: grab;
 }
 
 #magnify-container:hover #main-image-zoomed{
@@ -145,8 +152,8 @@
 #main-image-zoomed {
   display: block;
   width: 100%;
-  /* height: 100%; */
   pointer-events: none;
+
 }
 
 #expand-icon, #collapse-icon {
@@ -154,6 +161,7 @@
   height: 20px;
   filter: drop-shadow(1px 1px 2px #303030);
   position: absolute;
+  transition: 1s ease-in-out;
 }
 
 #expand-icon {
@@ -176,7 +184,6 @@
 #thumbs-outer-container-expanded {
   display: flex;
   flex-direction: row;
-  /* direction: ltr; */
   justify-content: center;
 }
 
@@ -185,15 +192,14 @@
   display: flex;
   flex-direction: column;
   width: 100px;
-  /* max-width: 100%; */
   height: 585px;
   background-color: rgba(255, 255, 255, 0.3);
   align-items: center;
   direction: rtl;
   overflow-x: hidden;
   padding: 7.5px 0px 7.5px 0px;
-  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
-  mask-image: linear-gradient(to bottom, black 70%, transparent 97);
+  /* -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 97); */
 }
 
 #thumbs-horizontal {
@@ -277,10 +283,8 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-}
-
-#arrow-left-bg, #arrow-right-bg, #arrow-left-bg-expanded, #arrow-right-bg-expanded {
   top: 250px;
+  transition: 1s ease-in-out;
 }
 
 #arrow-left-bg {
@@ -317,8 +321,6 @@
   display: flex;
   flex-direction: row;
   width: 1200px;
-  /* height: 100%; */
-  /* padding-left: 30px; */
 }
 
 #bottom-left {
@@ -326,11 +328,6 @@
   flex-direction: column;
   width: 800px;
 }
-
-#bottom-right {
-
-}
-
 
 #read-all-reviews {
   display: flex;
@@ -390,8 +387,6 @@
   height: 60px;
   width: 60px;
   object-fit: cover;
-  /* border: 2px solid var(--gray); */
-  background-color: lightsteelblue;
   margin: 15px 25px 5px 0px;
   position: relative;
 }
@@ -403,13 +398,12 @@
   position: absolute;
   height: 15px;
   width: 15px;
-  background-color: rgb(255, 225, 245);
+  background-color:hotpink;
   border-radius: 15px;
-  border: 1px solid rgb(114, 93, 110, 0.5);
   top: 15px;
   left: 42px;
   text-align: center;
-  color: var(--gray);
+  color: white;
   font-size: 12px;
 }
 
@@ -424,27 +418,26 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 0px 20px 0px;
-  /* align-items: stretch;
-  justify-content: stretch; */
 }
 
 #buttons-add {
 
 }
 
-#sizes, #quantities, #add-to-bag, #watch {
+#sizes, #quantities, #quantities-disabled, #add-to-bag, #watch {
   border: 1px solid var(--gray);
   height: 65px;
   font-weight: bold;
   font-size: 17px;
   padding: 0px 20px 0px 20px;
+  background-color: white;
 }
 
 #sizes {
   width: 230px;
 }
 
-#quantities {
+#quantities, #quantities-disabled {
   width: 100px;
 }
 
