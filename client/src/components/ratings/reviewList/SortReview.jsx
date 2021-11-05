@@ -3,7 +3,7 @@ import React from 'react';
 var SortReview = (props) => {
 
   const changeSort = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     if (e.target.value === 'time') {
       props.changeSort('dateDiff');
     } else if (e.target.value === 'helpful') {

@@ -95,7 +95,7 @@ var ReviewEntry = (props) => {
       </div>
 
       {
-        review.photos &&
+        review.photos.length > 0 &&
         <div className="review-photos-thumbnail">
           {[0, 1, 2, 3, 4].map(i => {
             if (review.photos[i]) {
