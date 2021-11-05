@@ -10,6 +10,19 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
   const [availableQuantities, setAvailableQuantities] = useState()
   const [selectedQuantity, setSelectedQuantity] = useState()
 
+  const stock = []
+
+  for (let sku in skuList) {
+    let stockDetails = [
+      sku,
+      skuList[sku].quantity,
+      skuList[sku].size
+    ]
+    if (stockDetails[1] > 0) {
+      stock.push(stockDetails)
+    }
+  }
+
   const handleClickSize = (e) => {
 
     let menuSku = e.target.value.split(',')
@@ -42,7 +55,7 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
       <div id='buttons-container'>
         <div id='buttons-select'>
           <Sizes
-            skuList={skuList}
+            stock={stock}
             handleClickSize={handleClickSize}
             selectedSize={selectedSize}
           />
@@ -53,7 +66,7 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
           />
         </div>
         <div id='buttons-add'>
-          <AddToBag />
+          <AddToBag stock={stock}/>
           <Watch />
         </div>
       </div>

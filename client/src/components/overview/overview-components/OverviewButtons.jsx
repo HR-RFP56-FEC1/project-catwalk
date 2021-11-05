@@ -1,20 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-
-const Sizes = ({skuList, sizeSelected, handleClickSize}) => {
-
-  const stock = []
-
-  for (let sku in skuList) {
-    let stockDetails = [
-      sku,
-      skuList[sku].quantity,
-      skuList[sku].size
-    ]
-    if (stockDetails[1] > 0) {
-      stock.push(stockDetails)
-    }
-  }
+const Sizes = ({stock, sizeSelected, handleClickSize}) => {
 
   return (
     <div id='size'>
@@ -67,12 +53,13 @@ const Quantity = ({quantity, handleClickQuantity, selectedSize}) => {
   )
 }
 
-const AddToBag = () => (
+const AddToBag = ({stock}) => (
   <div>
+    {stock.length > 0 &&
     <button id='add-to-bag' type='submit'>
       <div>ADD TO BAG</div>
       <div>+</div>
-    </button>
+    </button>}
   </div>
 )
 
