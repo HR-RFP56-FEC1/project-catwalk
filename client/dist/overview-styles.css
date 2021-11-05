@@ -437,7 +437,7 @@
 
 }
 
-#sizes, #quantities, #add-to-bag, #watch {
+#sizes, #quantities, #quantities-disabled, #add-to-bag, #watch {
   border: 1px solid var(--gray);
   height: 65px;
   font-weight: bold;
@@ -449,7 +449,7 @@
   width: 230px;
 }
 
-#quantities {
+#quantities, #quantities-disabled {
   width: 100px;
 }
 

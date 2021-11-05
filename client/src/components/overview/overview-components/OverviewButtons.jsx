@@ -1,5 +1,5 @@
-import React from 'react'
-import {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+
 
 const Sizes = ({skuList, sizeSelected, handleClickSize}) => {
 
@@ -36,12 +36,19 @@ const Size = ({sku}) => (
   <option value={sku}>{sku[2]}</option>
 )
 
-const Quantity = ({quantity}) => {
+const Quantity = ({quantity, handleClickQuantity, selectedSize}) => {
 
   let quantityCount = []
   for (let i = 1; i <= quantity && i <= 15; i++) {
     quantityCount.push(i)
   }
+
+  useEffect(()=> {
+    let e = document.getElementById('quantities')
+    if (e !== null) {
+      e.value = '1'
+    }
+  }, [selectedSize])
 
   return (
     <div id='quantity'>
@@ -49,10 +56,10 @@ const Quantity = ({quantity}) => {
       <label htmlFor="select-quantity"></label>
 
       {quantity ?
-        <select name="quantities" id="quantities">
+        <select onChange={handleClickQuantity} name="quantities" id="quantities">
           {quantityCount.map((count, i) => <option value={count} key={i}>{count}</option>)}
         </select> :
-        <select name="quantities" id="quantities" disabled>-
+        <select name="quantities" id="quantities-disabled" disabled>-
           <option>-</option>
         </select>
        }

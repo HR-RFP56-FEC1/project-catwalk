@@ -6,15 +6,24 @@ import Facts, {Fact, Slogan, Description} from './ProductDescription.jsx'
 
 const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => {
   const [selectedSKU, setSelectedSKU] = useState()
-  const [selectedQuantity, setSelectedQuantity] = useState()
   const [selectedSize, setSelectedSize] = useState()
+  const [availableQuantities, setAvailableQuantities] = useState()
+  const [selectedQuantity, setSelectedQuantity] = useState()
 
   const handleClickSize = (e) => {
 
     let menuSku = e.target.value.split(',')
     setSelectedSKU(menuSku[0])
-    setSelectedQuantity(menuSku[1])
     setSelectedSize(menuSku[2])
+    setSelectedQuantity('1')
+    //whats up with XL twice?
+
+    setAvailableQuantities(menuSku[1])
+  }
+
+  const handleClickQuantity = (e) => {
+    //THIS IS A STRING - DO WE WANT THAT?
+    setSelectedQuantity(e.target.value)
   }
 
   return (
@@ -38,7 +47,9 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
             selectedSize={selectedSize}
           />
           <Quantity
-            quantity={selectedQuantity}
+            quantity={availableQuantities}
+            handleClickQuantity={handleClickQuantity}
+            selectedSize={selectedSize}
           />
         </div>
         <div id='buttons-add'>
