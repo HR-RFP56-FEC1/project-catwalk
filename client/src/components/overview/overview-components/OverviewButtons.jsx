@@ -53,10 +53,10 @@ const Quantity = ({quantity, handleClickQuantity, selectedSize}) => {
   )
 }
 
-const AddToBag = ({stock}) => (
+const AddToBag = ({stock, handleAddToCart}) => (
   <div>
     {stock.length > 0 &&
-    <button id='add-to-bag' type='submit'>
+    <button onClick={handleAddToCart} id='add-to-bag' type='submit'>
       <div>ADD TO BAG</div>
       <div>+</div>
     </button>}

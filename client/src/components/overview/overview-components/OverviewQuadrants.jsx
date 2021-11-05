@@ -3,12 +3,14 @@ import Carousel, {Thumbs, Thumb} from './Carousel.jsx'
 import Rating, {Style, Styles, Details} from './ProductDetails.jsx'
 import Sizes, {Quantity, Watch, AddToBag} from './OverviewButtons.jsx'
 import Facts, {Fact, Slogan, Description} from './ProductDescription.jsx'
+import axios from 'axios'
 
 const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => {
   const [selectedSKU, setSelectedSKU] = useState()
   const [selectedSize, setSelectedSize] = useState()
   const [availableQuantities, setAvailableQuantities] = useState()
   const [selectedQuantity, setSelectedQuantity] = useState()
+  const [addToCart, setAddToCart] = useState()
 
   const stock = []
 
@@ -23,6 +25,16 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
     }
   }
 
+  const handleAddToCart = () => {
+    axios.post('api/cart', {"sku_id": selectedSKU})
+    .then(response => {
+      console.log(response)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   const handleClickSize = (e) => {
 
     let menuSku = e.target.value.split(',')
@@ -35,7 +47,6 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
   }
 
   const handleClickQuantity = (e) => {
-    //THIS IS A STRING - DO WE WANT THAT?
     setSelectedQuantity(e.target.value)
   }
 
@@ -66,7 +77,7 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
           />
         </div>
         <div id='buttons-add'>
-          <AddToBag stock={stock}/>
+          <AddToBag stock={stock} handleAddToCart={handleAddToCart}/>
           <Watch />
         </div>
       </div>
