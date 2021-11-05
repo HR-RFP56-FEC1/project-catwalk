@@ -9,13 +9,9 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
   const [selectedQuantity, setSelectedQuantity] = useState()
   const [selectedSize, setSelectedSize] = useState()
 
-
-
-  const sizeSelected = (e) => {
-    // setSelectedSize(e.target.value)
+  const handleClickSize = (e) => {
 
     let menuSku = e.target.value.split(',')
-    console.log(menuSku)
     setSelectedSKU(menuSku[0])
     setSelectedQuantity(menuSku[1])
     setSelectedSize(menuSku[2])
@@ -36,8 +32,14 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
       />
       <div id='buttons-container'>
         <div id='buttons-select'>
-          <Sizes skuList={skuList} sizeSelected={sizeSelected}/>
-          <Quantity quantity={selectedQuantity}/>
+          <Sizes
+            skuList={skuList}
+            handleClickSize={handleClickSize}
+            selectedSize={selectedSize}
+          />
+          <Quantity
+            quantity={selectedQuantity}
+          />
         </div>
         <div id='buttons-add'>
           <AddToBag />

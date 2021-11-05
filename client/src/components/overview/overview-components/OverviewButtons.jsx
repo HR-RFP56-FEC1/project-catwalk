@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 
-const Sizes = ({skuList, sizeSelected}) => {
+const Sizes = ({skuList, sizeSelected, handleClickSize}) => {
 
   const stock = []
 
@@ -11,7 +11,9 @@ const Sizes = ({skuList, sizeSelected}) => {
       skuList[sku].quantity,
       skuList[sku].size
     ]
-    stock.push(stockDetails)
+    if (stockDetails[1] > 0) {
+      stock.push(stockDetails)
+    }
   }
 
   return (
@@ -19,8 +21,10 @@ const Sizes = ({skuList, sizeSelected}) => {
 
       <label htmlFor="select-size"></label>
 
-      <select  onChange={sizeSelected} name="sizes" id="sizes">
-        <option value="SELECT SIZE">SELECT SIZE</option>
+      <select onChange={handleClickSize} name="sizes" id="sizes">
+        <option value={stock.length > 0 ? 'SELECT SIZE' : 'OUT OF STOCK'}>
+          {stock.length > 0 ? 'SELECT SIZE' : 'OUT OF STOCK'}
+        </option>
         {stock.map(sku => <Size key={sku[0]} sku={sku}/>)}
 
       </select>
@@ -35,7 +39,7 @@ const Size = ({sku}) => (
 const Quantity = ({quantity}) => {
 
   let quantityCount = []
-  for (let i = 0; i < quantity && i < 15; i++) {
+  for (let i = 1; i <= quantity && i <= 15; i++) {
     quantityCount.push(i)
   }
 
@@ -44,12 +48,14 @@ const Quantity = ({quantity}) => {
 
       <label htmlFor="select-quantity"></label>
 
-      <select name="quantities" id="quantities">
-        {!quantity ?
-          <option value="1">1</option> :
-          quantityCount.map((count, i) => <option value={count} key={i}>{count}</option>)
-        }
-      </select>
+      {quantity ?
+        <select name="quantities" id="quantities">
+          {quantityCount.map((count, i) => <option value={count} key={i}>{count}</option>)}
+        </select> :
+        <select name="quantities" id="quantities" disabled>-
+          <option>-</option>
+        </select>
+       }
     </div>
   )
 }
