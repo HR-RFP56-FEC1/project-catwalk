@@ -112,3 +112,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.photoThumbnail {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.modalPhotoThumbs {
+  display: flex;
+  flex-direction: row;
+}

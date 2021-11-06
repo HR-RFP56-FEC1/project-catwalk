@@ -107,7 +107,7 @@ const AddPhotosModal = ({isOpen, question, setModalState, setPhotoUrls}) => {
           <div className='modalTitle'>Add Photos:</div>
         </div>
         <div className='modalInputsList'>
-          <div className='modalInputListItem'>
+          <div className='modalPhotoThumbs'>
             <div className='modalInputLabel'>Photos:</div>
             {(photos && photos.length > 0) ? photos.map(
               (url, ind) => <img key={"photoUrl" + question.question_id + "_" + ind} className="photoThumbnail" src={url}/>
