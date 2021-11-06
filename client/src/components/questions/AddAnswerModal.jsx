@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 
-const AddAnswerModal = ({isOpen, productName, question}) => {
+const AddAnswerModal = ({isOpen, productName, question, setModalState, product_id}) => {
   const [answerBody, setAnswerBody] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [modalClosed, setModalClosed] = useState(false);
 
   const closeModal = function() {
-    setModalClosed(true);
+    setModalState(false);
   };
 
   const postHandler = function() {
@@ -109,7 +108,7 @@ const AddAnswerModal = ({isOpen, productName, question}) => {
     
   };
 
-  return ( isOpen && !modalClosed ? (
+  return ( isOpen ? (
       <div className='addAnswerModal'>
         <div className='addAnswerTopBar'>
           <div className='addAnswerTitle'>Submit your Answer</div>

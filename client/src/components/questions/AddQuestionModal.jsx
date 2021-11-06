@@ -2,27 +2,23 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 
-const AddQuestionModal = ({isOpen, productName, question}) => {
+const AddQuestionModal = ({isOpen, productName, question, setModalState, product_id}) => {
   const [answerBody, setAnswerBody] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [modalClosed, setModalClosed] = useState(false);
 
   const closeModal = function() {
-    setModalClosed(true);
+    setModalState(false);
   };
 
   const postHandler = function() {
     let obj = {};
     obj.body = answerBody;
     obj.name = username;
-    obj.email = email;
-    if (photos && photos.length > 0) {
-      obj.photos = photos;
-    }
+    obj.product_id = product_id
     console.log(obj);
-    var urlString = '/api/qa/questions/' + question.question_id + '/answers';
+    var urlString = '/api/qa/questions/';
     return axios({
       method: 'post',
       url: urlString,
@@ -105,8 +101,10 @@ const AddQuestionModal = ({isOpen, productName, question}) => {
       )}
   };
 
+  useEffect(() => {() => {}, [isOpen]);
 
-  return ( isOpen && !modalClosed ? (
+
+  return ( isOpen ? (
     <div className='addModal'>
       <div className='addQuestionModal'>
         <div className='modalTopBar'>

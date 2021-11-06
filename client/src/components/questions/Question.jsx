@@ -3,13 +3,8 @@ import AnswerList from './AnswerList.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 import axios from 'axios';
 
-const ThemeAddAnswerModal = React.createContext({
-  isOpen: false,
-  toggleOpen: () => {}
-});
-
-const Question = ({question}) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+const Question = ({question, product_id, productName}) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
   const handleReport = function(text) {
@@ -17,7 +12,7 @@ const Question = ({question}) => {
   };
 
   const openModal = function() {
-    setIsOpen(true);
+    setModalIsOpen(true);
   };
 
   //#region helpful question vote functions
@@ -54,7 +49,7 @@ const Question = ({question}) => {
 
   return (
     <div className='question'>
-      <AddAnswerModal isOpen={modalIsOpen} question={question}/>
+      <AddAnswerModal isOpen={modalIsOpen} question={question} product_id={product_id} setModalState={setModalIsOpen} productName={productName}/>
       <div className='questiontopbar'>
         <div className='questiontext'>Q:   {question.question_body}</div>
         <div className='questionHelpAdd'>
