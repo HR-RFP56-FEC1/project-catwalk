@@ -97,15 +97,9 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
         console.log(res);
         alert("Submission Added");
         closeModal();
-      })}
+      })} 
   };
 
-<<<<<<< HEAD
-=======
-  useEffect(() => {() => {}, [isOpen]);
-
-
->>>>>>> qna
   return ( isOpen ? (
     <div className='addModal'>
       <div className='addQuestionModal'>
