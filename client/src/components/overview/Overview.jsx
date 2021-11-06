@@ -4,8 +4,8 @@ import Logo from './overview-components/OverviewLogo.jsx'
 import sampleStyles from '../../../sample/styles.js'
 import sampleProduct from '../../../sample/product.js'
 import sampleReviewMeta from '../../../sample/reviewmeta.js'
-import GetProductInformation, {GetProductStyles, GetProductReviews} from './RequestAPI.jsx'
 import TopLeft, {TopRight, BottomHalf} from './overview-components/OverviewQuadrants.jsx'
+import CalculateRating from '../shared/CalculateRating.jsx'
 
 const Overview = ({ id }) => {
   const [product, setProduct] = useState()
@@ -16,7 +16,7 @@ const Overview = ({ id }) => {
   const [view, setView] = useState('default')
 
   useEffect(() => {
-    axios(GetProductInformation(id))
+    axios(`api/products/${id}`)
       .then(response => {
         setProduct(response.data)
       })
@@ -24,7 +24,7 @@ const Overview = ({ id }) => {
         console.log('Error on GET: ' + err)
       })
 
-    axios(GetProductStyles(id))
+    axios(`api/products/${id}/styles`)
       .then(response => {
         setStyles(response.data)
       })
@@ -32,14 +32,14 @@ const Overview = ({ id }) => {
         console.log('Error on GET: ' + err)
       })
 
-      axios(GetProductReviews(id))
+      axios(`api/reviews/meta/?product_id=${id}`)
       .then(response => {
         setReviews(response.data)
       })
       .catch(err => {
         console.log('Error on GET: ' + err)
       })
-  }, [])
+  }, [id])
 
   const handleOnClick = (styleNum) => {
     setCurrentStyle(styleNum)
@@ -66,18 +66,6 @@ const Overview = ({ id }) => {
     }
   }
 
-  const calculateRating = (reviewData) => {
-    let points = 0
-    let reviews = 0
-    let ratings = reviewData.ratings
-
-    for (let key in ratings) {
-      reviews += parseInt(ratings[key])
-      points += parseInt(key) * ratings[key]
-    }
-    return points / reviews
-  }
-
   if (product && styles && reviews) {
     return (
       <div id='overview'>
@@ -98,7 +86,7 @@ const Overview = ({ id }) => {
                 onClick={handleOnClick}
                 currentStyle={currentStyle}
                 product={product}
-                rating={calculateRating(reviews)}
+                rating={CalculateRating(reviews)}
                 skuList={styles.results[currentStyle].skus}
               />
             }

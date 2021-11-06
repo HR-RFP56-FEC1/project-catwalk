@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Stars from '../shared/Stars.jsx'
 import axios from 'axios'
 import key from '../../../../auth.js'
-import GetProductInformation from '../overview/RequestAPI.jsx'
+import CalculateRating from '../shared/CalculateRating.jsx'
 
 const RelatedProducts = ({related}) => (
   <div className='related-products-container'>
@@ -11,28 +11,47 @@ const RelatedProducts = ({related}) => (
 )
 
 const ProductCard = ({id}) => {
-
   const [cardInfo, setCardInfo] = useState()
+  const [cardStyle, setCardStyle] = useState()
+  const [cardReview, setCardReview] = useState()
+
   useEffect(()=>{
-    axios(GetProductInformation(id))
+    axios(`api/products/${id}`)
     .then(response => {
       setCardInfo(response.data)
-      console.log(response.data)
     })
     .catch(err => {
       console.log(err)
     })
+
+    axios(`api/products/${id}/styles`)
+    .then(response => {
+      setCardStyle(response.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+    axios(`api/reviews/meta/?product_id=${id}`)
+    .then(response => {
+      setCardReview(response.data)
+      console.log(response.data)
+    })
+    .catch(err => {
+      console.log('Error on GET: ' + err)
+    })
+
   }, [id])
 
-  if (cardInfo) {
+  if (cardInfo && cardStyle && cardReview) {
     return (
       <div className='product-card'>
-        <RelatedImage />
+        <RelatedImage image={cardStyle.results[0].photos[0].thumbnail_url}/>
         <ProductCategory category={cardInfo.category}/>
         <ProductName name={cardInfo.name}/>
         <RelatedPrice price={cardInfo.default_price}/>
         <div className='stars-container'>
-          <Stars rating={4.5}/>
+          <Stars rating={CalculateRating(cardReview)}/>
         </div>
       </div>
     )
@@ -47,9 +66,10 @@ const YourOutfit = () => (
   <div className='your-outfit-container'></div>
 )
 
-
-const RelatedImage = () => (
-  <div className='related-image'></div>
+const RelatedImage = ({image}) => (
+  <div className='related-image'>
+    <img className='related-image' src={image}/>
+  </div>
 )
 
 const ProductCategory = ({category}) => (
@@ -66,24 +86,18 @@ const RelatedPrice = ({price}) => (
 
 const Related = ({id}) => {
   const [related, setRelated] = useState()
-
   //do /products/:product_id/related GET
   //make a card for each id in array
   //each card does /products/:product_id GET
-
-
   useEffect(() => {
-    axios.get(`api/products/${id}/related`, {
-      method: 'get',
-      url: `api/products/${id}/related`,
-      headers: { Authorization : key }
-    })
+    axios.get(`api/products/${id}/related`)
     .then(response => {
       setRelated(response.data)
     })
     .catch(err => {
       console.log(err)
     })
+
   }, [id])
 
   return (
