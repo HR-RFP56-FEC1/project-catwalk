@@ -3,6 +3,11 @@ import AnswerList from './AnswerList.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 import axios from 'axios';
 
+const ThemeAddAnswerModal = React.createContext({
+  isOpen: false,
+  toggleOpen: () => {}
+});
+
 const Question = ({question}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [helpful, setHelpful] = useState(false);
@@ -49,7 +54,7 @@ const Question = ({question}) => {
 
   return (
     <div className='question'>
-      <AddAnswerModal isOpen={modalIsOpen}/>
+      <AddAnswerModal isOpen={modalIsOpen} question={question}/>
       <div className='questiontopbar'>
         <div className='questiontext'>Q:   {question.question_body}</div>
         <div className='questionHelpAdd'>
