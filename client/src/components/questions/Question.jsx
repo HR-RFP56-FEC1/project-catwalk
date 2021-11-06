@@ -64,6 +64,4 @@ const Question = ({question, product_id, productName}) => {
   );
 };
   
-
-
 export default Question;
