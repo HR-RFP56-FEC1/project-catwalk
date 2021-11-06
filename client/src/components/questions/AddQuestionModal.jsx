@@ -17,6 +17,7 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
     obj.body = answerBody;
     obj.name = username;
     obj.product_id = product_id
+    obj.email = email;
     console.log(obj);
     var urlString = '/api/qa/questions/';
     return axios({
@@ -25,7 +26,6 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
       responseType: 'json',
       data: JSON.stringify(obj),
       headers: {'Content-Type': 'application/json'},
-
     });
   };
 
@@ -97,12 +97,8 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
         console.log(res);
         alert("Submission Added");
         closeModal();
-      }
-      )}
+      })}
   };
-
-  useEffect(() => {() => {}, [isOpen]);
-
 
   return ( isOpen ? (
     <div className='addModal'>
@@ -123,7 +119,7 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
           </div>
           <div className='modalInputListItem'>
             <div className='modalInputLabel'>What is your email?*</div>
-            <input type="email" value={email} onChange={handleEmailChange} maxLength="60" placeholder="Have a question? Search for answers…"/>
+            <input type="email" value={email} onChange={handleEmailChange} maxLength="60" placeholder="Example: jack@email.com"/>
             <div>For authentication reasons, you will not be emailed</div>
           </div>
           <div className='modalInputListItem'>

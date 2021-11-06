@@ -109,7 +109,7 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
   };
 
   return ( isOpen ? (
-      <div className='addAnswerModal'>
+      <div className='addModal'>
         <div className='addAnswerTopBar'>
           <div className='addAnswerTitle'>Submit your Answer</div>
           <div className='addAnswerSubTitle'>{productName}: {question.question_body}</div>
