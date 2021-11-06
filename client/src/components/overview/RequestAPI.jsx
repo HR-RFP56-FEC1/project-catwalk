@@ -11,6 +11,15 @@ const GetProductInformation = (id) => {
   return productInformation
 }
 
+const GetRelatedProducts = (id) => {
+  let relatedProducts = {
+    method: 'get',
+    url: `api/products/${id}/related`,
+    headers: { Authorization : key }
+  }
+  return relatedProducts
+}
+
 const GetProductStyles = (id) => {
     let productStyles = {
       method: 'get',
@@ -30,4 +39,4 @@ return productReviews
 }
 
 export default GetProductInformation
-export { GetProductStyles, GetProductReviews }
+export { GetProductStyles, GetProductReviews, GetRelatedProducts }

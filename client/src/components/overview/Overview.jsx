@@ -8,11 +8,11 @@ import GetProductInformation, {GetProductStyles, GetProductReviews} from './Requ
 import TopLeft, {TopRight, BottomHalf} from './overview-components/OverviewQuadrants.jsx'
 
 const Overview = ({ id }) => {
-  const [product, setProduct] = useState(sampleProduct)
-  const [styles, setStyles] = useState(sampleStyles)
+  const [product, setProduct] = useState()
+  const [styles, setStyles] = useState()
   const [currentStyle, setCurrentStyle] = useState(0)
   const [image, setImage] = useState(0)
-  const [reviews, setReviews] = useState(sampleReviewMeta)
+  const [reviews, setReviews] = useState()
   const [view, setView] = useState('default')
 
   useEffect(() => {
@@ -26,7 +26,6 @@ const Overview = ({ id }) => {
 
     axios(GetProductStyles(id))
       .then(response => {
-        console.log(response.data)
         setStyles(response.data)
       })
       .catch(err => {
@@ -79,36 +78,37 @@ const Overview = ({ id }) => {
     return points / reviews
   }
 
-  return (
-    <div id='overview'>
-      <Logo />
-      <div id='body'>
-        <div id='top-half'>
-          <TopLeft
-            styles={styles}
-            currentStyle={currentStyle}
-            image={image}
-            setImage={setImage}
-            view={view}
-            changeView={changeView}
-          />
-          {view === 'default' &&
-            <TopRight
+  if (product && styles && reviews) {
+    return (
+      <div id='overview'>
+        <Logo />
+        <div id='body'>
+          <div id='top-half'>
+            <TopLeft
               styles={styles}
-              onClick={handleOnClick}
               currentStyle={currentStyle}
-              product={product}
-              rating={calculateRating(reviews)}
-              skuList={styles.results[currentStyle].skus}
+              image={image}
+              setImage={setImage}
+              view={view}
+              changeView={changeView}
             />
-          }
+            {view === 'default' &&
+              <TopRight
+                styles={styles}
+                onClick={handleOnClick}
+                currentStyle={currentStyle}
+                product={product}
+                rating={calculateRating(reviews)}
+                skuList={styles.results[currentStyle].skus}
+              />
+            }
+          </div>
+          <BottomHalf
+            product={product}
+          />
         </div>
-        <BottomHalf
-          product={product}
-        />
       </div>
-    </div>
-  )
+    )
+  } else return <></>
 }
-
 export default Overview
