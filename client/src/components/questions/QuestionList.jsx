@@ -2,7 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import Question from './Question.jsx';
 
 
-const QuestionList = ({questions}) => {
+const QuestionList = ({questions, product_id, productName}) => {
   const [search, setSearch] = useState('');
   const [sortedList, setDisplayList] = useState(questions.results);
   const [displayCount, setDisplayCount] = useState(2);
@@ -53,7 +53,7 @@ const QuestionList = ({questions}) => {
       for (let i = 0; (i < sortedList.length && i < displayCount); i++) {
         temp.push(sortedList[i]);
       }
-      return (temp.map(question => <Question key={"question" + question.question_id} question={question}/>));
+      return (temp.map(question => <Question key={"question" + question.question_id} question={question} product_id={product_id} productName={productName}/>));
     }
   };
   
