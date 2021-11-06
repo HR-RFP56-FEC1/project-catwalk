@@ -97,7 +97,7 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
         console.log(res);
         alert("Submission Added");
         closeModal();
-      })}
+      })} 
   };
 
   return ( isOpen ? (
