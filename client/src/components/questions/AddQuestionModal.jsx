@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Modal from 'react-modal';
 import axios from 'axios';
 
 const AddQuestionModal = ({isOpen, productName, question, setModalState, product_id}) => {
