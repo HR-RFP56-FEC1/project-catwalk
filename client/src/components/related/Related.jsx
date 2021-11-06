@@ -4,13 +4,13 @@ import axios from 'axios'
 import key from '../../../../auth.js'
 import CalculateRating from '../shared/CalculateRating.jsx'
 
-const RelatedProducts = ({related}) => (
+const RelatedProducts = ({related, handleProductChange}) => (
   <div className='related-products-container'>
-    {related && related.map((id, i) => <ProductCard key={i} id={id}/>)}
+    {related && related.map((id, i) => <ProductCard key={i} id={id} handleProductChange={handleProductChange}/>)}
   </div>
 )
 
-const ProductCard = ({id}) => {
+const ProductCard = ({id, handleProductChange}) => {
   const [cardInfo, setCardInfo] = useState()
   const [cardStyle, setCardStyle] = useState()
   const [cardReview, setCardReview] = useState()
@@ -35,7 +35,6 @@ const ProductCard = ({id}) => {
     axios(`api/reviews/meta/?product_id=${id}`)
     .then(response => {
       setCardReview(response.data)
-      console.log(response.data)
     })
     .catch(err => {
       console.log('Error on GET: ' + err)
@@ -45,7 +44,7 @@ const ProductCard = ({id}) => {
 
   if (cardInfo && cardStyle && cardReview) {
     return (
-      <div className='product-card'>
+      <div onClick={()=> handleProductChange(id)} className='product-card'>
         <RelatedImage image={cardStyle.results[0].photos[0].thumbnail_url}/>
         <ProductCategory category={cardInfo.category}/>
         <ProductName name={cardInfo.name}/>
@@ -84,7 +83,7 @@ const RelatedPrice = ({price}) => (
   <div className='related-price'>{price}</div>
 )
 
-const Related = ({id}) => {
+const Related = ({id, handleProductChange}) => {
   const [related, setRelated] = useState()
   //do /products/:product_id/related GET
   //make a card for each id in array
@@ -103,7 +102,10 @@ const Related = ({id}) => {
   return (
     <div className='related-container'>
       <RelatedProductTitle />
-      <RelatedProducts related={related}/>
+      <RelatedProducts
+        related={related}
+        handleProductChange={handleProductChange}
+      />
       <YourOutfit />
     </div>
   )

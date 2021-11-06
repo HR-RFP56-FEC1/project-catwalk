@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Overview from './overview/Overview.jsx';
 import Ratings from './ratings/Ratings.jsx';
 import QnA from './questions/QnA.jsx';
 import Related from './related/Related.jsx'
 
+
+//pass `mainProduct` as `id` to your component
+//then, delete this id to test functionality
 let id = 40344
 
-var App = (props) => (
-  <div>
-    <Overview id={id}/>
-    <Related id={id}/>
-    <Ratings />
-    <QnA />
-  </div>
-);
+var App = () => {
+  const [mainProduct, setMainProduct] = useState(40344)
+
+  const handleProductChange = (idClicked) => {
+    setMainProduct(idClicked)
+  }
+
+  return (
+    <div>
+      <Overview id={mainProduct}/>
+      <Related id={mainProduct} handleProductChange={handleProductChange}/>
+      <Ratings />
+      <QnA />
+    </div>
+  )
+}
 
 export default App;
