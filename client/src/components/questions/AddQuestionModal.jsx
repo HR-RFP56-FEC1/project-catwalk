@@ -100,6 +100,9 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
       })}
   };
 
+  useEffect(() => {() => {}, [isOpen]);
+
+
   return ( isOpen ? (
     <div className='addModal'>
       <div className='addQuestionModal'>
