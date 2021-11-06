@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Modal from 'react-modal';
 import axios from 'axios';
+import AddPhotosModal from './AddPhotosModal.jsx';
 
 const AddAnswerModal = ({isOpen, productName, question, setModalState, product_id}) => {
   const [answerBody, setAnswerBody] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [photos, setPhotos] = useState([]);
+  const [photoOpen, setPhotoOpen] = useState(false);
 
   const closeModal = function() {
     setModalState(false);
@@ -104,6 +105,10 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
       )}
   };
 
+  const openPhotoModal = function() {
+    setPhotoOpen(true);
+  };
+
   const tempFunction = function() {
     
   };
@@ -130,7 +135,8 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
             <div>For authentication reasons, you will not be emailed</div>
           </div>
           <div className='modalInputListItem'>
-            <input type="button" value="Upload your photos" onClick={tempFunction} />
+          <AddPhotosModal isOpen={photoOpen} setModalState={setPhotoOpen} setPhotoUrls={setPhotos} question={question}/>
+            <input type="button" value="Upload your photos" onClick={openPhotoModal} />
           </div>
           <div className='modalInputListItem'>
             <input type="button" value="Submit answer" onClick={handleSubmitButton} />
