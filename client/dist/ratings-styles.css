@@ -288,3 +288,13 @@
   cursor: pointer;
 }
 
+
+
+/*
+This is the start of styling for the new review form
+*/
+.required-field:before {
+  content: "* ";
+  color: #ea9291
+}
+

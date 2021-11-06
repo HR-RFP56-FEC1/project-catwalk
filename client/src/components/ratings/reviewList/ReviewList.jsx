@@ -3,15 +3,23 @@ import axios from 'axios';
 import moment from 'moment';
 import _ from 'underscore';
 
-import reviews from '../../../../sample/reviews.js';
+// import reviews from '../../../../sample/reviews.js';
 
 import SortReview from './SortReview.jsx';
+import NewReview from './newReview/NewReview.jsx';
 import ReviewBox from './reviewBox/ReviewBox.jsx';
-import AddReview from './bottomButtons/AddReview.jsx';
-
 
 const getReviews = function(id) {
   var urlString = `/api/reviews/?product_id=${id}&count=100`;
+  return axios({
+    method: 'get',
+    url: urlString,
+    responseType: 'json'
+  });
+}
+
+const GetProductInformation = (id) => {
+  let urlString =  `api/products/${id}`;
   return axios({
     method: 'get',
     url: urlString,
@@ -24,12 +32,15 @@ var ReviewList = (props) => {
   const [displayedReviews, setDisplay] = useState(null);
   const [reviewsCount, setCount] = useState(2);
   const [sortBy, setSort] = useState('relevance');
+  const [newReview, addNewReview] = useState(false);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     getReviews(props.id)
       .then(res => {
         // console.log('reviews data:', res.data);
         let reviewsData = res.data.results;
+        setProduct(res.data.product);
         let current = moment().startOf('day');
 
         let minDateDiff = 100000;
@@ -76,6 +87,16 @@ var ReviewList = (props) => {
   }, [])
 
   useEffect(() => {
+    GetProductInformation(props.id)
+      .then(res => {
+        setProduct(res.data.name);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [allReviews])
+
+  useEffect(() => {
     setDisplay(_.sortBy(displayedReviews, sortBy));
   }, [sortBy]);
 
@@ -99,6 +120,10 @@ var ReviewList = (props) => {
   const changeSort = (sortMethod) => {
     setSort(sortMethod);
   }
+
+  const clickAddReview = (e) => {
+    addNewReview(!newReview);
+  }
   // console.log('current state reviews:', allReviews);
   // console.log('sample data reviews:', reviews);
 
@@ -120,8 +145,17 @@ var ReviewList = (props) => {
             </div>
           }
 
-          <AddReview />
+          <div id="add-review">
+            <button id="add-review-btn" className="more-and-add-reviews-btn"
+            onClick={clickAddReview}>
+              ADD A REVIEW &nbsp;&nbsp;+
+            </button>
+          </div>
         </div>
+        {
+          newReview &&
+          <NewReview product={product}/>
+        }
 
       </div>
     )
