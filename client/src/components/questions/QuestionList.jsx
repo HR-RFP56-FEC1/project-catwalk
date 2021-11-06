@@ -1,11 +1,17 @@
 import React, { useState, useEffect }  from 'react';
 import Question from './Question.jsx';
+import AddQuestionModal from './AddQuestionModal.jsx';
 
 
 const QuestionList = ({questions, product_id, productName}) => {
   const [search, setSearch] = useState('');
   const [sortedList, setDisplayList] = useState(questions.results);
   const [displayCount, setDisplayCount] = useState(2);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = function() {
+    setModalIsOpen(true);
+  };
 
   const handleSearch = function(text) {
     setSearch(text);
@@ -16,6 +22,7 @@ const QuestionList = ({questions, product_id, productName}) => {
   };
   const handleAddQuestion = function(e) {
     e.preventDefault();
+    openModal();
   };
 
   // sort questions by helpfulness
@@ -63,6 +70,7 @@ const QuestionList = ({questions, product_id, productName}) => {
 
   return (
     <div className='questionList'>
+      <AddQuestionModal isOpen={modalIsOpen} product_id={product_id} setModalState={setModalIsOpen} productName={productName}/>
       <div id='qsearch'>
         <input id='qsearchtextinput' type="text" value={search} onChange={event => handleSearch(event.target.value)} placeholder="Have a question? Search for answers…"/>
         <div id='qMag'>MAGNIFYING GLASS ICON</div>
