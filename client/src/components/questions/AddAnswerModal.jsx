@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import Modal from 'react-modal';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import AddPhotosModal from './AddPhotosModal.jsx';
 
-const AddAnswerModal = ({isOpen, productName, question}) => {
+const AddAnswerModal = ({isOpen, productName, question, setModalState, product_id}) => {
   const [answerBody, setAnswerBody] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [modalClosed, setModalClosed] = useState(false);
+  const [photoOpen, setPhotoOpen] = useState(false);
 
   const closeModal = function() {
-    setModalClosed(true);
+    setModalState(false);
   };
 
   const postHandler = function() {
@@ -105,12 +105,16 @@ const AddAnswerModal = ({isOpen, productName, question}) => {
       )}
   };
 
+  const openPhotoModal = function() {
+    setPhotoOpen(true);
+  };
+
   const tempFunction = function() {
     
   };
 
-  return ( isOpen && !modalClosed ? (
-      <div className='addAnswerModal'>
+  return ( isOpen ? (
+      <div className='addModal'>
         <div className='addAnswerTopBar'>
           <div className='addAnswerTitle'>Submit your Answer</div>
           <div className='addAnswerSubTitle'>{productName}: {question.question_body}</div>
@@ -131,7 +135,8 @@ const AddAnswerModal = ({isOpen, productName, question}) => {
             <div>For authentication reasons, you will not be emailed</div>
           </div>
           <div className='modalInputListItem'>
-            <input type="button" value="Upload your photos" onClick={tempFunction} />
+          <AddPhotosModal isOpen={photoOpen} setModalState={setPhotoOpen} setPhotoUrls={setPhotos} question={question}/>
+            <input type="button" value="Upload your photos" onClick={openPhotoModal} />
           </div>
           <div className='modalInputListItem'>
             <input type="button" value="Submit answer" onClick={handleSubmitButton} />

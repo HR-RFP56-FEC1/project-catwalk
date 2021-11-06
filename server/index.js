@@ -34,7 +34,7 @@ app.get('/api/*', (req, res) => {
 app.post('/api/*', (req, res) => {
   console.log('post api: ');
   console.log(req.originalUrl);
-  console.log(req);
+  // console.log(req);
   const postfix = req.originalUrl.replace('/api/', '');
   axios({
     method: 'post',
@@ -48,7 +48,7 @@ app.post('/api/*', (req, res) => {
   }).catch((error) => {
     console.log('post error');
     res.status(error.response.status);
-    // console.log(error.response.data);
+    console.log(error.response.data);
     res.json(error.response.data);
   });
 });

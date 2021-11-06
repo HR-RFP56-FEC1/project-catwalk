@@ -102,7 +102,7 @@
   padding: 10px;
 }
 
-.addAnswerModal {
+.addModal {
   width: 50%;
   height: 50%;
   background-color: burlywood;
@@ -111,4 +111,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.photoThumbnail {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.modalPhotoThumbs {
+  display: flex;
+  flex-direction: row;
 }

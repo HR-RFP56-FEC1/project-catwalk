@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 
-const AddQuestionModal = ({isOpen, productName, question, setModalState, product_id}) => {
-  const [answerBody, setAnswerBody] = useState('');
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+const AddPhotosModal = ({isOpen, question, setModalState, setPhotoUrls}) => {
   const [photos, setPhotos] = useState([]);
+  const [inputUrl, setInputUrl] = useState('');
 
   const closeModal = function() {
     setModalState(false);
@@ -74,59 +72,62 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
   };
 
   //#region input field state change handlers
-  const handleBodyChange = function(e) {
+  const handleInputUrlChange = function(e) {
     e.preventDefault();
-    setAnswerBody(e.target.value);
-  };
-
-  const handleEmailChange = function(e) {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
-
-  const handleUsernameChange = function(e) {
-    e.preventDefault();
-    setUsername(e.target.value);
+    setInputUrl(e.target.value);
   };
   //#endregion
 
+
+  const handleAddPhotoButton = function(e) {
+    e.preventDefault();
+    let temp = photos.slice();
+    temp.push(inputUrl);
+    setPhotos(temp);
+    setInputUrl('');
+  };
+
+  const handleRemovePhotoButton = function(e) {
+    e.preventDefault();
+    let temp = photos.slice();
+    temp.pop();
+    setPhotos(temp);
+  };
+
   const handleSubmitButton = function(e) {
     e.preventDefault();
-    if (inputValidator()) {
-      postHandler().then((res) => {
-        console.log(res);
-        alert("Submission Added");
-        closeModal();
-      })} 
+    setPhotoUrls(photos);
+    setModalState(false);
   };
 
   return ( isOpen ? (
     <div className='addModal'>
-      <div className='addQuestionModal'>
+      <div className='addPhotosModal'>
         <div className='modalTopBar'>
-          <div className='modalTitle'>Ask Your Question</div>
-          <div className='modalSubTitle'>About the: {productName}</div>
+          <div className='modalTitle'>Add Photos:</div>
         </div>
         <div className='modalInputsList'>
-          <div className='modalInputListItem'>
-            <div className='modalInputLabel'>Your Question*</div>
-            <textarea type="text" value={answerBody} onChange={handleBodyChange} maxLength="1000" placeholder="Have a question? Search for answers…"/>
+          <div className='modalPhotoThumbs'>
+            <div className='modalInputLabel'>Photos:</div>
+            {(photos && photos.length > 0) ? photos.map(
+              (url, ind) => <img key={"photoUrl" + question.question_id + "_" + ind} className="photoThumbnail" src={url}/>
+            ):false} 
           </div>
           <div className='modalInputListItem'>
-            <div className='modalInputLabel'>What is your nickname?*</div>
-            <input type="text" value={username} onChange={handleUsernameChange} maxLength="60" placeholder="Have a question? Search for answers…"/>
-            <div>For privacy reasons, do not use your full name or email address</div>
+            <div className='modalInputLabel'>Photo URL</div>
+            <input type="text" value={inputUrl} onChange={handleInputUrlChange} maxLength="200" placeholder="Photo URL:"/>
           </div>
           <div className='modalInputListItem'>
-            <div className='modalInputLabel'>What is your email?*</div>
-            <input type="email" value={email} onChange={handleEmailChange} maxLength="60" placeholder="Example: jack@email.com"/>
-            <div>For authentication reasons, you will not be emailed</div>
+            <input type="button" value="Add Photo" onClick={handleAddPhotoButton} />
           </div>
           <div className='modalInputListItem'>
-            <input type="button" value="Submit question" onClick={handleSubmitButton} />
+            <input type="button" value="Remove Last Photo" onClick={handleRemovePhotoButton} />
           </div>
         </div>
         <div className='modalBottomBar'>
+          <div className='modalInputListItem'>
+            <input type="button" value="Submit Photos" onClick={handleSubmitButton} />
+          </div>
           <div className='modalInputListItem'>
             <input type="button" value="Close/Cancel" onClick={closeModal} />
           </div>
@@ -137,6 +138,6 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
   );
 };
   
-export default AddQuestionModal;
+export default AddPhotosModal;
 
 
