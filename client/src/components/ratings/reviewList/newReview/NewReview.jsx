@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import characteristics from './Characteristics.js';
+import characteristics from './characteristics.js';
 import CharacterRadio from './CharacterRadio.jsx';
 
 var NewReview = (props) => {
