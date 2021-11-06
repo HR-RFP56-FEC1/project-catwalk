@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import AnswerList from './AnswerList.jsx';
+import AddAnswerModal from './AddAnswerModal.jsx';
 import axios from 'axios';
 
-const Question = ({question}) => {
+const ThemeAddAnswerModal = React.createContext({
+  isOpen: false,
+  toggleOpen: () => {}
+});
 
+const Question = ({question}) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
   const handleReport = function(text) {
     setReported(!reported);
+  };
+
+  const openModal = function() {
+    setIsOpen(true);
   };
 
   //#region helpful question vote functions
@@ -37,13 +47,14 @@ const Question = ({question}) => {
   //#region add answer functions
   const handleAddAnswer = function(e) {
     e.preventDefault();
-
-  }
+    openModal();
+  };
 
   //#endregion
 
   return (
     <div className='question'>
+      <AddAnswerModal isOpen={modalIsOpen} question={question}/>
       <div className='questiontopbar'>
         <div className='questiontext'>Q:   {question.question_body}</div>
         <div className='questionHelpAdd'>

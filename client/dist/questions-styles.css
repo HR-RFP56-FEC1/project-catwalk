@@ -95,3 +95,20 @@
   border-color: black;
   padding: 10px;
 }
+
+.modalInputListItem {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.addAnswerModal {
+  width: 50%;
+  height: 50%;
+  background-color: burlywood;
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
