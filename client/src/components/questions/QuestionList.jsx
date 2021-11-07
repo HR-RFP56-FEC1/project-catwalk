@@ -6,7 +6,7 @@ import AddQuestionModal from './AddQuestionModal.jsx';
 const QuestionList = ({questions, product_id, productName}) => {
   const [search, setSearch] = useState('');
   const [sortedList, setDisplayList] = useState(questions.results);
-  const [displayCount, setDisplayCount] = useState(2);
+  const [displayCount, setDisplayCount] = useState(4);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = function() {
