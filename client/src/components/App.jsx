@@ -25,7 +25,7 @@ var App = () => {
       <Overview id={mainProduct}/>
       <Related id={mainProduct} handleProductChange={handleProductChange}/>
       <Ratings id={mainProduct}/>
-      <QnA />
+      <QnA id={mainProduct}/>
     </div>
   )
 }

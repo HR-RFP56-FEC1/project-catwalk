@@ -100,7 +100,7 @@ const AddPhotosModal = ({isOpen, question, setModalState, setPhotoUrls}) => {
   };
 
   return ( isOpen ? (
-    <div className='addModal'>
+    <div className='modalBackground'>
       <div className='addPhotosModal'>
         <div className='modalTopBar'>
           <div className='modalTitle'>Add Photos:</div>
