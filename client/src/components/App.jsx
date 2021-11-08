@@ -7,7 +7,7 @@ import Related from './related/Related.jsx'
 
 //pass `mainProduct` as `id` to your component
 //then, delete this id to test functionality
-let id = 40344
+let id = 40350
 
 var App = () => {
   const [mainProduct, setMainProduct] = useState(40344)
