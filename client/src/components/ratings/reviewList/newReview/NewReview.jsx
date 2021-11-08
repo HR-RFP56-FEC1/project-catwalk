@@ -121,7 +121,7 @@ var NewReview = (props) => {
             />
             {
               bodyCount < 50 &&
-              <div id="review-body-character-counter">
+              <div id="review-body-character-counter" style={ {color:"#ea9291"} }>
                 Mininum required characters left: {50 - bodyCount}
               </div>
             }
