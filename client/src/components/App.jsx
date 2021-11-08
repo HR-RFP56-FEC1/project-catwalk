@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Overview from './overview/Overview.jsx';
 import Ratings from './ratings/Ratings.jsx';
 import QnA from './questions/QnA.jsx';
@@ -11,6 +11,10 @@ let id = 40344
 
 var App = () => {
   const [mainProduct, setMainProduct] = useState(40344)
+
+  useEffect(()=> {
+    window.scrollTo(0, 0);
+  }, [mainProduct])
 
   const handleProductChange = (idClicked) => {
     setMainProduct(idClicked)

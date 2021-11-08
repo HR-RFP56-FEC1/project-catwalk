@@ -16,6 +16,11 @@ const Overview = ({ id }) => {
   const [view, setView] = useState('default')
 
   useEffect(() => {
+    setImage(0)
+    setCurrentStyle(0)
+  }, [product])
+
+  useEffect(() => {
     axios(`api/products/${id}`)
       .then(response => {
         setProduct(response.data)
@@ -43,8 +48,6 @@ const Overview = ({ id }) => {
 
   const handleOnClick = (styleNum) => {
     setCurrentStyle(styleNum)
-    //to reset image to first image on style change:
-    /*setImage(0)*/
   }
 
   const changeView = (viewType, from) => {
