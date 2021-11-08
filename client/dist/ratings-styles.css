@@ -1,16 +1,8 @@
-#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by {
+#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by, #review-entry-username-date, #new-review-form {
   font-family: sans-serif;
   color: var(--gray);
 }
 
-#review-entry-username-date {
-  font-family: sans-serif;
-  color: var(--gray);
-}
-
-#review-entry-username-date {
-  color: var(--gray);
-}
 
 .rating-widget {
   display: flex;
@@ -293,8 +285,119 @@
 /*
 This is the start of styling for the new review form
 */
+
+
 .required-field:before {
   content: "* ";
   color: #ea9291
 }
 
+#new-review-modal {
+  border-radius: 1%;
+  position: absolute;
+  margin: 0;
+  padding: 10px;
+  z-index: 100;
+  min-width: 100%;
+  min-height: 200vh;
+  height: auto;
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  left: 0%;
+}
+
+#new-review-form {
+  border: 5px solid var(--gray);
+  border-radius: 1%;
+  background-color: white;
+  position: absolute;
+  z-index: 101;
+  width: 80%;
+  top: auto;
+  left: 10%;
+  height: auto;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#new-review-form h1, h2, #new-review-entry{
+  margin-left: 20%;
+}
+
+#new-review-entry {
+  display: flex;
+  flex-direction: column;
+}
+
+.required-field, .optional-field {
+  font-weight: bold;
+  margin-bottom: 1%;
+}
+
+#new-review-entry >* {
+  margin-bottom: 20px;
+}
+
+.rating-stars {
+  display: flex;
+}
+
+.rating-stars * {
+  margin-right: 3%;
+}
+
+#rating-stars {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+#characteristicd-breakdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.character-radio-entry {
+  padding: 5px 0 5px 0;
+}
+.character-radio-btn {
+  display: flex;
+  flex-direction: row;
+  max-width: 80%;
+}
+
+.character-radio-label {
+  flex-basis: 20%;
+  padding: 5px 0px 5px 0px;
+}
+
+#add-review-summary > input {
+  width: 80%;
+}
+
+#add-review-body > textarea {
+  width: 80%;
+  min-height: 20vh;
+}
+
+#add-review-nickname > input, #add-review-email > input {
+  width: 40%;
+  margin-bottom: 0.5%;
+}
+
+#submit-new-review, #close-new-review {
+  border: 1px solid var(--gray);
+  width: 10%;
+  color: var(--gray);
+  background-color: none;
+  padding: 1% 1%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 2%;
+  cursor: pointer;
+}

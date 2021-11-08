@@ -6,7 +6,8 @@ var RatingSummary = (props) => {
 
   return (
     <div className="rating-summary">
-      <div id="average-rating">
+      <div id="average-rating" onClick={()=> {props.filter(0)}}
+        style={ {cursor: "pointer"} }>
         {props.avgRating.toFixed(1)}
       </div>
       <div className="rating-summary-star-rating">

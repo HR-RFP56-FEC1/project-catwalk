@@ -15,13 +15,15 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
   const stock = []
 
   for (let sku in skuList) {
-    let stockDetails = [
-      sku,
-      skuList[sku].quantity,
-      skuList[sku].size
-    ]
-    if (stockDetails[1] > 0) {
-      stock.push(stockDetails)
+    if (sku !== null) {
+      let stockDetails = [
+        sku,
+        skuList[sku].quantity,
+        skuList[sku].size
+      ]
+      if (stockDetails[1] > 0) {
+        stock.push(stockDetails)
+      }
     }
   }
 

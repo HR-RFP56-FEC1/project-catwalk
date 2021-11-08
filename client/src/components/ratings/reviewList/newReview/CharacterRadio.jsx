@@ -7,11 +7,11 @@ const capitalizeFirst = (string) => {
 }
 var CharacterRadio = (props) => {
   return (
-    <div>
-      <div className="character-radio">
+    <div className="character-radio-entry">
+      <div className="character-radio-name">
         {capitalizeFirst(props.character)}:
       </div>
-      <div>
+      <div className="character-radio-btn">
         <label className="character-radio-label">
           <input type="radio" name="character-radio-input" />
             {characteristics[props.character].score['1']}

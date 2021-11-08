@@ -18,9 +18,7 @@ const Overview = ({ id }) => {
   useEffect(() => {
     setImage(0)
     setCurrentStyle(0)
-  }, [product])
 
-  useEffect(() => {
     axios(`api/products/${id}`)
       .then(response => {
         setProduct(response.data)
@@ -37,13 +35,13 @@ const Overview = ({ id }) => {
         console.log('Error on GET: ' + err)
       })
 
-      axios(`api/reviews/meta/?product_id=${id}`)
-      .then(response => {
-        setReviews(response.data)
-      })
-      .catch(err => {
-        console.log('Error on GET: ' + err)
-      })
+    axios(`api/reviews/meta/?product_id=${id}`)
+    .then(response => {
+      setReviews(response.data)
+    })
+    .catch(err => {
+      console.log('Error on GET: ' + err)
+    })
   }, [id])
 
   const handleOnClick = (styleNum) => {
@@ -69,7 +67,10 @@ const Overview = ({ id }) => {
     }
   }
 
-  if (product && styles && reviews) {
+  if (product && styles && reviews /* && styles.results[currentStyle].skus */) {
+    if (!styles.results[currentStyle].skus) {
+      debugger
+    }
     return (
       <div id='overview'>
         <Logo />
