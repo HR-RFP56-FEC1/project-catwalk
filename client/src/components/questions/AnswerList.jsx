@@ -65,7 +65,7 @@ const AnswerList = ({answers}) => {
       <div className='answerListBigA'>A:</div>
       <div className="aList">
         {
-          displayList ? displayList: <div>loading answers...</div>
+          displayList ? displayList: false
         }
         {
           (Object.keys(answers).length > 2) ? ((displayCount < Object.keys(answers).length) ? <input className='moreAnswersButton' type="button" value="See more answers" onClick={moreAnswersEvent}/>:

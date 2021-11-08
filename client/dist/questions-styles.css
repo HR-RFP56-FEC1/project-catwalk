@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background-color: aquamarine;
+  font-family: sans-serif;
+  color: var(--gray);
 }
 
 #qsearch {
@@ -31,7 +32,7 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   padding-left: 10px;
 }
 
@@ -71,6 +72,8 @@
 .answerList {
   display: flex;
   flex-direction: row;
+  align-items: baseline;
+
 }
 
 .question {
@@ -122,3 +125,67 @@
   display: flex;
   flex-direction: row;
 }
+
+.questiontext {
+  display: flex;
+  flex-direction: row;
+  font-size: larger;
+  font-weight: bolder;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.questiontextBody {
+  margin-left: 10px;
+}
+
+.answerListBigA {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.answerBottomBar {
+  font-size: small;
+}
+
+.answerBody {
+  font-size: medium;
+  margin-bottom: 10px;
+}
+
+.moreQuestionsButton {
+  border-radius: 0px;
+  font-size: larger;
+  padding: 12px 24px;
+  margin: 10px;
+}
+
+.addQuestionButton {
+  border-radius: 0px;
+  font-size: larger;
+  padding: 12px 24px;
+  margin: 10px;
+}
+
+#qtitlebar {
+  font-size: larger;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#qsearchtextinput {
+  font-size: larger;
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.moreAnswersButton {
+  font-size: medium;
+  font-weight: bolder;
+  padding: 10px;
+  background: none;
+  border: none;
+}
+

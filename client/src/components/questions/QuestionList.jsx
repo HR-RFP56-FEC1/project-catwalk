@@ -6,7 +6,7 @@ import AddQuestionModal from './AddQuestionModal.jsx';
 const QuestionList = ({questions, product_id, productName}) => {
   const [search, setSearch] = useState('');
   const [sortedList, setDisplayList] = useState(questions.results);
-  const [displayCount, setDisplayCount] = useState(2);
+  const [displayCount, setDisplayCount] = useState(4);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = function() {
@@ -73,7 +73,6 @@ const QuestionList = ({questions, product_id, productName}) => {
       <AddQuestionModal isOpen={modalIsOpen} product_id={product_id} setModalState={setModalIsOpen} productName={productName}/>
       <div id='qsearch'>
         <input id='qsearchtextinput' type="text" value={search} onChange={event => handleSearch(event.target.value)} placeholder="Have a question? Search for answers…"/>
-        <div id='qMag'>MAGNIFYING GLASS ICON</div>
       </div>
       <div className='qList'>
         {displayListFunc()}
