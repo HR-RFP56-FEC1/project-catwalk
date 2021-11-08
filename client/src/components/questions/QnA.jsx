@@ -46,15 +46,6 @@ const QnA = ({id}) => {
         handleProduct(response);
       });
     });
-  }, []);
-
-  useEffect(() => {
-    getQuestions(id).then((response) => {
-      handleResults(response);
-      getProduct(id).then((response) => {
-        handleProduct(response);
-      });
-    });
   }, [id]);
 
   return (
