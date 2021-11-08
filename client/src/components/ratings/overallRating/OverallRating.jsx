@@ -47,7 +47,7 @@ var OverallRating = (props) => {
 
     return (
       <div className="overall-rating">
-        <RatingSummary avgRating={avgRating} />
+        <RatingSummary avgRating={avgRating} filter={props.filter}/>
         <RatingDist ratingDist={overallRating.ratings} recommendPerc={recommendPerc}
           totRatings={countRating} filter={props.filter}/>
         <ProductBreakdown breakdown={overallRating.characteristics} />
