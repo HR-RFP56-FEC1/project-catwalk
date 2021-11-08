@@ -100,34 +100,36 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
   };
 
   return ( isOpen ? (
-    <div className='addModal'>
-      <div className='addQuestionModal'>
-        <div className='modalTopBar'>
-          <div className='modalTitle'>Ask Your Question</div>
-          <div className='modalSubTitle'>About the: {productName}</div>
-        </div>
-        <div className='modalInputsList'>
-          <div className='modalInputListItem'>
-            <div className='modalInputLabel'>Your Question*</div>
-            <textarea type="text" value={answerBody} onChange={handleBodyChange} maxLength="1000" placeholder="Have a question? Search for answers…"/>
+    <div className='modalBackground'>
+      <div className='addModal'>
+        <div className='addQuestionModal'>
+          <div className='modalTopBar'>
+            <div className='modalTitle'>Ask Your Question</div>
+            <div className='modalSubTitle'>About the: {productName}</div>
           </div>
-          <div className='modalInputListItem'>
-            <div className='modalInputLabel'>What is your nickname?*</div>
-            <input type="text" value={username} onChange={handleUsernameChange} maxLength="60" placeholder="Have a question? Search for answers…"/>
-            <div>For privacy reasons, do not use your full name or email address</div>
+          <div className='modalInputsList'>
+            <div className='modalInputListItem'>
+              <div className='modalInputLabel'>Your Question*</div>
+              <textarea type="text" value={answerBody} onChange={handleBodyChange} maxLength="1000" placeholder="Have a question? Search for answers…"/>
+            </div>
+            <div className='modalInputListItem'>
+              <div className='modalInputLabel'>What is your nickname?*</div>
+              <input type="text" value={username} onChange={handleUsernameChange} maxLength="60" placeholder="Have a question? Search for answers…"/>
+              <div className="modalInputNote">For privacy reasons, do not use your full name or email address</div>
+            </div>
+            <div className='modalInputListItem'>
+              <div className='modalInputLabel'>What is your email?*</div>
+              <input type="email" value={email} onChange={handleEmailChange} maxLength="60" placeholder="Example: jack@email.com"/>
+              <div className="modalInputNote">For authentication reasons, you will not be emailed</div>
+            </div>
+            <div className='modalInputListItem'>
+              <input type="button" value="Submit question" onClick={handleSubmitButton} />
+            </div>
           </div>
-          <div className='modalInputListItem'>
-            <div className='modalInputLabel'>What is your email?*</div>
-            <input type="email" value={email} onChange={handleEmailChange} maxLength="60" placeholder="Example: jack@email.com"/>
-            <div>For authentication reasons, you will not be emailed</div>
-          </div>
-          <div className='modalInputListItem'>
-            <input type="button" value="Submit question" onClick={handleSubmitButton} />
-          </div>
-        </div>
-        <div className='modalBottomBar'>
-          <div className='modalInputListItem'>
-            <input type="button" value="Close/Cancel" onClick={closeModal} />
+          <div className='modalBottomBar'>
+            <div className='modalInputListItem'>
+              <input type="button" value="Close/Cancel" onClick={closeModal} />
+            </div>
           </div>
         </div>
       </div>
