@@ -308,9 +308,9 @@ This is the start of styling for the new review form
 }
 
 #new-review-form {
-  border: 5px solid white;
+  border: 5px solid var(--gray);
   border-radius: 1%;
-  background-color: rgb(240, 240, 240);
+  background-color: white;
   position: absolute;
   z-index: 101;
   width: 80%;
