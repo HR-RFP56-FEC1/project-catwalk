@@ -27,7 +27,7 @@ const QnA = ({id}) => {
   // 40344 for many questions testing
   // const [product_id, setId] = useState(40344);
   // hard coded for now to get product with questions
-  const [product_id, setId] = useState(id);
+  // const [product_id, setId] = useState(id);
 
   const [productName, setProductName] = useState('');
 
@@ -40,19 +40,29 @@ const QnA = ({id}) => {
   }
 
   useEffect(() => {
-    getQuestions(product_id).then((response) => {
+    getQuestions(id).then((response) => {
       handleResults(response);
-      getProduct(product_id).then((response) => {
+      getProduct(id).then((response) => {
         handleProduct(response);
       });
     });
   }, []);
+
+  useEffect(() => {
+    getQuestions(id).then((response) => {
+      handleResults(response);
+      getProduct(id).then((response) => {
+        handleProduct(response);
+      });
+    });
+  }, [id]);
+
   return (
   <div id="qna" className='qna'>
     <div id='qtitlebar'>QUESTIONS AND ANSWERS</div>
 
     <div id='qList'>{
-      results ? <QuestionList questions={results} product_id={product_id} productName={productName}/> : <div>Loading....</div>
+      results ? <QuestionList questions={results} product_id={id} productName={productName}/> : <div>Loading....</div>
       }
     </div>
   </div>
