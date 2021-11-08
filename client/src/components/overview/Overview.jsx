@@ -46,6 +46,7 @@ const Overview = ({ id }) => {
 
   const handleOnClick = (styleNum) => {
     setCurrentStyle(styleNum)
+    setImage(0)
   }
 
   const changeView = (viewType, from) => {

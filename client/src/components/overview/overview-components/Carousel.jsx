@@ -132,7 +132,7 @@ const Thumbs = ({style, onClick, image, view}) => {
           image={image}
           view={view}
         />)}
-        {style.photos.length > 7 && <div id='thumb-buffer-bottom'></div>}
+        {/* {style.photos.length > 7 && <div id='thumb-buffer-bottom'></div>} */}
       </div>
     </div>
   )
