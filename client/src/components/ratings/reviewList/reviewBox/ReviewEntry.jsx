@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import moment from 'moment';
 import axios from 'axios';
 
-// import ReviewPhoto from './ReviewPhoto.jsx';
+import ReviewPhoto from './ReviewPhoto.jsx';
 import Stars from '../../../shared/Stars.jsx';
 
 var ReviewEntry = (props) => {
@@ -97,13 +97,13 @@ var ReviewEntry = (props) => {
       {
         review.photos.length > 0 &&
         <div className="review-photos-thumbnail">
-          {/* {[0, 1, 2, 3, 4].map(i => {
+          {[0, 1, 2, 3, 4].map(i => {
             if (review.photos[i]) {
               return (
                 <ReviewPhoto photo={review.photos[i]} key={review.photos[i].id} />
               )
             }
-          })} */}
+          })}
         </div>
 
       }

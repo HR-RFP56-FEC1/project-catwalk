@@ -84,7 +84,7 @@ var ReviewList = (props) => {
       .catch(err => {
         console.log(`Error retrieving reviews data for product id ${props.id}`, err);
       })
-  }, [])
+  }, [props.id])
 
   useEffect(() => {
     GetProductInformation(props.id)
@@ -103,6 +103,9 @@ var ReviewList = (props) => {
   useEffect(() => {
     if (allReviews !== null) {
       setDisplay(allReviews.filter((review) => {
+        if (props.filter === 0) {
+          return review;
+        }
         if (props.filter >= 1 && props.filter <= 5) {
           return review.rating == props.filter;
         }
@@ -129,6 +132,7 @@ var ReviewList = (props) => {
 
   if (displayedReviews !== null) {
 
+    const top = (200 + reviewsCount * 40).toString() + '%';
 
     return (
       <div className="review-list">
@@ -154,7 +158,9 @@ var ReviewList = (props) => {
         </div>
         {
           newReview &&
-          <NewReview product={product}/>
+          <div id="new-review-modal" style={ {top: top} }>
+            <NewReview product={product} close={clickAddReview} />
+          </div>
         }
 
       </div>
