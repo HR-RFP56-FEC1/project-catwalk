@@ -108,7 +108,53 @@
 .addModal {
   width: 50%;
   height: 50%;
-  background-color: burlywood;
+  background-color: white;
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+
+.addPhotosModal {
+  width: 75%;
+  height: 75%;
+  background-color: white;
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+
+.modalTitle {
+  font-size: larger;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+.modalSubTitle {
+  font-size: large;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.modalInputNote {
+  font-size: smaller;
+  padding: 2px;
+}
+
+.modalInputLabel {
+  font-size: medium;
+  padding: 2px;
+}
+
+.modalBackground {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   position: fixed;
   top: 50%;

@@ -114,10 +114,11 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
   };
 
   return ( isOpen ? (
+    <div className='modalBackground'>
       <div className='addModal'>
-        <div className='addAnswerTopBar'>
-          <div className='addAnswerTitle'>Submit your Answer</div>
-          <div className='addAnswerSubTitle'>{productName}: {question.question_body}</div>
+        <div className='modalTopBar'>
+          <div className='modalTitle'>Submit your Answer</div>
+          <div className='modalSubTitle'>{productName}: {question.question_body}</div>
         </div>
         <div className='modalInputsList'>
           <div className='modalInputListItem'>
@@ -127,12 +128,12 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
           <div className='modalInputListItem'>
             <div className='modalInputLabel'>What is your nickname?*</div>
             <input type="text" value={username} onChange={handleUsernameChange} maxLength="60" placeholder="Have a question? Search for answers…"/>
-            <div>For privacy reasons, do not use your full name or email address</div>
+            <div className="modalInputNote">For privacy reasons, do not use your full name or email address</div>
           </div>
           <div className='modalInputListItem'>
             <div className='modalInputLabel'>What is your email?*</div>
             <input type="email" value={email} onChange={handleEmailChange} maxLength="60" placeholder="Have a question? Search for answers…"/>
-            <div>For authentication reasons, you will not be emailed</div>
+            <div className="modalInputNote">For authentication reasons, you will not be emailed</div>
           </div>
           <div className='modalInputListItem'>
           <AddPhotosModal isOpen={photoOpen} setModalState={setPhotoOpen} setPhotoUrls={setPhotos} question={question}/>
@@ -148,6 +149,7 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
           </div>
         </div>
       </div>
+    </div>
     ): false
   );
 };
