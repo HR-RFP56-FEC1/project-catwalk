@@ -85,9 +85,7 @@ const RelatedPrice = ({price}) => (
 
 const Related = ({id, handleProductChange}) => {
   const [related, setRelated] = useState()
-  //do /products/:product_id/related GET
-  //make a card for each id in array
-  //each card does /products/:product_id GET
+
   useEffect(() => {
     axios.get(`api/products/${id}/related`)
     .then(response => {
