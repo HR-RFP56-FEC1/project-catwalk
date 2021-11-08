@@ -84,7 +84,7 @@ var ReviewList = (props) => {
       .catch(err => {
         console.log(`Error retrieving reviews data for product id ${props.id}`, err);
       })
-  }, [])
+  }, [props.id])
 
   useEffect(() => {
     GetProductInformation(props.id)

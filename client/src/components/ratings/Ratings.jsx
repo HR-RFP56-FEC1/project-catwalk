@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import OverallRating from './overallRating/OverallRating.jsx';
 import ReviewList from './reviewList/ReviewList.jsx';
 
-// let id = '40363';
+// let id = '40344';
 
 var Ratings = (props) => {
-  let id = props.id;
+  let id = props.id.toString();
   const [filter, setFilter] = useState('0');
 
   const filterReviews = function (rating) {

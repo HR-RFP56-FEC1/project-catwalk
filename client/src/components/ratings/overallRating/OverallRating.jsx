@@ -26,7 +26,7 @@ var OverallRating = (props) => {
         // console.log('ratings data:', res.data);
         setRating(res.data);
       })
-  }, [])
+  }, [props.id])
 
   if (overallRating !== null) {
     let allRating = overallRating.ratings;
