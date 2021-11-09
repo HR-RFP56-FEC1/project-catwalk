@@ -2,11 +2,11 @@ import React from 'react'
 import {useState} from 'react'
 import Stars from '../../shared/Stars.jsx'
 
-
+//rating-headline
 const Rating = ({rating}) => (
   <div id='read-all-reviews'>
     <Stars rating={rating}/>
-    <a><u>Read all reviews</u></a>
+    <a id='read-all-reviews-link' href='#rating-headline'>Read all reviews</a>
   </div>
 )
 
