@@ -1,5 +1,5 @@
 #rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by, #review-entry-username-date, #new-review-form {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: var(--gray);
 }
 
