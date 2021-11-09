@@ -301,34 +301,44 @@ This is the start of styling for the new review form
   color: #ea9291
 }
 
-#new-review-modal {
-  border-radius: 1%;
-  position: absolute;
-  margin: 0;
-  padding: 10px;
-  z-index: 100;
-  min-width: 100%;
-  min-height: 200vh;
-  height: auto;
-  display: block;
-  background: rgba(0, 0, 0, 0.5);
+/* .new-review-modal {
   width: 100%;
-  left: 0%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+.new-review-modal-background {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 500px 100px 500px 100px;
 }
 
 #new-review-form {
   border: 5px solid var(--gray);
   border-radius: 1%;
   background-color: white;
-  position: absolute;
-  z-index: 101;
-  width: 80%;
-  top: auto;
+  position: fixed;
+  top: 5%;
   left: 10%;
-  height: auto;
-  margin-top: 1%;
-  margin-left: auto;
-  margin-right: auto;
+  z-index: 1;
+  /* transform: translate(-50%, -50%); */
+  width: 80%;
+  height: 90%;
+  overflow-y: scroll;
 }
 
 #new-review-form h1, h2, #new-review-entry{
