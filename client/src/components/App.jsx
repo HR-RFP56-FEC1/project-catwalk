@@ -58,7 +58,7 @@ var App = () => {
   }
 
   return (
-    <div>
+    <div id='app-container'>
       {productInfo ? <Overview id={mainProduct} productInfo={productInfo} reviews={reviewsMeta}/>: false}
       {productInfo ? <Related id={mainProduct} handleProductChange={handleProductChange}/>: false}
       {<QnA id={mainProduct} productInfo={productInfo}/>}

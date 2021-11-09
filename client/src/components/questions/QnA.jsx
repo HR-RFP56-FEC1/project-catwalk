@@ -27,13 +27,15 @@ const QnA = ({id, productInfo}) => {
   }, [id]);
 
   return (
-  <div id="qna" className='qna'>
-    <div id='qtitlebar'>QUESTIONS AND ANSWERS</div>
-    <div id='qList'>{
-      results ? <QuestionList questions={results} product_id={id} productInfo={productInfo}/> : <div>Loading....</div>
-      }
+    <div id='qna-container'>
+      <div id="qna" className='qna'>
+        <div id='qtitlebar'>QUESTIONS AND ANSWERS</div>
+        <div id='qList'>{
+          results ? <QuestionList questions={results} product_id={id} productInfo={productInfo}/> : <div>Loading....</div>
+          }
+        </div>
+      </div>
     </div>
-  </div>
 )};
 
 

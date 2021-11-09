@@ -1,9 +1,21 @@
+#qna-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 1200px;
+}
+
+a {
+  color: hotpink;
+}
 
 #qna {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   font-family: sans-serif;
+  width: 1000px;
   color: var(--gray);
 }
 
@@ -11,10 +23,13 @@
   display: flex;
   flex-direction: row;
   align-items: left;
+  height: 65px;
+  /* padding-left: 20px; */
 }
 
 #qsearchtextinput {
-  flex-grow: 10;
+  /* flex-grow: 10; */
+
 }
 
 #qMag {
@@ -87,15 +102,20 @@
   align-self: end;
 }
 
+.moreQuestions, .addQuestion {
+  border: 1px solid var(--gray);
+  height: 65px;
+}
+
 .moreQuestions {
-  border-style: solid;
-  border-color: black;
+  /* border-style: solid;
+  border-color: black; */
   padding: 10px;
   margin-right: 15px;
 }
 .addQuestion {
-  border-style: solid;
-  border-color: black;
+  /* border-style: solid;
+  border-color: black; */
   padding: 10px;
 }
 
@@ -200,17 +220,21 @@
 }
 
 .moreQuestionsButton {
-  border-radius: 0px;
   font-size: larger;
   padding: 12px 24px;
   margin: 10px;
 }
 
 .addQuestionButton {
-  border-radius: 0px;
   font-size: larger;
   padding: 12px 24px;
   margin: 10px;
+}
+
+.moreQuestionsButton, .addQuestionButton {
+  border: 1px solid var(--gray);
+  height: 65px;
+  color: var(--gray);
 }
 
 #qtitlebar {
@@ -220,11 +244,11 @@
 }
 
 #qsearchtextinput {
-  font-size: larger;
+  font-size: 15px;
   font-weight: bolder;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
+  border: 1px solid var(--gray);
+  width: 1000px;
+  padding-left: 20px;
 }
 
 .moreAnswersButton {
@@ -233,5 +257,5 @@
   padding: 10px;
   background: none;
   border: none;
+  color: hotpink;
 }
-
