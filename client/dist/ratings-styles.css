@@ -1,4 +1,4 @@
-#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by, #review-entry-username-date, #new-review-form {
+#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by, #review-entry-username-date, #new-review-form, #add-review-photo {
   font-family: 'Roboto', sans-serif;
   color: var(--gray);
 }
@@ -409,6 +409,22 @@ This is the start of styling for the new review form
   width: 80%;
   min-height: 20vh;
 }
+
+#add-review-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 2vh;
+  border: 0.2vh dashed var(--gray);
+  background-color: rgb(240, 240, 240);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+
 
 #add-review-nickname > input, #add-review-email > input {
   width: 40%;

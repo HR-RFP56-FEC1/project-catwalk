@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import characteristics from './characteristics.js';
 import CharacterRadio from './CharacterRadio.jsx';
+import AddReviewPhotoBtn from './AddPhoto.jsx';
 
 const RatingStars = (props) => {
   let filled = props.rating;
@@ -36,20 +37,65 @@ const ratingMeaning = {
 
 var NewReview = (props) => {
   const[overallRating, setOverallRating] = useState(0);
+  const[recommend, setRecommend] = useState(null);
   const[bodyCount, setBodyCount] = useState(0);
+  const[photo, setPhoto] = useState([]);
+  const[summary, setSummary] = useState(null);
+  const[body, setBody] = useState(null);
+
+  const[nickname, setNickname] = useState(null);
+  const[email, setEmail] = useState(null);
 
   const clickOverallRating = (e) => {
     let starID = e.target.id.split('-')[1];
     setOverallRating(starID);
   }
 
+  const handleRecommend = (e) => {
+    if (e.target.value === 'Yes') {
+      setRecommend(true);
+    }
+    if (e.target.value === 'No') {
+      setRecommend(false);
+    }
+  }
+
+  const typeSummary = (e) => {
+    setSummary(e.target.value);
+  }
+
   const typeReview = (e) => {
+    setBody(e.target.value);
     let charCount = e.target.value.length;
     setBodyCount(charCount);
   }
 
+  const typeNickname = (e) => {
+    setNickname(e.target.value);
+  }
+
+  const typeEmail = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const checkReview = (e) => {
+    let missing = []
+    if (overallRating === 0) {
+      missing.push('Please add overall rating');
+    }
+
+    if (recommend === null) {
+      missing.push('Please add whether you will recommend this product');
+    }
+
+    if (bodyCount < 50) {
+      missing.push('Please enter at least 50 words for the review body')
+    }
+  }
+
+
   return (
-    <form id="new-review-form">
+    <div id="new-review-form">
       <h1>Write your review</h1>
       <h2>About product {props.product}</h2>
 
@@ -85,17 +131,20 @@ var NewReview = (props) => {
 
         <div id="new-review-whether-recommend">
           <div className="required-field" id="new-review-whether-recommend-field-name">Do you recommend this product? </div>
-          <input type="radio" id="whether-recommend-yes" name="whether-recommend" value="Yes"/>
+          <input type="radio" id="whether-recommend-yes" name="whether-recommend" value="Yes"
+            onClick={handleRecommend}/>
           <label htmlFor="whether-recommend-yes">Yes &nbsp;</label>
-          <input type="radio" id="whether-recommend-no" name="whether-recommend" value="No"/>
+          <input type="radio" id="whether-recommend-no" name="whether-recommend" value="No"
+            onClick={handleRecommend}/>
           <label htmlFor="whether-recommend-no">No</label>
         </div>
 
         <div id="new-review-characteristics">
           <div className="required-field" id="new-review-characteristics-field-name">Characteristics:</div>
           <div id="characteristic-breakdown">
-            <CharacterRadio character="size" />
+            <CharacterRadio character="fit" />
             <CharacterRadio character="length" />
+            <CharacterRadio character="comfort" />
             <CharacterRadio character="quality" />
           </div>
         </div>
@@ -106,7 +155,8 @@ var NewReview = (props) => {
           </div>
           <div id="add-review-summary">
             <input type="text" name="review-summary"
-              placeholder="Example: Best purchase ever!" style={{ fontWeight: "normal" }}/>
+              placeholder="Example: Best purchase ever!" style={{ fontWeight: "normal" }}
+              onChange={typeSummary}/>
           </div>
         </div>
 
@@ -135,7 +185,10 @@ var NewReview = (props) => {
         </div>
 
         <div id="new-review-add-photo">
-          <button>Add Photo</button>
+          <div id="new-review-add-photo-field-name" className="optional-field">
+            Add Photo:
+          </div>
+          <AddReviewPhotoBtn />
         </div>
 
         <div id="new-review-nickname">
@@ -144,7 +197,8 @@ var NewReview = (props) => {
           </div>
           <div id="add-review-nickname">
             <input type="text" name="review-nickname"
-              placeholder="Example: jackson11!" style={{ fontWeight: "normal" }}/>
+              placeholder="Example: jackson11!" style={{ fontWeight: "normal" }}
+              onChange={typeNickname}/>
           </div>
           <div>
             For privacy reasons, do not use your full name or email address
@@ -157,7 +211,8 @@ var NewReview = (props) => {
           </div>
           <div id="add-review-email">
             <input type="text" name="review-email"
-              placeholder="Example: jackson11@email.com" style={{ fontWeight: "normal" }}/>
+              placeholder="Example: jackson11@email.com" style={{ fontWeight: "normal" }}
+              onChange={typeEmail}/>
           </div>
           <div>
             For authentication reasons, you will not be emailed
@@ -171,7 +226,7 @@ var NewReview = (props) => {
         </div>
 
       </div>
-    </form>
+    </div>
   )
 }
 

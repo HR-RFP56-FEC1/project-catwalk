@@ -27,6 +27,7 @@ var CharacterRating = (props) => {
         </div>
         <div className="char-slider-desc">
           <span>Poor</span>
+          <span>Expected</span>
           <span>Perfect</span>
         </div>
       </div>
