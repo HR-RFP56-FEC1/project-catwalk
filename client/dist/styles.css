@@ -12,8 +12,11 @@ body, html {
   --gray: rgb(114, 93, 110);
 }
 
-#app {
+#app-container {
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
+  /* min-width: 1200px;
+  max-width: 1200px; */
 }

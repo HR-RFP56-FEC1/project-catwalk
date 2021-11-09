@@ -16,11 +16,13 @@ var Ratings = ({id, overallRating}) => {
   // }, [filter])
 
   return (
-    <div className="rating-widget">
-      <div id="rating-headline">RATINGS &#38; REVIEWS </div>
-      <div className="rating-box">
-        <OverallRating id={id} filter={filterReviews.bind(this)} overallRating={overallRating} />
-        <ReviewList id={id} filter={filter}/>
+    <div id='ratings-container'>
+      <div className="rating-widget">
+        <div id="rating-headline">RATINGS &#38; REVIEWS </div>
+        <div className="rating-box">
+          <OverallRating id={id} filter={filterReviews.bind(this)} overallRating={overallRating} />
+          <ReviewList id={id} filter={filter}/>
+        </div>
       </div>
     </div>
   )

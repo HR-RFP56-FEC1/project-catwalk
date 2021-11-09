@@ -450,6 +450,12 @@
   align-items: center;
   width: 265px;
   text-align: left;
+  background-color: white;
+}
+
+#add-to-bag:active {
+  background-color: hotpink;
+  color: white;
 }
 
 #watch {
