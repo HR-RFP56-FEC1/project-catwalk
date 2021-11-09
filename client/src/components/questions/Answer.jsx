@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import axios from 'axios';
+import interactions from '../shared/interactions.js';
 
 const Answer = ({answer}) => {
 
@@ -23,6 +24,7 @@ const Answer = ({answer}) => {
 
   const handleHelpful = function(e) {
     e.preventDefault();
+    interactions("helpfulAnswerVote", "questions");
     if (!helpful) {
       voteHelpful().then(() => {
         helpfulHelper();
@@ -47,6 +49,7 @@ const Answer = ({answer}) => {
 
   const handleReport= function(e) {
     e.preventDefault();
+    interactions("reportAnswer", "questions");
     if (!reported) {
       reportAnswer().then(() => {
         reportedHelper();
