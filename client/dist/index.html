@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="react.development.js"></script>
+  <!-- <script crossorigin src="react-dom.development.js"></script> -->
   <title>Shopping</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --gray: rgb(114, 93, 110);
+    }
+    #app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
   <link rel="stylesheet" href="questions-styles.css">
   <link rel="stylesheet" href="overview-styles.css">
   <link rel="stylesheet" href="ratings-styles.css">

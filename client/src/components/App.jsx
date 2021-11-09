@@ -62,7 +62,7 @@ var App = () => {
       {productInfo ? <Overview id={mainProduct} productInfo={productInfo} reviews={reviewsMeta}/>: false}
       {productInfo ? <Related id={mainProduct} handleProductChange={handleProductChange}/>: false}
       {<QnA id={mainProduct} productInfo={productInfo}/>}
-      {reviewsMeta ? <Ratings id={mainProduct} productInfo={productInfo}/>: false}
+      {reviewsMeta ? <Ratings id={mainProduct} productInfo={productInfo} overallRating={reviewsMeta}/>: false}
     </div>
   )
 }
