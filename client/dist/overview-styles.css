@@ -338,6 +338,10 @@
   font-size: 13px;
 }
 
+#read-all-reviews-link, #read-all-reviews-link:active{
+  color: var(--gray);
+  scroll-behavior: smooth;
+}
 #details {
   height: 100px;
   width: 100px;

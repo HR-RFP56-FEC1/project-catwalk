@@ -6,10 +6,6 @@
   width: 1200px;
 }
 
-a {
-  color: hotpink;
-}
-
 #qna {
   display: flex;
   flex-direction: column;
