@@ -59,7 +59,7 @@ var App = () => {
 
   return (
     <div>
-      {productInfo ? <Overview id={mainProduct} productInfo={productInfo}/>: false}
+      {productInfo ? <Overview id={mainProduct} productInfo={productInfo} reviews={reviewsMeta}/>: false}
       {productInfo ? <Related id={mainProduct} handleProductChange={handleProductChange}/>: false}
       {<QnA id={mainProduct} productInfo={productInfo}/>}
       {reviewsMeta ? <Ratings id={mainProduct} productInfo={productInfo}/>: false}
