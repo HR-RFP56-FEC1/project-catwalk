@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Answer from './Answer.jsx';
 import questions from '../../../sample/questions.js';
+import interactions from '../shared/interactions.js';
 
 // answers come in as object
 // properties of obj are answer objects
@@ -49,11 +50,13 @@ const AnswerList = ({answers}) => {
 
   const moreAnswersEvent = function(e) {
     e.preventDefault();
+    interactions("moreAnswers", "questions");
     setDisplayCount(displayCount + 2);
   }
 
   const collapseAnswersEvent = function(e) {
     e.preventDefault();
+    interactions("collapseAnswers", "questions");
     setDisplayCount(2);
   }
 

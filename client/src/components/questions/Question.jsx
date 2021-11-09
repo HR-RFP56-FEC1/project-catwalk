@@ -44,7 +44,6 @@ const Question = ({question, product_id, productName}) => {
     interactions("addAnswer", "questions");
     openModal();
   };
-
   //#endregion
 
   return (

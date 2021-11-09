@@ -8,6 +8,7 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
   const [photos, setPhotos] = useState([]);
 
   const closeModal = function() {
+    interactions("closeAddQuestionModal", "questions");
     setModalState(false);
   };
 
@@ -91,6 +92,7 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
 
   const handleSubmitButton = function(e) {
     e.preventDefault();
+    interactions("submitAddQuestionModal", "questions");
     if (inputValidator()) {
       postHandler().then((res) => {
         console.log(res);
