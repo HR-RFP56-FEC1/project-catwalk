@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import QuestionList from './QuestionList.jsx';
 import axios from 'axios';
-import questions from '../../../sample/questions.js';
+// import questions from '../../../sample/questions.js';
 
 const getQuestions = function(id) {
   var urlString = '/api/qa/questions' + '?product_id=' + id + '&count=100';
@@ -12,8 +12,7 @@ const getQuestions = function(id) {
   });
 };
 
-
-const QnA = ({id, productInfo}) => {
+const QnA = ({id, productInfo, interactions}) => {
   const [results, setResults] = useState([]);
 
   const handleResults = function(response) {
