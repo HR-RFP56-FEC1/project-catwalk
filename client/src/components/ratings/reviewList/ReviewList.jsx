@@ -158,7 +158,7 @@ var ReviewList = (props) => {
         </div>
         {
           newReview &&
-          <div id="new-review-modal" style={ {top: top} }>
+          <div className="new-review-modal-background">
             <NewReview product={product} close={clickAddReview} />
           </div>
         }
