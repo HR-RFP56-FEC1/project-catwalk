@@ -5,7 +5,6 @@ import QnA from './questions/QnA.jsx';
 import Related from './related/Related.jsx'
 import axios from 'axios';
 
-
 //pass `mainProduct` as `id` to your component
 //then, delete this id to test functionality
 let id = 40350

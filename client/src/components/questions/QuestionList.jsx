@@ -19,10 +19,12 @@ const QuestionList = ({questions, product_id, productInfo}) => {
   };
   const handleDisplayCount = function(e) {
     e.preventDefault();
+    interactions("moreQuestions", "questions");
     setDisplayCount(displayCount + 2);
   };
   const handleAddQuestion = function(e) {
     e.preventDefault();
+    interactions("addQuestion", "questions");
     openModal();
   };
 
@@ -79,7 +81,7 @@ const QuestionList = ({questions, product_id, productInfo}) => {
     <div className='questionList'>
       <AddQuestionModal isOpen={modalIsOpen} product_id={product_id} setModalState={setModalIsOpen} productName={productName}/>
       <div id='qsearch'>
-        <input id='qsearchtextinput' type="text" value={search} onChange={event => handleSearch(event.target.value)} placeholder="Have a question? Search for answers…"/>
+        <input id='qsearchtextinput' type="text" value={search} onClick={interactions("searchBar", "questions")} onChange={event => handleSearch(event.target.value)} placeholder="Have a question? Search for answers…"/>
       </div>
       <div className='qList'>
         {displayListFunc()}

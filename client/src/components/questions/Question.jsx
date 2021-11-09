@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import AnswerList from './AnswerList.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 import axios from 'axios';
+import interactions from '../shared/interactions.js';
 
 const Question = ({question, product_id, productName}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
-  const handleReport = function(text) {
-    setReported(!reported);
-  };
 
   const openModal = function() {
     setModalIsOpen(true);
@@ -31,6 +29,7 @@ const Question = ({question, product_id, productName}) => {
 
   const handleHelpful = function(e) {
     e.preventDefault();
+    interactions("reportAnswer", "questions");
     if (!helpful) {
       voteHelpful().then(() => {
         helpfulHelper();
@@ -42,9 +41,9 @@ const Question = ({question, product_id, productName}) => {
   //#region add answer functions
   const handleAddAnswer = function(e) {
     e.preventDefault();
+    interactions("addAnswer", "questions");
     openModal();
   };
-
   //#endregion
 
   return (

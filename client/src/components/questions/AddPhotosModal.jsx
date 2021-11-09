@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import interactions from '../shared/interactions.js';
 
 const AddPhotosModal = ({isOpen, question, setModalState, setPhotoUrls}) => {
   const [photos, setPhotos] = useState([]);
   const [inputUrl, setInputUrl] = useState('');
 
   const closeModal = function() {
+    interactions("closeAddPhotosModal", "questions");
     setModalState(false);
   };
 
@@ -77,9 +79,9 @@ const AddPhotosModal = ({isOpen, question, setModalState, setPhotoUrls}) => {
   };
   //#endregion
 
-
   const handleAddPhotoButton = function(e) {
     e.preventDefault();
+    interactions("addPhotoUrlAddPhotoModal", "questions");
     let temp = photos.slice();
     temp.push(inputUrl);
     setPhotos(temp);
@@ -88,6 +90,7 @@ const AddPhotosModal = ({isOpen, question, setModalState, setPhotoUrls}) => {
 
   const handleRemovePhotoButton = function(e) {
     e.preventDefault();
+    interactions("removePhotoAddPhotoModal", "questions");
     let temp = photos.slice();
     temp.pop();
     setPhotos(temp);
@@ -95,6 +98,8 @@ const AddPhotosModal = ({isOpen, question, setModalState, setPhotoUrls}) => {
 
   const handleSubmitButton = function(e) {
     e.preventDefault();
+    interactions("submitAddPhotoModal", "questions");
+    let temp = photos.slice();
     setPhotoUrls(photos);
     setModalState(false);
   };

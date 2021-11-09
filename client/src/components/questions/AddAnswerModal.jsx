@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AddPhotosModal from './AddPhotosModal.jsx';
+import interactions from '../shared/interactions.js';
 
 const AddAnswerModal = ({isOpen, productName, question, setModalState, product_id}) => {
   const [answerBody, setAnswerBody] = useState('');
@@ -10,6 +11,7 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
   const [photoOpen, setPhotoOpen] = useState(false);
 
   const closeModal = function() {
+    interactions("closeAddAnswerModal", "questions");
     setModalState(false);
   };
 
@@ -96,6 +98,7 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
 
   const handleSubmitButton = function(e) {
     e.preventDefault();
+    interactions("submitAddAnswer", "questions");
     if (inputValidator()) {
       postHandler().then((res) => {
         console.log(res);
@@ -106,11 +109,8 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
   };
 
   const openPhotoModal = function() {
+    interactions("openAddPhotoModal", "questions");
     setPhotoOpen(true);
-  };
-
-  const tempFunction = function() {
-    
   };
 
   return ( isOpen ? (
