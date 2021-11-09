@@ -256,11 +256,14 @@
 }
 
 #review-photo-in-modal {
+  z-index: 1;
+  position: fixed;
   max-width: 90%;
   max-height: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 
 
@@ -312,7 +315,7 @@ This is the start of styling for the new review form
   transform: translate(-50%, -50%);
 } */
 
-.new-review-modal-background {
+/* .new-review-modal-background {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -324,12 +327,12 @@ This is the start of styling for the new review form
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* padding: 500px 100px 500px 100px; */
-}
+  padding: 500px 100px 500px 100px;
+} */
 
 #new-review-form {
   border: 5px solid var(--gray);
-  border-radius: 1%;
+  border-radius: 25px;
   background-color: white;
   position: fixed;
   top: 5%;
@@ -339,6 +342,10 @@ This is the start of styling for the new review form
   width: 80%;
   height: 90%;
   overflow-y: scroll;
+}
+
+#new-review-form::-webkit-scrollbar {
+  display: none;
 }
 
 #new-review-form h1, h2, #new-review-entry{
