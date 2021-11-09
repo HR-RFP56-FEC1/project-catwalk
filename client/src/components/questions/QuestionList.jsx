@@ -3,11 +3,12 @@ import Question from './Question.jsx';
 import AddQuestionModal from './AddQuestionModal.jsx';
 
 
-const QuestionList = ({questions, product_id, productName}) => {
+const QuestionList = ({questions, product_id, productInfo}) => {
   const [search, setSearch] = useState('');
   const [sortedList, setDisplayList] = useState(questions.results);
   const [displayCount, setDisplayCount] = useState(4);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [productName, setProductName] = useState('');
 
   const openModal = function() {
     setModalIsOpen(true);
@@ -67,6 +68,12 @@ const QuestionList = ({questions, product_id, productName}) => {
   useEffect(() => {
     questionSorter();
   }, [questions, search])
+
+  useEffect(() => {
+    if(productInfo) {
+      setProductName(productInfo.name);
+    }
+  }, [productInfo])
 
   return (
     <div className='questionList'>
