@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import Question from './Question.jsx';
 import AddQuestionModal from './AddQuestionModal.jsx';
+import interactions from '../shared/interactions.js';
 
 
 const QuestionList = ({questions, product_id, productInfo}) => {
