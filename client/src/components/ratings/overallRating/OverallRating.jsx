@@ -17,16 +17,7 @@ const getRatings = function (id) {
   });
 }
 
-var OverallRating = (props) => {
-  const [overallRating, setRating] = useState(null);
-
-  useEffect(() => {
-    getRatings(props.id)
-      .then(res => {
-        // console.log('ratings data:', res.data);
-        setRating(res.data);
-      })
-  }, [props.id])
+var OverallRating = ({id, overallRating, filter}) => {
 
   if (overallRating !== null) {
     let allRating = overallRating.ratings;
@@ -47,9 +38,9 @@ var OverallRating = (props) => {
 
     return (
       <div className="overall-rating">
-        <RatingSummary avgRating={avgRating} filter={props.filter}/>
+        <RatingSummary avgRating={avgRating} filter={filter}/>
         <RatingDist ratingDist={overallRating.ratings} recommendPerc={recommendPerc}
-          totRatings={countRating} filter={props.filter}/>
+          totRatings={countRating} filter={filter}/>
         <ProductBreakdown breakdown={overallRating.characteristics} />
       </div>
     );

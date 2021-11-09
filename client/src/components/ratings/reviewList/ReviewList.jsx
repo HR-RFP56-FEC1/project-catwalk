@@ -18,15 +18,6 @@ const getReviews = function(id) {
   });
 }
 
-const GetProductInformation = (id) => {
-  let urlString =  `api/products/${id}`;
-  return axios({
-    method: 'get',
-    url: urlString,
-    responseType: 'json'
-  });
-}
-
 var ReviewList = (props) => {
   const [allReviews, setReviews] = useState(null);
   const [displayedReviews, setDisplay] = useState(null);
@@ -86,15 +77,6 @@ var ReviewList = (props) => {
       })
   }, [props.id])
 
-  useEffect(() => {
-    GetProductInformation(props.id)
-      .then(res => {
-        setProduct(res.data.name);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }, [allReviews])
 
   useEffect(() => {
     setDisplay(_.sortBy(displayedReviews, sortBy));
