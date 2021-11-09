@@ -38,6 +38,7 @@ const ratingMeaning = {
 var NewReview = (props) => {
   const[overallRating, setOverallRating] = useState(0);
   const[recommend, setRecommend] = useState(null);
+  const[characteristics, setCharacteristics] = useState({});
   const[bodyCount, setBodyCount] = useState(0);
   const[photo, setPhoto] = useState([]);
   const[summary, setSummary] = useState(null);
@@ -79,20 +80,52 @@ var NewReview = (props) => {
   }
 
   const checkReview = (e) => {
-    let missing = []
+    let missing = [];
+    let valid = true;
     if (overallRating === 0) {
-      missing.push('Please add overall rating');
+      missing.push('overall rating');
+      valid = false;
     }
 
     if (recommend === null) {
-      missing.push('Please add whether you will recommend this product');
+      missing.push('recommendation');
+      valid = false;
     }
 
     if (bodyCount < 50) {
-      missing.push('Please enter at least 50 words for the review body')
+      missing.push('review body');
+      valid = false;
+    }
+
+    if (nickname === null || nickname.trim().length === 0) {
+      missing.push('nickname');
+      valid = false;
+    }
+
+    if (nickname === null || email.trim().length === 0){
+      missing.push('email');
+      valid = false;
+    } else {
+      const reg = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+      if (!reg.test(email)) {
+        missing.push('email');
+        valid = false;
+      }
+    }
+
+    if (valid) {
+      return true;
+    } else {
+      console.log(`Please fill in the following fields correctly: ${missing.join(', ')}!`);
+      return false;
     }
   }
 
+  const submitReview = (e) => {
+    if (checkReview()) {
+
+    };
+  }
 
   return (
     <div id="new-review-form">
@@ -220,7 +253,8 @@ var NewReview = (props) => {
         </div>
 
         <div id="new-review-submit">
-          <button id="submit-new-review">Submit</button>
+          <button id="submit-new-review"
+            onClick={submitReview}>Submit</button>
           <button id="close-new-review"
             onClick={props.close}>Close</button>
         </div>
