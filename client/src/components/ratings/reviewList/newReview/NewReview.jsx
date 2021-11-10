@@ -40,7 +40,8 @@ var NewReview = (props) => {
   const[recommend, setRecommend] = useState(null);
   const[characteristics, setCharacteristics] = useState({});
   const[bodyCount, setBodyCount] = useState(0);
-  const[photo, setPhoto] = useState([]);
+  const[photoUrl, setPhotoUrl] = useState([null, null, null, null, null]);
+  const[countPhoto, setCountPhoto] = useState(0);
   const[summary, setSummary] = useState(null);
   const[body, setBody] = useState(null);
 
@@ -71,6 +72,24 @@ var NewReview = (props) => {
     setBodyCount(charCount);
   }
 
+  // functions for the review photo part
+  const addUrl = (url, photoId) => {
+    let newUrls = [...photoUrl];
+    newUrls[parseInt(photoId)] = url;
+    setPhotoUrl(newUrls);
+  }
+
+  useEffect(() => {
+    let count = 0;
+    for (var i = 0; i < 5; i++) {
+      if (photoUrl[i] === null) {
+        setCountPhoto(i);
+        return;
+      }
+    }
+  }, [photoUrl])
+
+  // function for nickname
   const typeNickname = (e) => {
     setNickname(e.target.value);
   }
@@ -122,9 +141,8 @@ var NewReview = (props) => {
   }
 
   const submitReview = (e) => {
-    if (checkReview()) {
-
-    };
+    console.log(photoUrl);
+    console.log(countPhoto);
   }
 
   return (
@@ -221,7 +239,13 @@ var NewReview = (props) => {
           <div id="new-review-add-photo-field-name" className="optional-field">
             Add Photo:
           </div>
-          <AddReviewPhotoBtn />
+          <div id="review-photos-row">
+            <AddReviewPhotoBtn url={photoUrl[0]} photoId="0" onChange={addUrl.bind(this)}/>
+            {countPhoto >= 1 && <AddReviewPhotoBtn url={photoUrl[1]} photoId="1" onChange={addUrl.bind(this)}/>}
+            {countPhoto >=2 && <AddReviewPhotoBtn url={photoUrl[2]} photoId="2" onChange={addUrl.bind(this)}/>}
+            {countPhoto >=3 && <AddReviewPhotoBtn url={photoUrl[3]} photoId="3" onChange={addUrl.bind(this)}/>}
+            {countPhoto >= 4 && <AddReviewPhotoBtn url={photoUrl[4]} photoId="4" onChange={addUrl.bind(this)}/>}
+          </div>
         </div>
 
         <div id="new-review-nickname">

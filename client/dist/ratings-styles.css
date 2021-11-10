@@ -429,7 +429,7 @@ This is the start of styling for the new review form
   font-size: large;
   font-weight: bolder;
   position: absolute;
-  color:rgb(240, 240, 240);
+  color: white;
   top: 5%;
   right: 2%;
   cursor: pointer;
@@ -440,6 +440,11 @@ This is the start of styling for the new review form
   object-fit: contain;
 }
 
+#review-photos-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 #add-review-nickname > input, #add-review-email > input {
   width: 40%;
   margin-bottom: 0.5%;

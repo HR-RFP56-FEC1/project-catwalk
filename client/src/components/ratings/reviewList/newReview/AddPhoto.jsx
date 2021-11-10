@@ -5,7 +5,7 @@ import CharacterRadio from './CharacterRadio.jsx';
 
 const AddReviewPhotoBtn = (props) => {
   const[urlModal, setUrlModal] = useState(false);
-  const[url, setUrl] = useState(null);
+  // const[url, setUrl] = useState(null);
 
   const addPhoto = (e) => {
     e.preventDefault;
@@ -15,21 +15,21 @@ const AddReviewPhotoBtn = (props) => {
 
   const removePhoto = (e) => {
     e.preventDefault;
-    setUrl(null);
+    props.onChange(null, props.photoId)
   }
 
   const addUrl = () => {
     let urlAdded = document.getElementById("add-photo-url").querySelector("input").value;
-    setUrl(urlAdded);
+    props.onChange(urlAdded, props.photoId);
     setUrlModal(false);
   }
 
   return (
     <div id="add-review-photo">
       {
-        url ?
+        props.url ?
         <div id="photo-container">
-          <img src={url} id="review-photo-thumbnail"></img>
+          <img src={props.url} id="review-photo-thumbnail"></img>
           <div id="remove-photo" onClick={removePhoto}>
             &#9447;
           </div>
