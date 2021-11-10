@@ -165,7 +165,7 @@ var NewReview = (props) => {
   const postHandler = () => {
     let obj = {};
     obj.product_id = props.productId;
-    obj.rating = overallRating;
+    obj.rating = parseInt(overallRating);
     obj.summary = summary;
     obj.body = body;
     obj.recommend = recommend;
