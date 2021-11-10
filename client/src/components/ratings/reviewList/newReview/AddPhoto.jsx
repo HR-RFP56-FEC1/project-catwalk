@@ -4,36 +4,57 @@ import characteristics from './characteristics.js';
 import CharacterRadio from './CharacterRadio.jsx';
 
 const AddReviewPhotoBtn = (props) => {
-  const onClick = (e) => {
+  const[urlModal, setUrlModal] = useState(false);
+  const[url, setUrl] = useState(null);
+
+  const addPhoto = (e) => {
     e.preventDefault;
-    console.log(e.target);
+    // console.log(e.target);
+    setUrlModal(true);
   }
 
-  const previewFile = function () {
-    var preview = document.getElementById("new-review-add-photo").querySelector('img');
-    var file    = document.getElementById("new-review-add-photo").querySelector('input[type=file]').files[0];
-    var reader  = new FileReader();
+  const removePhoto = (e) => {
+    e.preventDefault;
+    setUrl(null);
+  }
 
-    reader.onloadend = function () {
-      preview.src = reader.result;
-    }
-
-    if (file) {
-      reader.readAsDataURL(file);
-    } else {
-      preview.src = "";
-    }
+  const addUrl = () => {
+    let urlAdded = document.getElementById("add-photo-url").querySelector("input").value;
+    setUrl(urlAdded);
+    setUrlModal(false);
   }
 
   return (
-    <form id="add-review-photo" onClick={onClick}>
-      {/* <div id="add-photo-icon" style={{ fontSize: "5vh" }}>
-        +
-      </div> */}
-      <input id="review-photo-file" type="file"
-        onChange={previewFile}/>
-      <img src="" style={ {maxHeight:"100%", objectFit:"cover"} } alt="Image preview..."></img>
-    </form>
+    <div id="add-review-photo">
+      {
+        url ?
+        <div id="photo-container">
+          <img src={url} id="review-photo-thumbnail"></img>
+          <div id="remove-photo" onClick={removePhoto}>
+            &#9447;
+          </div>
+        </div>
+
+        :
+        <div id="add-photo-icon" style={{ fontSize: "5vh" }}
+          onClick={addPhoto}>
+          +
+        </div>
+      }
+      {
+        urlModal &&
+        <div className="modalBackground">
+          <div id="add-photo-url">
+            Photo URL:&nbsp;&nbsp;
+            <input type="text" name="photo-url" placeholder='Example: "http://placecorgi.com/260/180"'
+            style={ {width:"70%"} }></input>
+            &nbsp;
+            <button id="add-photo-url-btn"
+              onClick={addUrl}>Add</button>
+          </div>
+        </div>
+      }
+    </div>
   )
 }
 
