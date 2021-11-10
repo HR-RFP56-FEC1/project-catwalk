@@ -1,15 +1,18 @@
 // server
 
 const express = require('express');
+const path = require('path');
 const axios = require('axios');
 const app = express();
 const port = 3000;
-const key = require('../auth.js');
-
+const key = require(path.join(__dirname, '../auth.js'));
+// console.log(__dirname);
+// console.log(path.join(__dirname, '../auth.js'));
+// console.log(path.join(__dirname, '../client/dist/'));
 const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 
 app.use(express.json());
-app.use(express.static('./client/dist/'));
+app.use(express.static(path.join(__dirname, '../client/dist/')));
 
 // add token to requests
 app.get('/api/*', (req, res) => {
@@ -34,7 +37,7 @@ app.get('/api/*', (req, res) => {
 app.post('/api/*', (req, res) => {
   console.log('post api: ');
   console.log(req.originalUrl);
-  // console.log(req);
+  console.log(req.body);
   const postfix = req.originalUrl.replace('/api/', '');
   axios({
     method: 'post',
