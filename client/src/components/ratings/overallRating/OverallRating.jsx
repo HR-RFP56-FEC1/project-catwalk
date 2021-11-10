@@ -8,14 +8,14 @@ import RatingDist from './ratingDist/RatingDist.jsx';
 import ProductBreakdown from './productBreakdown/ProductBreakdown.jsx';
 
 
-const getRatings = function (id) {
-  var urlString = `/api/reviews/meta?product_id=${id}&count=100`;
-  return axios({
-    method: 'get',
-    url: urlString,
-    responseType: 'json'
-  });
-}
+// const getRatings = function (id) {
+//   var urlString = `/api/reviews/meta?product_id=${id}&count=100`;
+//   return axios({
+//     method: 'get',
+//     url: urlString,
+//     responseType: 'json'
+//   });
+// }
 
 var OverallRating = ({id, overallRating, filter}) => {
 

@@ -81,6 +81,14 @@ var NewReview = (props) => {
 
   useEffect(() => {
     let count = 0;
+    for (var i = 0; i < 4; i++) {
+      if (photoUrl[i] === null && photoUrl[i+1] !== null) {
+        var newUrls = [...photoUrl];
+        newUrls[i] = newUrls[i+1];
+        newUrls[i+1] = null;
+        setPhotoUrl(newUrls);
+      }
+    }
     for (var i = 0; i < 5; i++) {
       if (photoUrl[i] === null) {
         setCountPhoto(i);
@@ -143,6 +151,7 @@ var NewReview = (props) => {
   const submitReview = (e) => {
     console.log(photoUrl);
     console.log(countPhoto);
+    console.log(props.characteristics);
   }
 
   return (
@@ -165,17 +174,24 @@ var NewReview = (props) => {
               })
             }
             {
-              overallRating > 0 &&
-              <div>
-                <span>
-                  {ratingMeaning[overallRating]}
-                </span>
-                <span onClick={() => {setOverallRating(0);}}
-                style={ {cursor: "pointer"} }>
-                  &#40;clear&#41;
-                </span>
-
-              </div>
+              overallRating == 5 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128525;</span></div>
+            }
+            {
+              overallRating == 4 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128522;</span></div>
+            }
+            {
+              overallRating == 3 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128578;</span></div>
+            }
+            {
+              overallRating == 2 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128543;</span></div>
+            }
+            {
+              overallRating == 1 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128534;</span></div>
             }
           </div>
         </div>
@@ -193,10 +209,9 @@ var NewReview = (props) => {
         <div id="new-review-characteristics">
           <div className="required-field" id="new-review-characteristics-field-name">Characteristics:</div>
           <div id="characteristic-breakdown">
-            <CharacterRadio character="fit" />
-            <CharacterRadio character="length" />
-            <CharacterRadio character="comfort" />
-            <CharacterRadio character="quality" />
+            {props.characteristics.map(char => (
+              <CharacterRadio character={char} key={char}/>
+            ))}
           </div>
         </div>
 
