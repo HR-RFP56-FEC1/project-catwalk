@@ -62,6 +62,12 @@ var NewReview = (props) => {
     }
   }
 
+  const charRating = (char, rating) => {
+    let obj = {...characteristics};
+    obj[props.characteristics[char].id] = rating;
+    setCharacteristics(obj);
+  }
+
   const typeSummary = (e) => {
     setSummary(e.target.value);
   }
@@ -119,6 +125,14 @@ var NewReview = (props) => {
       valid = false;
     }
 
+    for (var char in props.characteristics) {
+      if (!characteristics[props.characteristics[char].id]) {
+        missing.push(`characteristics: ${char}`);
+        valid = false;
+      }
+    }
+
+
     if (bodyCount < 50) {
       missing.push('review body');
       valid = false;
@@ -143,15 +157,40 @@ var NewReview = (props) => {
     if (valid) {
       return true;
     } else {
-      console.log(`Please fill in the following fields correctly: ${missing.join(', ')}!`);
+      alert(`Please fill in the following fields correctly: ${missing.join(', ')}!`);
       return false;
     }
   }
 
+  const postHandler = () => {
+    let obj = {};
+    obj.product_id = props.productId;
+    obj.rating = overallRating;
+    obj.summary = summary;
+    obj.body = body;
+    obj.recommend = recommend;
+    obj.name = nickname;
+    obj.email = email;
+    obj.photos = photoUrl.slice(0, countPhoto);
+    obj.characteristics = characteristics;
+    console.log(obj);
+
+    var urlString = '/api/reviews';
+
+    return axios({
+      method: 'post',
+      url: urlString,
+      responseType: 'json',
+      data: JSON.stringify(obj),
+      headers: {'Content-Type': 'application/json'}
+    });
+  }
+
   const submitReview = (e) => {
-    console.log(photoUrl);
-    console.log(countPhoto);
-    console.log(props.characteristics);
+    let valid = checkReview();
+    if (valid) {
+      postHandler();
+    }
   }
 
   return (
@@ -209,8 +248,8 @@ var NewReview = (props) => {
         <div id="new-review-characteristics">
           <div className="required-field" id="new-review-characteristics-field-name">Characteristics:</div>
           <div id="characteristic-breakdown">
-            {props.characteristics.map(char => (
-              <CharacterRadio character={char} key={char}/>
+            {Object.keys(props.characteristics).map(char => (
+              <CharacterRadio character={char} key={char} charRating={charRating.bind(this)}/>
             ))}
           </div>
         </div>

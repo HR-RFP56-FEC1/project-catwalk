@@ -21,7 +21,7 @@ var Ratings = ({id, overallRating, productInfo}) => {
         <div id="rating-headline">RATINGS &#38; REVIEWS </div>
         <div className="rating-box">
           <OverallRating id={id} filter={filterReviews.bind(this)} overallRating={overallRating} />
-          <ReviewList id={id} filter={filter} productInfo={productInfo} characteristics={Object.keys(overallRating.characteristics)}/>
+          <ReviewList id={id} filter={filter} productInfo={productInfo} characteristics={overallRating.characteristics}/>
         </div>
       </div>
     </div>

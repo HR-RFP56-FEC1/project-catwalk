@@ -370,9 +370,13 @@ This is the start of styling for the new review form
   max-width: 80%;
 }
 
-.character-radio-label {
+.character-radio-btn > label {
   flex-basis: 20%;
   padding: 5px 0px 5px 0px;
+}
+
+.character-radio-btn > input {
+  vertical-align: baseline;
 }
 
 #add-review-summary > input {
