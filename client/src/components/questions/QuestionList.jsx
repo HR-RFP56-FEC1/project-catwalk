@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import Question from './Question.jsx';
 import AddQuestionModal from './AddQuestionModal.jsx';
+import interactions from '../shared/interactions.js';
 
 
 const QuestionList = ({questions, product_id, productInfo}) => {
@@ -66,7 +67,7 @@ const QuestionList = ({questions, product_id, productInfo}) => {
       return (temp.map(question => <Question key={"question" + question.question_id} question={question} product_id={product_id} productName={productName}/>));
     }
   };
-  
+
   useEffect(() => {
     questionSorter();
   }, [questions, search])
@@ -81,7 +82,7 @@ const QuestionList = ({questions, product_id, productInfo}) => {
     <div className='questionList'>
       <AddQuestionModal isOpen={modalIsOpen} product_id={product_id} setModalState={setModalIsOpen} productName={productName}/>
       <div id='qsearch'>
-        <input id='qsearchtextinput' type="text" value={search} onClick={interactions("searchBar", "questions")} onChange={event => handleSearch(event.target.value)} placeholder="Have a question? Search for answers…"/>
+        <input id='qsearchtextinput' type="text" value={search} onChange={event => handleSearch(event.target.value)} placeholder="Have a question? Search for answers…"/>
       </div>
       <div className='qList'>
         {displayListFunc()}

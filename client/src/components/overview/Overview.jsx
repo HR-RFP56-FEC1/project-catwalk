@@ -6,6 +6,7 @@ import sampleProduct from '../../../sample/product.js'
 import sampleReviewMeta from '../../../sample/reviewmeta.js'
 import TopLeft, {TopRight, BottomHalf} from './overview-components/OverviewQuadrants.jsx'
 import CalculateRating from '../shared/CalculateRating.jsx'
+import interactions from '../shared/interactions.js';
 
 const Overview = ({ id, productInfo, reviews }) => {
   // const [product, setProduct] = useState()
@@ -32,6 +33,7 @@ const Overview = ({ id, productInfo, reviews }) => {
   const handleOnClick = (styleNum) => {
     setCurrentStyle(styleNum)
     setImage(0)
+    interactions("select-style", "overview");
   }
 
   const changeView = (viewType, from) => {
@@ -51,6 +53,7 @@ const Overview = ({ id, productInfo, reviews }) => {
         setView('expanded')
       }
     }
+    interactions("change-view", "overview");
   }
 
   if (productInfo && styles && reviews /* && styles.results[currentStyle].skus */) {

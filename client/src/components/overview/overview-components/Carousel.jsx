@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import styles from '../../../../sample/styles.js'
 import Arrows from './NavigationArrows.jsx'
-
+import interactions from '../../shared/interactions.js';
 
 const Zoomed = ({styles, currentStyle, image, changeView, view}) => {
 
@@ -56,6 +56,7 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
 
   const onClickThumb = (index) => {
     setImage(index)
+    interactions("carousel", "overview");
   }
 
   const onClickArrow = (num) => {
@@ -68,6 +69,7 @@ const Carousel = ({styles, currentStyle, image, setImage, view, changeView}) => 
       newIndex = image + num
     }
     setImage(newIndex)
+    interactions("carousel", "overview");
   }
 
   return (

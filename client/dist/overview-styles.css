@@ -32,7 +32,7 @@
 #logo {
   display: flex;
   background-image: url('img/header.jpeg');
-  background-position-y: 663px;
+  /* background-position-y: 663px; */
   background-size: cover;
   height: 80px;
   width: 1200px;

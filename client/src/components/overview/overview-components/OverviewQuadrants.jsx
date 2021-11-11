@@ -4,6 +4,7 @@ import Rating, {Style, Styles, Details} from './ProductDetails.jsx'
 import Sizes, {Quantity, Watch, AddToBag} from './OverviewButtons.jsx'
 import Facts, {Fact, Slogan, Description} from './ProductDescription.jsx'
 import axios from 'axios'
+import interactions from '../../shared/interactions.js';
 
 const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => {
   const [selectedSKU, setSelectedSKU] = useState()
@@ -35,6 +36,8 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
     .catch(err => {
       console.log(err)
     })
+
+    interactions("add-to-cart", "overview");
   }
 
   const handleClickSize = (e) => {
@@ -46,10 +49,12 @@ const TopRight = ({rating, product, styles, currentStyle, onClick, skuList}) => 
     //whats up with XL twice?
 
     setAvailableQuantities(menuSku[1])
+    interactions("sizes", "overview");
   }
 
   const handleClickQuantity = (e) => {
     setSelectedQuantity(e.target.value)
+    interactions("quantities", "overview");
   }
 
   return (
