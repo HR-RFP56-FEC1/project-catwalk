@@ -4,6 +4,7 @@ import Ratings from './ratings/Ratings.jsx';
 import QnA from './questions/QnA.jsx';
 import Related from './related/Related.jsx'
 import axios from 'axios';
+import interactions from './shared/interactions.js';
 
 //pass `mainProduct` as `id` to your component
 //then, delete this id to test functionality
@@ -54,6 +55,7 @@ var App = () => {
 
   const handleProductChange = (idClicked) => {
     setMainProduct(idClicked)
+    interactions("related-product", "overview");
   }
 
   return (

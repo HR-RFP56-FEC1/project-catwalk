@@ -1,4 +1,4 @@
-// server 
+// server
 
 const express = require('express');
 const axios = require('axios');
@@ -19,7 +19,7 @@ app.get('/api/*', (req, res) => {
   axios({
     method: 'get',
     url: apiUrl + postfix,
-    headers: {'Authorization': key},
+    headers: {'Authorization': key, 'Accept-encoding': 'gzip, deflate'},
     data: req.body,
   }).then((results) => {
     //console.log(results.data);
