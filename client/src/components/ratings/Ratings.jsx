@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import OverallRating from './overallRating/OverallRating.jsx';
 import ReviewList from './reviewList/ReviewList.jsx';
 
-// let id = '40344';
+let id = '40344';
 
 var Ratings = ({id, overallRating, productInfo}) => {
   const [filter, setFilter] = useState('0');

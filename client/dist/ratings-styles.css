@@ -125,20 +125,16 @@
   margin-top: 20px;
 }
 
-#char-slider {
+.char-slider {
   width: 100%;
-  -webkit-appearance: none;
-  appearance: none;
-  background: rgb(220, 220, 220);
-  height: 15px;
+  background-color: rgb(220, 220, 220);
+  height: 10px;
 }
 
-#char-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 5px;
-  height: 20px;
-  background: var(--gray);
+.char-slider-sep-bar {
+  background-color: white;
+  height: 15px;
+  width: 3px;
 }
 
 .character-name {
@@ -148,7 +144,10 @@
 .char-slider-desc {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+}
+
+.char-slider-desc > span {
+  flex-basis: 33.333333%;
 }
 
 .sort-review {
@@ -364,6 +363,7 @@ This is the start of styling for the new review form
 .character-radio-entry {
   padding: 5px 0 5px 0;
 }
+
 .character-radio-btn {
   display: flex;
   flex-direction: row;
@@ -373,10 +373,13 @@ This is the start of styling for the new review form
 .character-radio-btn > label {
   flex-basis: 20%;
   padding: 5px 0px 5px 0px;
+  display: flex;
 }
 
 .character-radio-btn > input {
   vertical-align: baseline;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 #add-review-summary > input {
