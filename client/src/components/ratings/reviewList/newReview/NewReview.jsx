@@ -242,7 +242,7 @@ var NewReview = (props) => {
             onClick={handleRecommend}/>
           <label htmlFor="whether-recommend-yes">Yes &nbsp;</label>
           <input type="radio" id="whether-recommend-no" name="whether-recommend" value="No"
-            onClick={handleRecommend}/>
+            onClick={handleRecommend} style={ {marginLeft:"5%"} }/>
           <label htmlFor="whether-recommend-no">No</label>
         </div>
 
@@ -333,9 +333,9 @@ var NewReview = (props) => {
 
         <div id="new-review-submit">
           <button id="submit-new-review"
-            onClick={submitReview}>Submit</button>
+            onClick={submitReview}>SUBMIT</button>
           <button id="close-new-review"
-            onClick={props.close}>Close</button>
+            onClick={props.close}>CLOSE</button>
         </div>
 
       </div>

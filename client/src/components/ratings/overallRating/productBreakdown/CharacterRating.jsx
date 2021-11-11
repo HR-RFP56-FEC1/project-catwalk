@@ -2,12 +2,8 @@ import React from 'react';
 import characteristics from '../../reviewList/newReview/characteristics.js';
 
 var CharacterRating = (props) => {
-  console.log(typeof props.rating);
   let rating = props.rating;
   let margin = (100*(rating-1)/4) + '%';
-  // let margin = toString(1+(parseInt(props.rating)-1)/4) + '%';
-  console.log(typeof margin);
-  console.log(margin);
   return (
     <div className="character-rating">
       <span className="character-name">{props.character}</span>
