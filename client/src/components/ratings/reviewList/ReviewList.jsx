@@ -24,14 +24,14 @@ var ReviewList = (props) => {
   const [reviewsCount, setCount] = useState(2);
   const [sortBy, setSort] = useState('relevance');
   const [newReview, addNewReview] = useState(false);
-  const [product, setProduct] = useState(null);
+  // const [product, setProduct] = useState(null);
 
   useEffect(() => {
     getReviews(props.id)
       .then(res => {
         // console.log('reviews data:', res.data);
         let reviewsData = res.data.results;
-        setProduct(res.data.product);
+        // setProduct(res.data.product);
         let current = moment().startOf('day');
 
         let minDateDiff = 100000;
@@ -140,8 +140,8 @@ var ReviewList = (props) => {
         </div>
         {
           newReview &&
-          <div id="new-review-modal" style={ {top: top} }>
-            <NewReview product={product} close={clickAddReview} />
+          <div className="modalBackground">
+            <NewReview product={props.productInfo.name} close={clickAddReview} characteristics={props.characteristics} productId={props.id}/>
           </div>
         }
 

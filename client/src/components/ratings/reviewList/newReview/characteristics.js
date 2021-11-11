@@ -1,5 +1,5 @@
 const characteristics = {
-  size: {
+  Size: {
     score: {
       1: 'A size too small',
       2: '½ a size too small',
@@ -9,7 +9,7 @@ const characteristics = {
     }
   },
 
-  width: {
+  Width: {
     score: {
       1: 'Too narrow',
       2: 'Slightly narrow',
@@ -19,7 +19,7 @@ const characteristics = {
     }
   },
 
-  comfort: {
+  Comfort: {
     score: {
       1: 'Uncomfortable',
       2: 'Slightly uncomfortable',
@@ -29,7 +29,7 @@ const characteristics = {
     }
   },
 
-  quality: {
+  Quality: {
     score: {
       1: 'Poor',
       2: 'Below average',
@@ -39,7 +39,7 @@ const characteristics = {
     }
   },
 
-  length: {
+  Length: {
     score: {
       1: 'Runs short',
       2: 'Runs slightly short',
@@ -49,7 +49,7 @@ const characteristics = {
     }
   },
 
-  fit: {
+  Fit: {
     score: {
       1: 'Runs tight',
       2: 'Runs slightly tight',

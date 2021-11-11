@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import characteristics from './characteristics.js';
 import CharacterRadio from './CharacterRadio.jsx';
+import AddReviewPhotoBtn from './AddPhoto.jsx';
 
 const RatingStars = (props) => {
   let filled = props.rating;
@@ -36,20 +37,165 @@ const ratingMeaning = {
 
 var NewReview = (props) => {
   const[overallRating, setOverallRating] = useState(0);
+  const[recommend, setRecommend] = useState(null);
+  const[characteristics, setCharacteristics] = useState({});
   const[bodyCount, setBodyCount] = useState(0);
+  const[photoUrl, setPhotoUrl] = useState([null, null, null, null, null]);
+  const[countPhoto, setCountPhoto] = useState(0);
+  const[summary, setSummary] = useState(null);
+  const[body, setBody] = useState(null);
+
+  const[nickname, setNickname] = useState(null);
+  const[email, setEmail] = useState(null);
 
   const clickOverallRating = (e) => {
     let starID = e.target.id.split('-')[1];
     setOverallRating(starID);
   }
 
+  const handleRecommend = (e) => {
+    if (e.target.value === 'Yes') {
+      setRecommend(true);
+    }
+    if (e.target.value === 'No') {
+      setRecommend(false);
+    }
+  }
+
+  const charRating = (char, rating) => {
+    let obj = {...characteristics};
+    obj[props.characteristics[char].id] = rating;
+    setCharacteristics(obj);
+  }
+
+  const typeSummary = (e) => {
+    setSummary(e.target.value);
+  }
+
   const typeReview = (e) => {
+    setBody(e.target.value);
     let charCount = e.target.value.length;
     setBodyCount(charCount);
   }
 
+  // functions for the review photo part
+  const addUrl = (url, photoId) => {
+    let newUrls = [...photoUrl];
+    newUrls[parseInt(photoId)] = url;
+    setPhotoUrl(newUrls);
+  }
+
+  useEffect(() => {
+    let count = 0;
+    for (var i = 0; i < 4; i++) {
+      if (photoUrl[i] === null && photoUrl[i+1] !== null) {
+        var newUrls = [...photoUrl];
+        newUrls[i] = newUrls[i+1];
+        newUrls[i+1] = null;
+        setPhotoUrl(newUrls);
+      }
+    }
+    for (var i = 0; i < 5; i++) {
+      if (photoUrl[i] === null) {
+        setCountPhoto(i);
+        return;
+      }
+    }
+  }, [photoUrl])
+
+  // function for nickname
+  const typeNickname = (e) => {
+    setNickname(e.target.value);
+  }
+
+  const typeEmail = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const checkReview = (e) => {
+    let missing = [];
+    let valid = true;
+    if (overallRating === 0) {
+      missing.push('overall rating');
+      valid = false;
+    }
+
+    if (recommend === null) {
+      missing.push('recommendation');
+      valid = false;
+    }
+
+    for (var char in props.characteristics) {
+      if (!characteristics[props.characteristics[char].id]) {
+        missing.push(`characteristics: ${char}`);
+        valid = false;
+      }
+    }
+
+
+    if (bodyCount < 50) {
+      missing.push('review body');
+      valid = false;
+    }
+
+    if (nickname === null || nickname.trim().length === 0) {
+      missing.push('nickname');
+      valid = false;
+    }
+
+    if (nickname === null || email.trim().length === 0){
+      missing.push('email');
+      valid = false;
+    } else {
+      const reg = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+      if (!reg.test(email)) {
+        missing.push('email');
+        valid = false;
+      }
+    }
+
+    if (valid) {
+      return true;
+    } else {
+      alert(`Please fill in the following fields correctly: ${missing.join(', ')}!`);
+      return false;
+    }
+  }
+
+  const postHandler = () => {
+    let obj = {};
+    obj.product_id = props.productId;
+    obj.rating = parseInt(overallRating);
+    obj.summary = summary;
+    obj.body = body;
+    obj.recommend = recommend;
+    obj.name = nickname;
+    obj.email = email;
+    obj.photos = photoUrl.slice(0, countPhoto);
+    obj.characteristics = characteristics;
+    console.log(obj);
+
+    var urlString = '/api/reviews';
+
+    return axios({
+      method: 'post',
+      url: urlString,
+      responseType: 'json',
+      data: JSON.stringify(obj),
+      headers: {'Content-Type': 'application/json'}
+    })
+      .then(() => {alert('New review posted!')});
+  }
+
+  const submitReview = (e) => {
+    let valid = checkReview();
+    if (valid) {
+      postHandler();
+    }
+  }
+
   return (
-    <form id="new-review-form">
+    <div id="new-review-form">
       <h1>Write your review</h1>
       <h2>About product {props.product}</h2>
 
@@ -68,35 +214,44 @@ var NewReview = (props) => {
               })
             }
             {
-              overallRating > 0 &&
-              <div>
-                <span>
-                  {ratingMeaning[overallRating]}
-                </span>
-                <span onClick={() => {setOverallRating(0);}}
-                style={ {cursor: "pointer"} }>
-                  &#40;clear&#41;
-                </span>
-
-              </div>
+              overallRating == 5 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128525;</span></div>
+            }
+            {
+              overallRating == 4 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128522;</span></div>
+            }
+            {
+              overallRating == 3 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128578;</span></div>
+            }
+            {
+              overallRating == 2 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128543;</span></div>
+            }
+            {
+              overallRating == 1 &&
+              <div><span>{ratingMeaning[overallRating]}&nbsp;&#128534;</span></div>
             }
           </div>
         </div>
 
         <div id="new-review-whether-recommend">
           <div className="required-field" id="new-review-whether-recommend-field-name">Do you recommend this product? </div>
-          <input type="radio" id="whether-recommend-yes" name="whether-recommend" value="Yes"/>
+          <input type="radio" id="whether-recommend-yes" name="whether-recommend" value="Yes"
+            onClick={handleRecommend}/>
           <label htmlFor="whether-recommend-yes">Yes &nbsp;</label>
-          <input type="radio" id="whether-recommend-no" name="whether-recommend" value="No"/>
+          <input type="radio" id="whether-recommend-no" name="whether-recommend" value="No"
+            onClick={handleRecommend} style={ {marginLeft:"5%"} }/>
           <label htmlFor="whether-recommend-no">No</label>
         </div>
 
         <div id="new-review-characteristics">
           <div className="required-field" id="new-review-characteristics-field-name">Characteristics:</div>
           <div id="characteristic-breakdown">
-            <CharacterRadio character="size" />
-            <CharacterRadio character="length" />
-            <CharacterRadio character="quality" />
+            {Object.keys(props.characteristics).map(char => (
+              <CharacterRadio character={char} key={char} charRating={charRating.bind(this)}/>
+            ))}
           </div>
         </div>
 
@@ -106,7 +261,8 @@ var NewReview = (props) => {
           </div>
           <div id="add-review-summary">
             <input type="text" name="review-summary"
-              placeholder="Example: Best purchase ever!" style={{ fontWeight: "normal" }}/>
+              placeholder="Example: Best purchase ever!" style={{ fontWeight: "normal" }}
+              onChange={typeSummary}/>
           </div>
         </div>
 
@@ -135,7 +291,16 @@ var NewReview = (props) => {
         </div>
 
         <div id="new-review-add-photo">
-          <button>Add Photo</button>
+          <div id="new-review-add-photo-field-name" className="optional-field">
+            Add Photo:
+          </div>
+          <div id="review-photos-row">
+            <AddReviewPhotoBtn url={photoUrl[0]} photoId="0" onChange={addUrl.bind(this)}/>
+            {countPhoto >= 1 && <AddReviewPhotoBtn url={photoUrl[1]} photoId="1" onChange={addUrl.bind(this)}/>}
+            {countPhoto >=2 && <AddReviewPhotoBtn url={photoUrl[2]} photoId="2" onChange={addUrl.bind(this)}/>}
+            {countPhoto >=3 && <AddReviewPhotoBtn url={photoUrl[3]} photoId="3" onChange={addUrl.bind(this)}/>}
+            {countPhoto >= 4 && <AddReviewPhotoBtn url={photoUrl[4]} photoId="4" onChange={addUrl.bind(this)}/>}
+          </div>
         </div>
 
         <div id="new-review-nickname">
@@ -144,7 +309,8 @@ var NewReview = (props) => {
           </div>
           <div id="add-review-nickname">
             <input type="text" name="review-nickname"
-              placeholder="Example: jackson11!" style={{ fontWeight: "normal" }}/>
+              placeholder="Example: jackson11!" style={{ fontWeight: "normal" }}
+              onChange={typeNickname}/>
           </div>
           <div>
             For privacy reasons, do not use your full name or email address
@@ -157,7 +323,8 @@ var NewReview = (props) => {
           </div>
           <div id="add-review-email">
             <input type="text" name="review-email"
-              placeholder="Example: jackson11@email.com" style={{ fontWeight: "normal" }}/>
+              placeholder="Example: jackson11@email.com" style={{ fontWeight: "normal" }}
+              onChange={typeEmail}/>
           </div>
           <div>
             For authentication reasons, you will not be emailed
@@ -165,13 +332,14 @@ var NewReview = (props) => {
         </div>
 
         <div id="new-review-submit">
-          <button id="submit-new-review">Submit</button>
+          <button id="submit-new-review"
+            onClick={submitReview}>SUBMIT</button>
           <button id="close-new-review"
-            onClick={props.close}>Close</button>
+            onClick={props.close}>CLOSE</button>
         </div>
 
       </div>
-    </form>
+    </div>
   )
 }
 

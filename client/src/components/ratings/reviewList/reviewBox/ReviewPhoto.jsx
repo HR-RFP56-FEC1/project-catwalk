@@ -13,7 +13,7 @@ var ReviewPhoto = (props) => {
       />
       {
         photoModal &&
-        <div className="review-photo-modal">
+        <div className="modalBackground">
           <b id="close-review-photo-modal"
           onClick={toggleReviewPhotoModal}>&#91;&times;&#93;</b>
           <img id="review-photo-in-modal"

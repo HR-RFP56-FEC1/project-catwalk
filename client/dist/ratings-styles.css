@@ -1,5 +1,5 @@
-#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by, #review-entry-username-date, #new-review-form {
-  font-family: sans-serif;
+#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by, #review-entry-username-date, #new-review-form, #add-review-photo, #add-photo-url-btn , #close-photo-url-btn {
+  font-family: 'Roboto', sans-serif;
   color: var(--gray);
 }
 
@@ -11,6 +11,7 @@
 }
 
 .rating-widget {
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -124,20 +125,16 @@
   margin-top: 20px;
 }
 
-#char-slider {
+.char-slider {
   width: 100%;
-  -webkit-appearance: none;
-  appearance: none;
-  background: rgb(220, 220, 220);
-  height: 15px;
+  background-color: rgb(220, 220, 220);
+  height: 10px;
 }
 
-#char-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 5px;
-  height: 20px;
-  background: var(--gray);
+.char-slider-sep-bar {
+  background-color: white;
+  height: 15px;
+  width: 3px;
 }
 
 .character-name {
@@ -147,7 +144,10 @@
 .char-slider-desc {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+}
+
+.char-slider-desc > span {
+  flex-basis: 33.333333%;
 }
 
 .sort-review {
@@ -255,11 +255,14 @@
 }
 
 #review-photo-in-modal {
+  z-index: 1;
+  position: fixed;
   max-width: 90%;
   max-height: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 
 
@@ -300,34 +303,22 @@ This is the start of styling for the new review form
   color: #ea9291
 }
 
-#new-review-modal {
-  border-radius: 1%;
-  position: absolute;
-  margin: 0;
-  padding: 10px;
-  z-index: 100;
-  min-width: 100%;
-  min-height: 200vh;
-  height: auto;
-  display: block;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  left: 0%;
-}
-
 #new-review-form {
   border: 5px solid var(--gray);
-  border-radius: 1%;
+  border-radius: 25px;
   background-color: white;
-  position: absolute;
-  z-index: 101;
-  width: 80%;
-  top: auto;
+  position: fixed;
+  top: 5%;
   left: 10%;
-  height: auto;
-  margin-top: 1%;
-  margin-left: auto;
-  margin-right: auto;
+  z-index: 1;
+  /* transform: translate(-50%, -50%); */
+  width: 80%;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+#new-review-form::-webkit-scrollbar {
+  display: none;
 }
 
 #new-review-form h1, h2, #new-review-entry{
@@ -372,26 +363,95 @@ This is the start of styling for the new review form
 .character-radio-entry {
   padding: 5px 0 5px 0;
 }
+
 .character-radio-btn {
   display: flex;
   flex-direction: row;
   max-width: 80%;
 }
 
-.character-radio-label {
+.character-radio-btn > label {
   flex-basis: 20%;
   padding: 5px 0px 5px 0px;
+  display: flex;
+}
+
+.character-radio-btn > input {
+  vertical-align: baseline;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 #add-review-summary > input {
-  width: 80%;
+  width: 75%;
 }
 
 #add-review-body > textarea {
-  width: 80%;
+  width: 75%;
   min-height: 20vh;
 }
 
+#add-review-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 2vh;
+  border: 0.2vh dashed var(--gray);
+  background-color: rgb(240, 240, 240);
+  overflow: hidden;
+}
+
+#add-photo-url {
+  border: 3px solid var(--gray);
+  border-radius: 10px;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 40%;
+  height: auto;
+  padding: 10px 10px 10px 10px;
+}
+
+#add-photo-icon {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#photo-container {
+  position: relative;
+  text-align: center;
+}
+
+#remove-photo {
+  font-size: large;
+  font-weight: bolder;
+  position: absolute;
+  color: white;
+  top: 5%;
+  right: 2%;
+  cursor: pointer;
+}
+
+#review-photo-thumbnail {
+  max-width: 110%;
+  object-fit: contain;
+}
+
+#review-photos-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 #add-review-nickname > input, #add-review-email > input {
   width: 40%;
   margin-bottom: 0.5%;
