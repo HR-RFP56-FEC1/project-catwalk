@@ -80,7 +80,7 @@ var ReviewEntry = (props) => {
       </div>
       <div id="review-body" className="searchable-review">
         {!fullReview && review.body.length > 250 ? review.body.substring(0, 250) + '...' : review.body}
-
+      </div>
         {
           !fullReview && review.body.length > 250 &&
           <div onClick={toggleReview}>
@@ -95,7 +95,7 @@ var ReviewEntry = (props) => {
           </div>
         }
 
-      </div>
+
 
       {
         review.photos.length > 0 &&
