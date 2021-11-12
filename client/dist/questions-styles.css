@@ -7,6 +7,7 @@
 }
 
 #qna {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -78,6 +79,7 @@
   display: flex;
   flex-direction: row;
   align-self: end;
+  margin-bottom: 10px;
 }
 
 .answerList {
@@ -195,10 +197,12 @@
   font-weight: bolder;
   margin-top: 5px;
   margin-bottom: 5px;
+  align-self: flex-start;
 }
 
 .questiontextBody {
   margin-left: 10px;
+  max-width: 700px;
 }
 
 .answerListBigA {
@@ -231,9 +235,13 @@
   border: 1px solid var(--gray);
   height: 65px;
   color: var(--gray);
+  background-color: white;
+  cursor: pointer;
 }
 
 #qtitlebar {
+  font-family: 'Thasadith', sans-serif;
+  font-weight: bold;
   font-size: larger;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -249,9 +257,12 @@
 
 .moreAnswersButton {
   font-size: medium;
-  font-weight: bolder;
   padding: 10px;
   background: none;
   border: none;
-  color: hotpink;
+  color: rgb(180, 180, 180);
+}
+
+.moreAnswersButton:hover {
+  color: var(--gray);
 }
