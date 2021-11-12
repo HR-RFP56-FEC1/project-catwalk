@@ -5,7 +5,7 @@ import _ from 'underscore';
 
 import interactions from '../../shared/interactions.js';
 // import reviews from '../../../../sample/reviews.js';
-
+import SearchReview from './SearchReview.jsx';
 import SortReview from './SortReview.jsx';
 import NewReview from './newReview/NewReview.jsx';
 import ReviewBox from './reviewBox/ReviewBox.jsx';
@@ -25,6 +25,8 @@ var ReviewList = (props) => {
   const [reviewsCount, setCount] = useState(2);
   const [sortBy, setSort] = useState('relevance');
   const [newReview, addNewReview] = useState(false);
+  const [search, setSearch] = useState('');
+  const [displayedReviewsAfterSearch, setAfterSearch] = useState(null);
   // const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -84,17 +86,27 @@ var ReviewList = (props) => {
   }, [sortBy]);
 
   useEffect(() => {
+    if (displayedReviews !== null) {
+      if (search.trim().length > 3) {
+        setAfterSearch(displayedReviews.filter((review) => {
+          return review.body.toLowerCase().includes(search.trim()) || review.summary.toLowerCase().includes(search.trim());
+        }))
+      } else {
+        setAfterSearch(null);
+      }
+    }
+  }, [search])
+
+  useEffect(() => {
     if (allReviews !== null) {
       setDisplay(allReviews.filter((review) => {
         if (props.filter === 0) {
           return review;
         }
         if (props.filter >= 1 && props.filter <= 5) {
-          return review.rating == props.filter;
+          return (review.rating == props.filter);
         }
       }))
-      // console.log('what rating to filter', props.filter);
-      // console.log('what reviews to show', allReviews);
     }
   }, [props.filter])
 
@@ -108,6 +120,11 @@ var ReviewList = (props) => {
     setSort(sortMethod);
   }
 
+  const searchReview = (keyword) => {
+    setSearch(keyword);
+    console.log(search);
+  }
+
   const clickAddReview = (e) => {
     if (!newReview) {
       interactions("add-review", "ratings-and-reviews");
@@ -118,13 +135,17 @@ var ReviewList = (props) => {
   // console.log('sample data reviews:', reviews);
 
   if (displayedReviews !== null) {
+    // console.log('key word', search);
+    // console.log('key word length', search.trim().length);
+    // console.log('how many reviews there are:', displayedReviews.length);
 
     const top = (200 + reviewsCount * 40).toString() + '%';
 
     return (
       <div className="review-list">
         <SortReview reviews={displayedReviews} changeSort={changeSort.bind(this)}/>
-        <ReviewBox count={reviewsCount} reviews={displayedReviews}/>
+        <SearchReview searchReview={searchReview} />
+        <ReviewBox count={reviewsCount} reviews={displayedReviewsAfterSearch ? displayedReviewsAfterSearch : displayedReviews}/>
         <div className="review-bottom-buttons">
           {
             displayedReviews.length > 2 &&
