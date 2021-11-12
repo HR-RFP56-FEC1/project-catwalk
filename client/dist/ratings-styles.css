@@ -502,3 +502,7 @@ Consistent styling for buttons and clickable text
 #add-photo-url > button:hover, #sort-review-by:hover, #read-all-reviews-link:hover {
   color: hotpink;
 }
+
+.searchable-review > span {
+  background-color: yellow;
+}

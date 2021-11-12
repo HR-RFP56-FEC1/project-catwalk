@@ -75,10 +75,10 @@ var ReviewEntry = (props) => {
           {review.reviewer_name}, {moment(review.date).format("MMMM D, YYYY")}
         </div>
       </div>
-      <div id="review-summary">
+      <div id="review-summary" className="searchable-review">
         {review.summary}
       </div>
-      <div id="review-body">
+      <div id="review-body" className="searchable-review">
         {!fullReview && review.body.length > 250 ? review.body.substring(0, 250) + '...' : review.body}
 
         {
