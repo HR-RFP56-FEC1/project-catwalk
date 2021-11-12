@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import ReviewPhoto from './ReviewPhoto.jsx';
 import Stars from '../../../shared/Stars.jsx';
+import interactions from '../../../shared/interactions.js';
 
 var ReviewEntry = (props) => {
   const [helpful, setHelpful] = useState(false);
@@ -38,6 +39,7 @@ var ReviewEntry = (props) => {
           console.log('Error voting for helpful reviews: ', err);
         })
     }
+    interactions("review-helpful-vote", "ratings-and-reviews");
   }
 
   const reportReview = function() {
@@ -60,6 +62,7 @@ var ReviewEntry = (props) => {
           console.log(`Error report review with id ${review.review_id}: `, err);
         })
     }
+    interactions("review-report", "ratings-and-reviews");
   }
 
   return (
