@@ -13,6 +13,7 @@
   font-family: sans-serif;
   width: 1000px;
   color: var(--gray);
+  padding-right: 10px;
 }
 
 #qsearch {
@@ -94,6 +95,7 @@
   max-height: 50vh;
   overflow: auto;
   direction: rtl;
+  padding-left: 10px;
 }
 
 .question {
