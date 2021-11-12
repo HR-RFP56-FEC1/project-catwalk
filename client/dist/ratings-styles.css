@@ -1,4 +1,4 @@
-#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by, #review-entry-username-date, #new-review-form, #add-review-photo, #add-photo-url-btn , #close-photo-url-btn, .related-products-title {
+#rating-headline, .rating-summary, .rating-dist, .product-breakdown, .sort-review, .review-box, #sort-review-by, #review-entry-username-date, #new-review-form, #add-review-photo, #add-photo-url-btn , #close-photo-url-btn, .related-products-title ,.newFormBtn {
   font-family: 'Roboto', sans-serif;
   color: var(--gray);
 }
@@ -328,7 +328,7 @@ This is the start of styling for the new review form
 
 #new-review-form {
   border: 5px solid var(--gray);
-  border-radius: 25px;
+  border-radius: 2px;
   background-color: white;
   position: fixed;
   top: 5%;
@@ -502,7 +502,7 @@ This is the start of styling for the new review form
 /*
 Consistent styling for buttons and clickable text
 */
-:where(.more-and-add-reviews-btn, .moreQuestionsButton, .addQuestionButton, .rating-bar-text, .rating-bar-count, questionhelpfulvote, addAnswer):hover, #submit-new-review:hover, #close-new-review:hover, #add-photo-icon:hover, #remove-photo:hover, #average-rating:hover, #review-helpful-vote:hover, #review-report:hover,
+:where(.more-and-add-reviews-btn, .moreQuestionsButton, .addQuestionButton, .rating-bar-text, .rating-bar-count, questionhelpfulvote, addAnswer, .newFormBtn):hover, #submit-new-review:hover, #close-new-review:hover, #add-photo-icon:hover, #remove-photo:hover, #average-rating:hover, #review-helpful-vote:hover, #review-report:hover,
 #add-photo-url > button:hover, #sort-review-by:hover, #read-all-reviews-link:hover {
   color: hotpink;
 }
