@@ -28,10 +28,7 @@ var ReviewList = (props) => {
   const [search, setSearch] = useState('');
   const [displayedReviewsAfterSearch, setAfterSearch] = useState(null);
   const [newReviewCount, setNewReviewCount] = useState(0);
-<<<<<<< HEAD
   const [expand, setExpand] = useState(false);
-=======
->>>>>>> 3e49727cbaeb57fa2d96908f5ce255087b1fcdaf
   // const [product, setProduct] = useState(null);
 
   const changeBody = () => {
