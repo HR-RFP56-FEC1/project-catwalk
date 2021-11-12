@@ -7,9 +7,9 @@
 }
 
 #qna {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  height: auto;
+  max-height: 100vh;
+  overflow: auto;
   font-family: sans-serif;
   width: 1000px;
   color: var(--gray);
@@ -84,7 +84,15 @@
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  direction: ltr;
+}
 
+.answerListQ {
+  height: auto;
+  padding-right: 10px;
+  max-height: 50vh;
+  overflow: auto;
+  direction: rtl;
 }
 
 .question {
