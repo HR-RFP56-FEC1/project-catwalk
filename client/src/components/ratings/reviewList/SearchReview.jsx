@@ -4,6 +4,7 @@ import interactions from '../../shared/interactions.js';
 var SearchReview = (props) => {
 
   const onSearch = (e) => {
+    interactions("search-review", "ratings-and-reviews");
     props.searchReview(e.target.value.toLowerCase());
   }
 

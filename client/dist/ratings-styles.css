@@ -269,6 +269,7 @@
 }
 
 #close-review-photo-modal {
+  right: 0%;
   font-size: larger;
   font-weight: bold;
   color: seashell;
