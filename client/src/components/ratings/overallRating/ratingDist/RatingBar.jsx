@@ -1,5 +1,7 @@
 import React from 'react';
 
+import interactions from '../../../shared/interactions.js';
+
 var RatingBar = (props) => {
   let rating = props.rating;
   let count = props.ratingDist[rating] || 0;
@@ -7,6 +9,7 @@ var RatingBar = (props) => {
 
   const clickRating = function(e) {
     props.filter(props.rating);
+    interactions("rating-bar", "ratings-and-reviews");
   }
 
   return (

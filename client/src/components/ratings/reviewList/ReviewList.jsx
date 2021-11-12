@@ -3,8 +3,9 @@ import axios from 'axios';
 import moment from 'moment';
 import _ from 'underscore';
 
+import interactions from '../../shared/interactions.js';
 // import reviews from '../../../../sample/reviews.js';
-
+import SearchReview from './SearchReview.jsx';
 import SortReview from './SortReview.jsx';
 import NewReview from './newReview/NewReview.jsx';
 import ReviewBox from './reviewBox/ReviewBox.jsx';
@@ -24,7 +25,15 @@ var ReviewList = (props) => {
   const [reviewsCount, setCount] = useState(2);
   const [sortBy, setSort] = useState('relevance');
   const [newReview, addNewReview] = useState(false);
+  const [search, setSearch] = useState('');
+  const [displayedReviewsAfterSearch, setAfterSearch] = useState(null);
+  const [newReviewCount, setNewReviewCount] = useState(0);
+  const [expand, setExpand] = useState(false);
   // const [product, setProduct] = useState(null);
+
+  const changeBody = () => {
+    setExpand(!expand);
+  }
 
   useEffect(() => {
     getReviews(props.id)
@@ -75,12 +84,57 @@ var ReviewList = (props) => {
       .catch(err => {
         console.log(`Error retrieving reviews data for product id ${props.id}`, err);
       })
-  }, [props.id])
+  }, [props.id, newReviewCount])
 
 
   useEffect(() => {
     setDisplay(_.sortBy(displayedReviews, sortBy));
   }, [sortBy]);
+
+  useEffect(() => {
+    if (displayedReviews !== null) {
+      if (search.trim().length > 3) {
+        setAfterSearch(displayedReviews.filter((review) => {
+          return review.body.toLowerCase().includes(search.trim()) || review.summary.toLowerCase().includes(search.trim());
+        }))
+      } else {
+        setAfterSearch(null);
+      }
+    }
+  }, [search])
+
+  useEffect(() => {
+    if (displayedReviews) {
+    var elementList = document.getElementsByClassName("searchable-review");
+    // console.log('what is this', elementList);
+    if (elementList.length > 0) {
+      for (let body of elementList) {
+        // console.log('what inside', body);
+        if (search.length > 3) {
+          if (body) {
+            var strBody = body.innerHTML;
+            var stripped = strBody.replace('<span>', '');
+            stripped = stripped.replace('</span>', '');
+            // var regex = new RegExp(search.toLowerCase(), 'i');
+
+            var after = stripped.replace(search, '<span>'+search+'</span>');
+            // console.log('what happened', after);
+            body.innerHTML = after;
+            // console.log(search);
+          }
+        } else {
+          if (body) {
+            var strBody = body.innerHTML;
+            var stripped = strBody.replace('<span>', '');
+            stripped = stripped.replace('</span>', '');
+            body.innerHTML = stripped;
+          }
+        }
+      }
+    }
+
+    }
+  }, [search, expand])
 
   useEffect(() => {
     if (allReviews !== null) {
@@ -89,37 +143,49 @@ var ReviewList = (props) => {
           return review;
         }
         if (props.filter >= 1 && props.filter <= 5) {
-          return review.rating == props.filter;
+          return (review.rating == props.filter);
         }
       }))
-      // console.log('what rating to filter', props.filter);
-      // console.log('what reviews to show', allReviews);
     }
   }, [props.filter])
 
   const clickMoreReviews = (e) => {
     e.preventDefault();
     setCount(reviewsCount + 2);
+    interactions("more-review", "ratings-and-reviews");
   }
 
   const changeSort = (sortMethod) => {
     setSort(sortMethod);
   }
 
+  const searchReview = (keyword) => {
+    setSearch(keyword);
+  }
+
   const clickAddReview = (e) => {
+    if (!newReview) {
+      interactions("add-review", "ratings-and-reviews");
+    }
     addNewReview(!newReview);
   }
-  // console.log('current state reviews:', allReviews);
-  // console.log('sample data reviews:', reviews);
+
+  const newReviewPosted = () => {
+    setNewReviewCount(newReviewCount + 1);
+  }
 
   if (displayedReviews !== null) {
+    // console.log('key word', search);
+    // console.log('key word length', search.trim().length);
+    // console.log('how many reviews there are:', displayedReviews.length);
 
     const top = (200 + reviewsCount * 40).toString() + '%';
 
     return (
       <div className="review-list">
         <SortReview reviews={displayedReviews} changeSort={changeSort.bind(this)}/>
-        <ReviewBox count={reviewsCount} reviews={displayedReviews}/>
+        <SearchReview searchReview={searchReview} />
+        <ReviewBox count={reviewsCount} reviews={displayedReviewsAfterSearch ? displayedReviewsAfterSearch : displayedReviews} expand={changeBody.bind(this)}/>
         <div className="review-bottom-buttons">
           {
             displayedReviews.length > 2 &&
@@ -141,7 +207,7 @@ var ReviewList = (props) => {
         {
           newReview &&
           <div className="modalBackground">
-            <NewReview product={props.productInfo.name} close={clickAddReview} characteristics={props.characteristics} productId={props.id}/>
+            <NewReview product={props.productInfo.name} close={clickAddReview} characteristics={props.characteristics} productId={props.id} posted={newReviewPosted.bind(this)}/>
           </div>
         }
 

@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import ReviewPhoto from './ReviewPhoto.jsx';
 import Stars from '../../../shared/Stars.jsx';
+import interactions from '../../../shared/interactions.js';
 
 var ReviewEntry = (props) => {
   const [helpful, setHelpful] = useState(false);
@@ -14,7 +15,9 @@ var ReviewEntry = (props) => {
   let review = props.review;
 
   const toggleReview = () => {
+    // props.expand();
     setFullReview(!fullReview);
+    props.expand();
   }
 
   const voteHelpful = function() {
@@ -38,6 +41,7 @@ var ReviewEntry = (props) => {
           console.log('Error voting for helpful reviews: ', err);
         })
     }
+    interactions("review-helpful-vote", "ratings-and-reviews");
   }
 
   const reportReview = function() {
@@ -60,6 +64,7 @@ var ReviewEntry = (props) => {
           console.log(`Error report review with id ${review.review_id}: `, err);
         })
     }
+    interactions("review-report", "ratings-and-reviews");
   }
 
   return (
@@ -72,12 +77,12 @@ var ReviewEntry = (props) => {
           {review.reviewer_name}, {moment(review.date).format("MMMM D, YYYY")}
         </div>
       </div>
-      <div id="review-summary">
+      <div id="review-summary" className="searchable-review">
         {review.summary}
       </div>
-      <div id="review-body">
+      <div id="review-body" className="searchable-review">
         {!fullReview && review.body.length > 250 ? review.body.substring(0, 250) + '...' : review.body}
-
+      </div>
         {
           !fullReview && review.body.length > 250 &&
           <div onClick={toggleReview}>
@@ -92,7 +97,7 @@ var ReviewEntry = (props) => {
           </div>
         }
 
-      </div>
+
 
       {
         review.photos.length > 0 &&

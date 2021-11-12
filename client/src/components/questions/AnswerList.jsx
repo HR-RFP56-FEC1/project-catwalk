@@ -16,9 +16,9 @@ const AnswerList = ({answers}) => {
 
   const sortAnswers = function() {
     var sorted = [];
-  
+
     var ids = Object.keys(answers);
-  
+
     if (ids.length > 0) {
       sorted.push(answers[ids[0]]);
       for (var i = 1; i < ids.length; i++) {
@@ -71,8 +71,8 @@ const AnswerList = ({answers}) => {
           displayList ? displayList: false
         }
         {
-          (Object.keys(answers).length > 2) ? ((displayCount < Object.keys(answers).length) ? <input className='moreAnswersButton' type="button" value="See more answers" onClick={moreAnswersEvent}/>:
-            <input className='collapseAnswersButton' type="button" value="Collapse Answers" onClick={collapseAnswersEvent}/>):
+          (Object.keys(answers).length > 2) ? ((displayCount < Object.keys(answers).length) ? <input className='moreAnswersButton' type="button" value="↓ Show more answers" onClick={moreAnswersEvent}/>:
+            <input className='collapseAnswersButton' type="button" value="↑ Show less Answers" onClick={collapseAnswersEvent}/>):
             <div/>
         }
       </div>

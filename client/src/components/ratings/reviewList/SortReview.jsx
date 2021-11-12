@@ -1,9 +1,10 @@
 import React from 'react';
-
+import interactions from '../../shared/interactions.js';
 var SortReview = (props) => {
 
   const changeSort = (e) => {
     // console.log(e.target.value);
+    interactions("sort-review", "ratings-and-reveiws");
     if (e.target.value === 'time') {
       props.changeSort('dateDiff');
     } else if (e.target.value === 'helpful') {

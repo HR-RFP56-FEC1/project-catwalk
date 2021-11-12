@@ -42,7 +42,7 @@ const Answer = ({answer}) => {
       responseType: 'json'
     });
   };
-  
+
   const reportedHelper = function() {
     setReported(true);
   };
@@ -62,13 +62,13 @@ const Answer = ({answer}) => {
     <div className="answer" id='answerid'>
       <div className='answerBody'>{answer.body}</div>
       <div className='answerBottomBar'>
-        <div className='answerByLine'>by {answer.answerer_name}, {moment(answer.date).format('MMMM, D, YYYY')}  |{'\u00A0'}</div>
-        <div className='answerHelpful'>Helpful? <a className='answerHelpfulVote' href="clickstuff" onClick={handleHelpful}>Yes</a> ({helpful ? (answer.helpfulness + 1): answer.helpfulness})  |{'\u00A0'}</div>  
+        <div className='answerByLine'>by {answer.answerer_name}, {moment(answer.date).format('MMMM, D, YYYY')} &nbsp;|{'\u00A0'}&nbsp;</div>
+        <div className='answerHelpful'>&nbsp;Helpful? &nbsp;<a className='answerHelpfulVote' href="clickstuff" onClick={handleHelpful}>Yes</a> ({helpful ? (answer.helpfulness + 1): answer.helpfulness})  &nbsp;|&nbsp;{'\u00A0'}</div>
         <a className='answerReport' href="clickstuff" onClick={handleReport}>{reported ? "Reported": "Report"}</a>
       </div>
     </div>
   );
-  
+
 };
 
 export default Answer;

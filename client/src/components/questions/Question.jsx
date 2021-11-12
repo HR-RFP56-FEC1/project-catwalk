@@ -22,7 +22,7 @@ const Question = ({question, product_id, productName}) => {
       responseType: 'json'
     });
   };
-  
+
   const helpfulHelper = function() {
     setHelpful(true);
   };
@@ -52,7 +52,7 @@ const Question = ({question, product_id, productName}) => {
       <div className='questiontopbar'>
         <div className='questiontext'><div className='questiontextBigQ'>Q:</div>   <div className='questiontextBody'>{question.question_body}</div></div>
         <div className='questionHelpAdd'>
-          <div className='questionHelpful'>Helpful? <a className='questionhelpfulvote' href="clickstuff" onClick={handleHelpful}>Yes</a> ({helpful ? (question.question_helpfulness + 1): question.question_helpfulness})   |{'\u00A0'} </div>
+          <div className='questionHelpful'>Helpful?&nbsp; <a className='questionhelpfulvote' href="clickstuff" onClick={handleHelpful}>Yes</a> ({helpful ? (question.question_helpfulness + 1): question.question_helpfulness})   &nbsp;|{'\u00A0'}&nbsp;</div>
           <a className='addAnswer' href="clickstuff" onClick={handleAddAnswer}>Add Answer</a>
         </div>
       </div>
@@ -62,5 +62,5 @@ const Question = ({question, product_id, productName}) => {
     </div>
   );
 };
-  
+
 export default Question;
