@@ -101,10 +101,10 @@ var ReviewList = (props) => {
   useEffect(() => {
     if (displayedReviews) {
     var elementList = document.getElementsByClassName("searchable-review");
-    console.log('what is this', elementList);
+    // console.log('what is this', elementList);
     if (elementList.length > 0) {
       for (let body of elementList) {
-        console.log('what inside', body);
+        // console.log('what inside', body);
         if (search.length > 3) {
           if (body) {
             var strBody = body.innerHTML;
