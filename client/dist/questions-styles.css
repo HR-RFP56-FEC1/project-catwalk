@@ -9,12 +9,19 @@
 #qna {
   height: auto;
   max-height: 100vh;
-  overflow: auto;
+  overflow-y: scroll;
   font-family: sans-serif;
   width: 1000px;
   color: var(--gray);
   padding-right: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+#qna::-webkit-scrollbar {
+  display: none;
+}
+
 
 #qsearch {
   display: flex;
@@ -93,9 +100,14 @@
   height: auto;
   padding-right: 10px;
   max-height: 50vh;
-  overflow: auto;
+  overflow-y: scroll;
   direction: rtl;
   padding-left: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.answerListQ::-webkit-scrollbar {
+  display: none;
 }
 
 .question {
