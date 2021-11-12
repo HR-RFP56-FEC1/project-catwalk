@@ -56,7 +56,7 @@ const Question = ({question, product_id, productName}) => {
           <a className='addAnswer' href="clickstuff" onClick={handleAddAnswer}>Add Answer</a>
         </div>
       </div>
-      <div className='answerList'>
+      <div className='answerListQ'>
         <AnswerList answers={question.answers}/>
       </div>
     </div>

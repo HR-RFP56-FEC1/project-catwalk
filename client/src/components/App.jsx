@@ -59,20 +59,11 @@ var App = () => {
   }
 
   return (
-<<<<<<< HEAD
     <div id='app-container'>
       {productInfo ? <Overview id={mainProduct} productInfo={productInfo} reviews={reviewsMeta}/>: false}
       {productInfo ? <Related id={mainProduct} handleProductChange={handleProductChange}/>: false}
       {<QnA id={mainProduct} productInfo={productInfo}/>}
       {reviewsMeta ? <Ratings id={mainProduct} productInfo={productInfo} overallRating={reviewsMeta}/>: false}
-=======
-    <div>
-      <Overview id={mainProduct}/>
-      <Related id={mainProduct} handleProductChange={handleProductChange}/>
-      <QnA id={mainProduct}/>
-      <Ratings id={mainProduct}/>
-      <QnA id={mainProduct}/>
->>>>>>> qna
     </div>
   )
 }
