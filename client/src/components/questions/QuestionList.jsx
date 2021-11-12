@@ -89,9 +89,9 @@ const QuestionList = ({questions, product_id, productInfo}) => {
       </div>
       <div className='qListBottomBar'>
         {
-          (sortedList && sortedList.length > displayCount) && <input className='moreQuestionsButton' type="button" value="More Answered Questions" onClick={handleDisplayCount}/>
+          (sortedList && sortedList.length > displayCount) && <input className='moreQuestionsButton' type="button" value="MORE ANSWERED QUESTIONS" onClick={handleDisplayCount}/>
         }
-        <input className='addQuestionButton' type="button" value="Add a Question" onClick={handleAddQuestion}/>
+        <input className='addQuestionButton' type="button" value="ADD A QUESTION  +" onClick={handleAddQuestion}/>
       </div>
     </div>
   );

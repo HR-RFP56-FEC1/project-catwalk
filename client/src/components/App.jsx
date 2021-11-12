@@ -11,7 +11,7 @@ import interactions from './shared/interactions.js';
 let id = 40350
 
 var App = () => {
-  const [mainProduct, setMainProduct] = useState(40363)
+  const [mainProduct, setMainProduct] = useState(40344)
   const [productInfo, setProductInfo] = useState(undefined)
   const [reviewsMeta, setReviewsMeta] = useState(undefined)
 

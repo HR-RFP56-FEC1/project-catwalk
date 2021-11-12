@@ -47,7 +47,7 @@ const AddReviewPhotoBtn = (props) => {
           <div id="add-photo-url">
             Photo URL:&nbsp;&nbsp;
             <input type="text" name="photo-url" placeholder='Example: "http://placecorgi.com/260"'
-            style={ {width:"70%"} }></input>
+            style={ {width:"60%"} }></input>
             &nbsp;
             <button id="add-photo-url-btn"
               onClick={addUrl}>Add</button>

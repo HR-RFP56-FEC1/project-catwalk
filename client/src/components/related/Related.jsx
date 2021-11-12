@@ -58,7 +58,7 @@ const ProductCard = ({id, handleProductChange}) => {
 }
 
 const RelatedProductTitle = () => (
-  <div className='related-products-title'>RELATED PRODUCTS</div>
+  <div className='related-products-title' style={ {fontSize:"larger", marginBottom:"10px" }}>RELATED PRODUCTS</div>
 )
 
 const YourOutfit = () => (

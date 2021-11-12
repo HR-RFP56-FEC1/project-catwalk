@@ -1,4 +1,4 @@
-.related-products-title, .related-product-category, .related-price {
+.related-product-title, .related-product-category, .related-price {
   font-family: 'Thasadith', sans-serif;
 }
 
@@ -21,9 +21,6 @@
   color: var(--gray)
 }
 
-.related-products-title {
-
-}
 
 .related-container {
   display: flex;

@@ -28,7 +28,7 @@ const QnA = ({id, productInfo, interactions}) => {
   return (
     <div id='qna-container'>
       <div id="qna" className='qna'>
-        <div id='qtitlebar'>QUESTIONS AND ANSWERS</div>
+        <div id='qtitlebar'>QUESTIONS &#38; ANSWERS</div>
         <div id='qList'>{
           results ? <QuestionList questions={results} product_id={id} productInfo={productInfo}/> : <div>Loading....</div>
           }
