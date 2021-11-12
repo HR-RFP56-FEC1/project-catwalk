@@ -10,7 +10,7 @@ var ReviewBox = (props) => {
     <div className="review-box">
       {toDisplay.map(i => {
         if (props.reviews[i]) {
-          return <ReviewEntry review={props.reviews[i]} key={props.reviews[i].review_id}/>;
+          return <ReviewEntry review={props.reviews[i]} key={props.reviews[i].review_id} expand={props.expand}/>;
         }
       })}
 

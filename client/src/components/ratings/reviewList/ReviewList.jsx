@@ -28,7 +28,12 @@ var ReviewList = (props) => {
   const [search, setSearch] = useState('');
   const [displayedReviewsAfterSearch, setAfterSearch] = useState(null);
   const [newReviewCount, setNewReviewCount] = useState(0);
+  const [expand, setExpand] = useState(false);
   // const [product, setProduct] = useState(null);
+
+  const changeBody = () => {
+    setExpand(!expand);
+  }
 
   useEffect(() => {
     getReviews(props.id)
@@ -110,6 +115,8 @@ var ReviewList = (props) => {
             var strBody = body.innerHTML;
             var stripped = strBody.replace('<span>', '');
             stripped = stripped.replace('</span>', '');
+            // var regex = new RegExp(search.toLowerCase(), 'i');
+
             var after = stripped.replace(search, '<span>'+search+'</span>');
             // console.log('what happened', after);
             body.innerHTML = after;
@@ -127,7 +134,8 @@ var ReviewList = (props) => {
     }
 
     }
-  }, [search])
+  }, [search, expand])
+
   useEffect(() => {
     if (allReviews !== null) {
       setDisplay(allReviews.filter((review) => {
@@ -165,8 +173,6 @@ var ReviewList = (props) => {
   const newReviewPosted = () => {
     setNewReviewCount(newReviewCount + 1);
   }
-  // console.log('current state reviews:', allReviews);
-  // console.log('sample data reviews:', reviews);
 
   if (displayedReviews !== null) {
     // console.log('key word', search);
@@ -179,7 +185,7 @@ var ReviewList = (props) => {
       <div className="review-list">
         <SortReview reviews={displayedReviews} changeSort={changeSort.bind(this)}/>
         <SearchReview searchReview={searchReview} />
-        <ReviewBox count={reviewsCount} reviews={displayedReviewsAfterSearch ? displayedReviewsAfterSearch : displayedReviews}/>
+        <ReviewBox count={reviewsCount} reviews={displayedReviewsAfterSearch ? displayedReviewsAfterSearch : displayedReviews} expand={changeBody.bind(this)}/>
         <div className="review-bottom-buttons">
           {
             displayedReviews.length > 2 &&

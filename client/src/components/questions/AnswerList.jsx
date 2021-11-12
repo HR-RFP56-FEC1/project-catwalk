@@ -72,7 +72,7 @@ const AnswerList = ({answers}) => {
         }
         {
           (Object.keys(answers).length > 2) ? ((displayCount < Object.keys(answers).length) ? <input className='moreAnswersButton' type="button" value="↓ Show more answers" onClick={moreAnswersEvent}/>:
-            <input className='collapseAnswersButton' type="button" value="Collapse Answers" onClick={collapseAnswersEvent}/>):
+            <input className='collapseAnswersButton' type="button" value="↑ Show less Answers" onClick={collapseAnswersEvent}/>):
             <div/>
         }
       </div>

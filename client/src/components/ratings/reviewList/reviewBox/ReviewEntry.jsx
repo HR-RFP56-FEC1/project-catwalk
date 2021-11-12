@@ -15,7 +15,9 @@ var ReviewEntry = (props) => {
   let review = props.review;
 
   const toggleReview = () => {
+    // props.expand();
     setFullReview(!fullReview);
+    props.expand();
   }
 
   const voteHelpful = function() {
