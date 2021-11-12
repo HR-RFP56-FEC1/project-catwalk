@@ -196,9 +196,9 @@
   background-color: none;
   display: flex;
   flex-direction: column;
-  max-height: 100vh;
+  /* max-height: 100vh;
   overflow-y: scroll;
-  padding-right: 10px;
+  padding-right: 10px; */
 }
 
 .review-entry {
