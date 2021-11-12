@@ -70,7 +70,7 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
       alert(mess);
       return false;
     }
-      
+
     return true;
   };
 
@@ -99,7 +99,7 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
         console.log(res);
         alert("Submission Added");
         closeModal();
-      })} 
+      })}
   };
 
   return ( isOpen ? (
@@ -126,12 +126,12 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
               <div className="modalInputNote">For authentication reasons, you will not be emailed</div>
             </div>
             <div className='modalInputListItem'>
-              <input type="button" value="Submit question" onClick={handleSubmitButton} />
+              <input type="button" value="Submit question" onClick={handleSubmitButton} className="newFormBtn"/>
             </div>
           </div>
           <div className='modalBottomBar'>
             <div className='modalInputListItem'>
-              <input type="button" value="Close/Cancel" onClick={closeModal} />
+              <input type="button" value="Close/Cancel" onClick={closeModal} className="newFormBtn"/>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ const AddQuestionModal = ({isOpen, productName, question, setModalState, product
     ): false
   );
 };
-  
+
 export default AddQuestionModal;
 
 

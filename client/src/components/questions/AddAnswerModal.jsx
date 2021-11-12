@@ -75,7 +75,7 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
       alert(mess);
       return false;
     }
-      
+
     return true;
   };
 
@@ -137,15 +137,15 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
           </div>
           <div className='modalInputListItem'>
           <AddPhotosModal isOpen={photoOpen} setModalState={setPhotoOpen} setPhotoUrls={setPhotos} question={question}/>
-            <input type="button" value="Upload your photos" onClick={openPhotoModal} />
+            <input type="button" value="Upload your photos" onClick={openPhotoModal} className="newFormBtn"/>
           </div>
           <div className='modalInputListItem'>
-            <input type="button" value="Submit answer" onClick={handleSubmitButton} />
+            <input type="button" value="Submit answer" onClick={handleSubmitButton} className="newFormBtn"/>
           </div>
         </div>
         <div className='modalBottomBar'>
           <div className='modalInputListItem'>
-            <input type="button" value="Close/Cancel" onClick={closeModal} />
+            <input type="button" value="Close/Cancel" onClick={closeModal} className="newFormBtn"/>
           </div>
         </div>
       </div>
@@ -153,7 +153,7 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
     ): false
   );
 };
-  
+
 export default AddAnswerModal;
 
 
