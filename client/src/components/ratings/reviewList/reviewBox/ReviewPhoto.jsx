@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
 
+import interactions from '../../../shared/interactions.js';
+
 var ReviewPhoto = (props) => {
   const [photoModal, showModal] = useState(false);
   const toggleReviewPhotoModal = (e) => {
+    if (!photoModal) {
+      interactions("review-photo", "ratings-and-reviews");
+    }
     showModal(!photoModal)
   }
   return (

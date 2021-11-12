@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import _ from 'underscore';
 
+import interactions from '../../shared/interactions.js';
 // import reviews from '../../../../sample/reviews.js';
 
 import SortReview from './SortReview.jsx';
@@ -100,6 +101,7 @@ var ReviewList = (props) => {
   const clickMoreReviews = (e) => {
     e.preventDefault();
     setCount(reviewsCount + 2);
+    interactions("more-review", "ratings-and-reviews");
   }
 
   const changeSort = (sortMethod) => {
@@ -107,6 +109,9 @@ var ReviewList = (props) => {
   }
 
   const clickAddReview = (e) => {
+    if (!newReview) {
+      interactions("add-review", "ratings-and-reviews");
+    }
     addNewReview(!newReview);
   }
   // console.log('current state reviews:', allReviews);

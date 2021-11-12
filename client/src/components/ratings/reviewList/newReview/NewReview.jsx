@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
+import interactions from '../../../shared/interactions.js';
+
 import characteristics from './characteristics.js';
 import CharacterRadio from './CharacterRadio.jsx';
 import AddReviewPhotoBtn from './AddPhoto.jsx';
@@ -51,9 +53,11 @@ var NewReview = (props) => {
   const clickOverallRating = (e) => {
     let starID = e.target.id.split('-')[1];
     setOverallRating(starID);
+    interactions("new-review-overall-rating", "ratings-and-reviews");
   }
 
   const handleRecommend = (e) => {
+    interactions("new-review-whether-recommend", "ratings-and-reviews");
     if (e.target.value === 'Yes') {
       setRecommend(true);
     }
@@ -70,12 +74,14 @@ var NewReview = (props) => {
 
   const typeSummary = (e) => {
     setSummary(e.target.value);
+    interactions("new-review-summary", "ratings-and-reviews");
   }
 
   const typeReview = (e) => {
     setBody(e.target.value);
     let charCount = e.target.value.length;
     setBodyCount(charCount);
+    interactions("new-review-body", "ratings-and-reviews");
   }
 
   // functions for the review photo part
@@ -101,15 +107,18 @@ var NewReview = (props) => {
         return;
       }
     }
+    interactions("new-review-add-photo", "ratings-and-reviews");
   }, [photoUrl])
 
   // function for nickname
   const typeNickname = (e) => {
     setNickname(e.target.value);
+    interactions("new-review-nickname", "ratings-and-reviews");
   }
 
   const typeEmail = (e) => {
     setEmail(e.target.value);
+    interactions("new-review-email", "ratings-and-reviews");
   }
 
   const checkReview = (e) => {
@@ -192,6 +201,7 @@ var NewReview = (props) => {
     if (valid) {
       postHandler();
     }
+    interactions("new-review-submit", "ratings-and-reviews");
   }
 
   return (
