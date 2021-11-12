@@ -193,7 +193,10 @@ var NewReview = (props) => {
       data: JSON.stringify(obj),
       headers: {'Content-Type': 'application/json'}
     })
-      .then(() => {alert('New review posted!')});
+      .then(() => {
+        props.posted();
+        alert('New review posted!')
+      });
   }
 
   const submitReview = (e) => {

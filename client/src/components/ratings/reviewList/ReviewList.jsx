@@ -27,6 +27,7 @@ var ReviewList = (props) => {
   const [newReview, addNewReview] = useState(false);
   const [search, setSearch] = useState('');
   const [displayedReviewsAfterSearch, setAfterSearch] = useState(null);
+  const [newReviewCount, setNewReviewCount] = useState(0);
   // const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -78,7 +79,7 @@ var ReviewList = (props) => {
       .catch(err => {
         console.log(`Error retrieving reviews data for product id ${props.id}`, err);
       })
-  }, [props.id])
+  }, [props.id, newReviewCount])
 
 
   useEffect(() => {
@@ -97,6 +98,36 @@ var ReviewList = (props) => {
     }
   }, [search])
 
+  useEffect(() => {
+    if (displayedReviews) {
+    var elementList = document.getElementsByClassName("searchable-review");
+    console.log('what is this', elementList);
+    if (elementList.length > 0) {
+      for (let body of elementList) {
+        console.log('what inside', body);
+        if (search.length > 3) {
+          if (body) {
+            var strBody = body.innerHTML;
+            var stripped = strBody.replace('<span>', '');
+            stripped = stripped.replace('</span>', '');
+            var after = stripped.replace(search, '<span>'+search+'</span>');
+            // console.log('what happened', after);
+            body.innerHTML = after;
+            // console.log(search);
+          }
+        } else {
+          if (body) {
+            var strBody = body.innerHTML;
+            var stripped = strBody.replace('<span>', '');
+            stripped = stripped.replace('</span>', '');
+            body.innerHTML = stripped;
+          }
+        }
+      }
+    }
+
+    }
+  }, [search])
   useEffect(() => {
     if (allReviews !== null) {
       setDisplay(allReviews.filter((review) => {
@@ -122,7 +153,6 @@ var ReviewList = (props) => {
 
   const searchReview = (keyword) => {
     setSearch(keyword);
-    console.log(search);
   }
 
   const clickAddReview = (e) => {
@@ -130,6 +160,10 @@ var ReviewList = (props) => {
       interactions("add-review", "ratings-and-reviews");
     }
     addNewReview(!newReview);
+  }
+
+  const newReviewPosted = () => {
+    setNewReviewCount(newReviewCount + 1);
   }
   // console.log('current state reviews:', allReviews);
   // console.log('sample data reviews:', reviews);
@@ -167,7 +201,7 @@ var ReviewList = (props) => {
         {
           newReview &&
           <div className="modalBackground">
-            <NewReview product={props.productInfo.name} close={clickAddReview} characteristics={props.characteristics} productId={props.id}/>
+            <NewReview product={props.productInfo.name} close={clickAddReview} characteristics={props.characteristics} productId={props.id} posted={newReviewPosted.bind(this)}/>
           </div>
         }
 
