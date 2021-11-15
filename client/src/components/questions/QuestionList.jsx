@@ -29,8 +29,6 @@ const QuestionList = ({questions, product_id, productInfo}) => {
     openModal();
   };
 
-  // sort questions by helpfulness
-  // also filter by search criteria if length of search >= 3
   const questionSorter = function() {
     var sorted = [];
     if (questions.results && questions.results.length > 0) {

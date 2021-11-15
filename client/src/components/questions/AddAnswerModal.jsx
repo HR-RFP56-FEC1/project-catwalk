@@ -23,7 +23,6 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
     if (photos && photos.length > 0) {
       obj.photos = photos;
     }
-    console.log(obj);
     var urlString = '/api/qa/questions/' + question.question_id + '/answers';
     return axios({
       method: 'post',
@@ -101,7 +100,6 @@ const AddAnswerModal = ({isOpen, productName, question, setModalState, product_i
     interactions("submitAddAnswer", "questions");
     if (inputValidator()) {
       postHandler().then((res) => {
-        console.log(res);
         alert("Submission Added");
         closeModal();
       }
