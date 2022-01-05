@@ -26,7 +26,6 @@ The Overview module is the primary area to display product appearance and detail
 
 The Questions and Answers module provides a place for users to ask and provide additional information about the product. Both are sorted by their usefulness score, which can be voted on. Users can add a question about a specific product. Users can also add an answer to a specific question. By default a limited number of questions and answers are displayed. The user can click to display more questions or answers.
 
-![ratings-and-reviews](http://g.recordit.co/WbFV1MVHqQ.gif)
 
 # Rating and Reviews
 - Development lead: Yina Xing
@@ -37,6 +36,8 @@ The Ratings & Reviews module will allow viewing and submission of reviews for th
 3. Reviews List
 4. Filter, Sort and Search
 5. Write A New Review
+
+![Ratings-Reviews-Demo](extra/ratings-demo.gif)
 
 ### Rating Breakdown
 The average rating for the product will be displayed, and the rating distriibution will be broken down with the total number of reviews and percent of reviews submitted with that particular rating.
