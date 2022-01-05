@@ -24,11 +24,9 @@ The Overview module is the primary area to display product appearance and detail
 # Questions and Answers
 - Development lead: Brett Tokairin
 
-The Questions and Answers module provides a place for users to ask and provide additional information about the product. Both are sorted by their usefulness score, which can be voted on. Users can add a question about a specific product. Users can also add an answer to a specific question. By default a limited number of questions and answers are displayed. The user can click to display more questions or answers. 
+The Questions and Answers module provides a place for users to ask and provide additional information about the product. Both are sorted by their usefulness score, which can be voted on. Users can add a question about a specific product. Users can also add an answer to a specific question. By default a limited number of questions and answers are displayed. The user can click to display more questions or answers.
 
-<p align="center">
-  <img alt="ratings-reviews-overview" src="extra/Ratings-Reviews-Overview.png">
-</p>
+![ratings-and-reviews](http://g.recordit.co/WbFV1MVHqQ.gif)
 
 # Rating and Reviews
 - Development lead: Yina Xing
@@ -38,7 +36,7 @@ The Ratings & Reviews module will allow viewing and submission of reviews for th
 2. Product Breakdown
 3. Reviews List
 4. Filter, Sort and Search
-5. Write A New Review 
+5. Write A New Review
 
 ### Rating Breakdown
 The average rating for the product will be displayed, and the rating distriibution will be broken down with the total number of reviews and percent of reviews submitted with that particular rating.
@@ -47,12 +45,12 @@ The average rating for the product will be displayed, and the rating distriibuti
 Reviews will provide ability to give feedback on specific characteristics of the product. The average feedback received will be displayed for all characteristics which apply to the product.
 
 ### Reviews List
-The list contains all the reviews submitted for the product. Each individual review will display the following information: 
+The list contains all the reviews submitted for the product. Each individual review will display the following information:
 - Star rating
 - Date and name of the reviewer
 - Review summary and body, including pictures associated with the review
 - Whether user recommend the product
-- Seller's response to review if there is any 
+- Seller's response to review if there is any
 - Other users' feedback on the review
 
 ### Filter, Sort and Search
